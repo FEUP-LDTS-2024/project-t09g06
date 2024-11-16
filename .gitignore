@@ -39,6 +39,6 @@ bin/
 .vscode/
 
 ### Mac OS ###
-.DS_Store
-*.drawio
-*.md
+.DS_Sto
+README.md
+Untitled Diagram.drawio
