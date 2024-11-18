@@ -1,4 +1,5 @@
 package ldts.t09g06.view;
 
-public class example5 {
+public class View {
+
 }
