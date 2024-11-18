@@ -1,6 +1,7 @@
 package ldts.t09g06.gui;
 
 import com.googlecode.lanterna.TerminalSize;
+import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
@@ -102,7 +103,9 @@ public class LanternaGUI implements  GUI {
 
     @Override
     public void drawText(Position position, String text, String color) {
-
+        TextGraphics textGraphics = screen.newTextGraphics();
+        textGraphics.setForegroundColor(TextColor.Factory.fromString(color));
+        textGraphics.putString(position.getX(),position.getY(), text);
     }
 
     @Override
