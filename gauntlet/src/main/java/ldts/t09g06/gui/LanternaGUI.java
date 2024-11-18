@@ -11,6 +11,7 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import com.googlecode.lanterna.terminal.swing.SwingTerminalFontConfiguration;
+import ldts.t09g06.model.Constants;
 import ldts.t09g06.model.Position;
 
 import java.awt.*;
@@ -18,7 +19,7 @@ import java.io.IOException;
 
 public class LanternaGUI implements  GUI {
 
-    private Screen screen;
+    private final Screen screen;
 
     private TextGraphics graphics;
 
@@ -108,33 +109,41 @@ public class LanternaGUI implements  GUI {
         textGraphics.putString(position.getX(),position.getY(), text);
     }
 
+    public void drawElement(int x, int y, char c, String color) {
+        TextGraphics textGraphics = screen.newTextGraphics();
+        textGraphics.setForegroundColor(TextColor.Factory.fromString(color));
+        textGraphics.putString(x, y+1,"" + c);
+    }
+
     @Override
     public void drawPlayer(Position position) {
-
+        drawElement(position.getX(), position.getY(), 'P', Constants.LIGHTBLUE);
     }
 
     @Override
     public void drawWall(Position position) {
-
+        drawElement(position.getX(), position.getY(), '#', Constants.WHITE);
     }
 
     @Override
     public void drawSeparator(Position position) {
-
+        drawElement(position.getX(), position.getY(), '*', Constants.WHITE);
     }
+
 
     @Override
     public void clear() {
+        screen.clear();
 
     }
 
     @Override
     public void refresh() throws IOException {
-
+        screen.refresh();
     }
 
     @Override
     public void close() throws IOException {
-
+        screen.close();
     }
 }
