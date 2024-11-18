@@ -29,7 +29,6 @@ public class LanternaGUI implements  GUI {
 
     public LanternaGUI(int width, int height) throws IOException, FontFormatException {
 
-
         //  Maybe make a loadFont function to be more dynamic
         Font font = new Font(Font.MONOSPACED, Font.PLAIN, 16);
         AWTTerminalFontConfiguration config = new SwingTerminalFontConfiguration(true, AWTTerminalFontConfiguration.BoldMode.NOTHING, font);
