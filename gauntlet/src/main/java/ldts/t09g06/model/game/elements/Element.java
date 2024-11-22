@@ -15,6 +15,4 @@ public abstract class Element {
         this.position = position;
     }
 
-    public abstract String getCharacter();
-    public abstract String getColor();
 }

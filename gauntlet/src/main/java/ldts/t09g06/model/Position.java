@@ -1,5 +1,7 @@
 package ldts.t09g06.model;
 
+import java.util.Objects;
+
 public class Position {
     private int x;
     private int y;
@@ -41,11 +43,20 @@ public class Position {
         return new Position(x, y + 1);
     }
 
+    public Position getCloserTo(){
+        //for now just return down
+        return new Position(x, y + 1);
+    }
+
     @Override
     public boolean equals(Object o) {
         if(o == null || o.getClass() != this.getClass()) return false;
 
         return (this == o) ||
                 (this.x == ((Position) o).x && this.y == ((Position) o).y);
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 }

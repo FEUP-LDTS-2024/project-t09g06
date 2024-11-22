@@ -7,14 +7,4 @@ public class ZombieMonster extends GenericMonster{
     public ZombieMonster(int x, int y){
         super(x,y);
     }
-
-    @Override
-    public String getCharacter() {
-        return "Z";
-    }
-
-    @Override
-    public String getColor() {
-        return GREEN;
-    }
 }
