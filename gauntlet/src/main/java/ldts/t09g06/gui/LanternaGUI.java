@@ -18,6 +18,8 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 
+import static ldts.t09g06.model.game.elements.Constants.*;
+
 public class LanternaGUI implements GUI {
     private final Screen screen;
 
@@ -68,17 +70,17 @@ public class LanternaGUI implements GUI {
 
     @Override
     public void drawHero(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'H', "#FFD700");
+        drawCharacter(position.getX(), position.getY(), 'H', WHITE);
     }
 
     @Override
     public void drawWall(Position position) {
-        drawCharacter(position.getX(), position.getY(), '#', "#3333FF");
+        drawCharacter(position.getX(), position.getY(), '#', RED);
     }
 
     @Override
     public void drawMonster(Position position) {
-        drawCharacter(position.getX(), position.getY(), '@', "#CC0000");
+        drawCharacter(position.getX(), position.getY(), 'M', GREEN);
     }
 
     @Override

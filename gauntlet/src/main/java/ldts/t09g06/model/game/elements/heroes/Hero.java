@@ -5,7 +5,7 @@ import ldts.t09g06.model.game.elements.Element;
 import static ldts.t09g06.model.game.elements.Constants.RED;
 
 public class Hero extends Element {
-    public Hero(int x,int y){super(x,y); this.life = 200;}
+    public Hero(int x,int y){super(x,y); this.life = 5;}
     private int life;
     public int getLife() {
         return life;
