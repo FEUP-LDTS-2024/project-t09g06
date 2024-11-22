@@ -6,6 +6,8 @@ import ldts.t09g06.model.game.arena.Arena;
 import ldts.t09g06.model.game.elements.Element;
 import ldts.t09g06.view.Viewer;
 
+import java.util.List;
+
 public class GameViewer extends Viewer<Arena> {
     public GameViewer(Arena arena) {
         super(arena);

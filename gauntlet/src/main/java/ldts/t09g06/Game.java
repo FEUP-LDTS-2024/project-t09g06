@@ -13,6 +13,7 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.input.KeyType;
 import ldts.t09g06.gui.LanternaGUI;
+import ldts.t09g06.model.menu.Menu;
 import ldts.t09g06.states.MenuState;
 import ldts.t09g06.states.State;
 
