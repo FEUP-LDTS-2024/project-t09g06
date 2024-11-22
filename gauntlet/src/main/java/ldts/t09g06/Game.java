@@ -1,16 +1,7 @@
 package ldts.t09g06;
 
-
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextCharacter;
-import com.googlecode.lanterna.TextColor;
-import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.screen.Screen;
-import com.googlecode.lanterna.screen.TerminalScreen;
-import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
-import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.input.KeyType;
 import ldts.t09g06.gui.LanternaGUI;
 import ldts.t09g06.model.menu.Menu;
@@ -26,7 +17,7 @@ public class Game {
     private State state;
 
     public Game() throws FontFormatException, IOException, URISyntaxException {
-        this.gui = new LanternaGUI(20, 20);
+        this.gui = new LanternaGUI(200, 100);
         this.state = new MenuState(new Menu());
     }
 
@@ -53,6 +44,7 @@ public class Game {
             try {
                 if (sleepTime > 0) Thread.sleep(sleepTime);
             } catch (InterruptedException e) {
+                Thread.currentThread().interrupt(); // Restore interrupted status
             }
         }
 
