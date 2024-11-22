@@ -1,18 +1,19 @@
 package ldts.t09g06.gui;
 
+import com.googlecode.lanterna.SGR;
+import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import com.googlecode.lanterna.terminal.swing.SwingTerminalFontConfiguration;
-import ldts.t09g06.model.Constants;
 import ldts.t09g06.model.Position;
+import ldts.t09g06.model.game.elements.Element;
 
 import java.awt.*;
 import java.io.IOException;
@@ -84,10 +85,6 @@ public class LanternaGUI implements  GUI {
             default:
                 break;
         }
-
-
-
-//
 //        if (keyStroke.getKeyType() == KeyType.EOF) return ACTION.QUIT;
 //        if (keyStroke.getKeyType() == KeyType.Character && keyStroke.getCharacter() == 'q') return ACTION.QUIT;
 //
@@ -107,13 +104,13 @@ public class LanternaGUI implements  GUI {
         textGraphics.setForegroundColor(TextColor.Factory.fromString(color));
         textGraphics.putString(position.getX(),position.getY(), text);
     }
-
-    public void drawElement(int x, int y, char c, String color) {
-        TextGraphics textGraphics = screen.newTextGraphics();
-        textGraphics.setForegroundColor(TextColor.Factory.fromString(color));
-        textGraphics.putString(x, y+1,"" + c);
+    @Override
+    public void drawElement(Position p, Element element) {
+        graphics.setForegroundColor(TextColor.Factory.fromString(element.getColor()));
+        graphics.enableModifiers(SGR.BOLD);
+        graphics.putString(new TerminalPosition(p.getX(), p.getY()+1), element.getCharacter());
     }
-
+/*
     @Override
     public void drawPlayer(Position position) {
         drawElement(position.getX(), position.getY(), 'P', Constants.LIGHTBLUE);
@@ -128,7 +125,7 @@ public class LanternaGUI implements  GUI {
     public void drawSeparator(Position position) {
         drawElement(position.getX(), position.getY(), '*', Constants.WHITE);
     }
-
+*/
 
     @Override
     public void clear() {

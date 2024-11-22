@@ -1,12 +1,13 @@
 package ldts.t09g06.gui;
 
 import ldts.t09g06.model.Position;
+import ldts.t09g06.model.game.elements.Element;
 
 import java.io.IOException;
 
 public interface GUI {
     ACTION getNextAction() throws IOException;
-
+/*
     void drawText(Position position, String text, String color);
 
     void drawPlayer(Position position);
@@ -14,6 +15,9 @@ public interface GUI {
     void drawWall(Position position);
 
     void drawSeparator(Position position);
+
+ */
+    void drawElement(Position p, Element element);
 
     void clear();
 
