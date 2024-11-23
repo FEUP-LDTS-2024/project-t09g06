@@ -7,6 +7,7 @@ import ldts.t09g06.model.game.elements.monsters.GenericMonster;
 import ldts.t09g06.model.game.elements.monsters.ZombieMonster;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Arena {
@@ -26,6 +27,15 @@ public class Arena {
     public void setMonsters(List<GenericMonster> monsters) {
         this.monsters = monsters;
     }
+    public void killMonster(List<GenericMonster> monsters, Position position){
+        //is there a way to make it more efficient and just look at that position and not all monsters??
+        List<GenericMonster> m = new ArrayList<>();
+        for (GenericMonster monster : monsters)
+            if (!monster.getPosition().equals(position))
+                m.add(monster);
+        setMonsters(m);
+    }
+
     public void setWalls(List<Wall> walls) {
         this.walls = walls;
     }
