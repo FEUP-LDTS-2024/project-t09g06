@@ -23,6 +23,6 @@ public class Constants {
     public static final int menuWidth = 30;
 
     //GAME SCREEN
-    public static final int WIDTH = 110;
-    public static final int HEIGHT = 60;
+    public static final int WIDTH = 100;
+    public static final int HEIGHT = 50;
 }

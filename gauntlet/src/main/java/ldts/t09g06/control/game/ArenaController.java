@@ -2,6 +2,7 @@ package ldts.t09g06.control.game;
 
 import ldts.t09g06.Game;
 import ldts.t09g06.gui.GUI;
+import ldts.t09g06.model.Constants;
 import ldts.t09g06.model.game.arena.Arena;
 import ldts.t09g06.model.menu.Menu;
 import ldts.t09g06.states.MenuState;
@@ -20,8 +21,10 @@ public class ArenaController extends GameController {
     }
 
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
-        if (action == GUI.ACTION.QUIT || getModel().getHero().getLife() == 0)
+        if (action == GUI.ACTION.QUIT || getModel().getHero().getLife() == 0) {
+            game.getGui().resizeScreen(Constants.menuWidth, Constants.menuHeight);
             game.setState(new MenuState(new Menu()));
+        }
         else {
             heroController.step(game, action, time);
             monsterController.step(game, action, time);

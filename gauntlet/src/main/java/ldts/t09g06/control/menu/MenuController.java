@@ -2,6 +2,7 @@ package ldts.t09g06.control.menu;
 
 import ldts.t09g06.Game;
 import ldts.t09g06.gui.GUI;
+import ldts.t09g06.model.Constants;
 import ldts.t09g06.model.game.arena.LoadArenaBuilder;
 import ldts.t09g06.model.menu.Menu;
 import ldts.t09g06.control.Controller;
@@ -25,7 +26,10 @@ public class MenuController extends Controller<Menu> {
                 break;
             case SELECT:
                 if (getModel().isSelectedExit()) game.setState(null);
-                if (getModel().isSelectedStart()) game.setState(new GameState(new LoadArenaBuilder(1).createArena()));
+                if (getModel().isSelectedStart()) {
+                    game.getGui().resizeScreen(Constants.WIDTH, Constants.HEIGHT);
+                    game.setState(new GameState(new LoadArenaBuilder(1).createArena()));
+                }
         }
     }
 }

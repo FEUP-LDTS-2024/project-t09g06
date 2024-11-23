@@ -9,10 +9,10 @@ import java.util.List;
 public abstract class ArenaBuilder {
     public Arena createArena() {
         Arena arena = new Arena(getWidth(), getHeight());
-
-        arena.setHero(createHero());
-        arena.setMonsters(createMonsters());
-        arena.setWalls(createWalls());
+        parseGameElements();
+        arena.setHero(getNewHero());
+        arena.setMonsters(getMonsters());
+        arena.setWalls(getWalls());
 
         return arena;
     }
@@ -21,9 +21,12 @@ public abstract class ArenaBuilder {
 
     protected abstract int getHeight();
 
-    protected abstract List<Wall> createWalls();
+    protected abstract void parseGameElements();
+    public abstract Hero getNewHero();
+    public abstract List<Wall> getWalls();
 
-    protected abstract List<GenericMonster> createMonsters();
+    public abstract List<GenericMonster> getMonsters();
 
-    protected abstract Hero createHero();
+
+
 }

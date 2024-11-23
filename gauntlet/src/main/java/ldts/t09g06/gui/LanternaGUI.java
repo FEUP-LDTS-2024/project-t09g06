@@ -18,7 +18,7 @@ import java.net.URISyntaxException;
 import static ldts.t09g06.model.Constants.*;
 
 public class LanternaGUI implements GUI {
-    private final Screen screen;
+    private  Screen screen;
 
     public LanternaGUI(Screen screen) {
         this.screen = screen;
@@ -39,6 +39,7 @@ public class LanternaGUI implements GUI {
         return screen;
     }
 
+
     private Terminal createTerminal(int width, int height) throws IOException {
         TerminalSize terminalSize = new TerminalSize(width, height + 1);
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory()
@@ -46,6 +47,12 @@ public class LanternaGUI implements GUI {
         terminalFactory.setForceAWTOverSwing(true);
         Terminal terminal = terminalFactory.createTerminal();
         return terminal;
+    }
+
+    public void resizeScreen(int width, int height) throws IOException {
+        if (screen != null) screen.close();
+        Terminal terminal = createTerminal(width,height);
+        this.screen = createScreen(terminal);
     }
 
     public ACTION getNextAction() throws IOException {
