@@ -1,4 +1,4 @@
-package ldts.t09g06.model;
+package ldts.t09g06.model.game.elements;
 
 public class Constants {
 
@@ -7,6 +7,7 @@ public class Constants {
     public static final String BLACK = "#000000";
 
     public static final String RED = "#FF0000";
+    public static final String GREEN = "#008000";
 
     public static final String LIGHTGREY = "#D3D3D3";
 
