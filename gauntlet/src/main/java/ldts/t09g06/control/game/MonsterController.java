@@ -13,7 +13,6 @@ public class MonsterController extends GameController {
 
     public MonsterController(Arena arena) {
         super(arena);
-
         this.lastMovement = 0;
     }
 

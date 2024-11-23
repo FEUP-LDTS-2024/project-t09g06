@@ -6,6 +6,7 @@ import ldts.t09g06.model.game.elements.monsters.GenericMonster;
 import ldts.t09g06.model.game.elements.monsters.ZombieMonster;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
@@ -15,18 +16,21 @@ import java.util.Random;
 
 public class LoadArenaBuilder extends ArenaBuilder {
     //have to think about how we will make levels
-    private final Random rng;
-    private final int width;
-    private final int height;
-    private final int numberOfMonsters;
+    private int level;
+    private final List<String> lines;
+    private int width;
+    private int height;
 
-    public LoadArenaBuilder(int w, int h, int n) throws IOException {
-        this.numberOfMonsters = n;
-        this.height = h;
-        this.width = w;
-        this.rng = new Random();
+
+    public LoadArenaBuilder(int l) throws IOException {
+        this.level = l;
+
+        URL resource = LoadArenaBuilder.class.getResource("/levels/level" + level + ".lvl");
+        assert resource != null;
+        BufferedReader br = new BufferedReader(new FileReader(resource.getFile()));
+
+        lines = readLines(br);
     }
-
     private List<String> readLines(BufferedReader br) throws IOException {
         List<String> lines = new ArrayList<>();
         for (String line; (line = br.readLine()) != null; )
@@ -36,11 +40,13 @@ public class LoadArenaBuilder extends ArenaBuilder {
 
     @Override
     protected int getWidth() {
+        width = lines.get(0).length();
         return width;
     }
 
     @Override
     protected int getHeight() {
+        height = lines.size();
         return height;
     }
 
@@ -48,14 +54,10 @@ public class LoadArenaBuilder extends ArenaBuilder {
     protected List<Wall> createWalls() {
         List<Wall> walls = new ArrayList<>();
 
-        for (int x = 0; x < width; x++) {
-            walls.add(new Wall(x, 0));
-            walls.add(new Wall(x, height - 1));
-        }
-
-        for (int y = 1; y < height - 1; y++) {
-            walls.add(new Wall(0, y));
-            walls.add(new Wall(width - 1, y));
+        for (int y = 0; y < lines.size(); y++) {
+            String line = lines.get(y);
+            for (int x = 0; x < line.length(); x++)
+                if (line.charAt(x) == '#') walls.add(new Wall(x, y));
         }
 
         return walls;
@@ -65,15 +67,23 @@ public class LoadArenaBuilder extends ArenaBuilder {
     protected List<GenericMonster> createMonsters() {
         List<GenericMonster> monsters = new ArrayList<>();
 
-        while (monsters.size() < numberOfMonsters)
-            monsters.add(new ZombieMonster(rng.nextInt(width - 2) + 1, rng.nextInt(height - 2) + 1));
+        for (int y = 0; y < lines.size(); y++) {
+            String line = lines.get(y);
+            for (int x = 0; x < line.length(); x++)
+                if (line.charAt(x) == 'M') monsters.add(new ZombieMonster(x, y));
+        }
 
         return monsters;
     }
 
     @Override
     protected Hero createHero() {
-        return new Hero(2, height-2);
+        for (int y = 0; y < lines.size(); y++) {
+            String line = lines.get(y);
+            for (int x = 0; x < line.length(); x++)
+                if (line.charAt(x) == 'H') return new Hero(x, y);
+        }
+        return null;
     }
 
 }

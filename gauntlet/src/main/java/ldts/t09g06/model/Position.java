@@ -44,8 +44,18 @@ public class Position {
     }
 
     public Position getCloserTo(){
-        //for now just return down
-        return new Position(x, y + 1);
+        //for now just return random
+        int n = (int) (Math.random() * 4);
+        switch (n) {
+            case 0:
+                return getUp();
+            case 1:
+                return getRight();
+            case 2:
+                return getDown();
+            default:
+                return getLeft();
+        }
     }
 
     @Override
