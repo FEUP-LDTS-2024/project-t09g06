@@ -2,6 +2,8 @@ package ldts.t09g06.model.game.arena;
 
 import ldts.t09g06.model.game.elements.Element;
 import ldts.t09g06.model.game.elements.Wall;
+import ldts.t09g06.model.game.elements.ammo.Bullet;
+import ldts.t09g06.model.game.elements.ammo.GenericAmmo;
 import ldts.t09g06.model.game.elements.heroes.Hero;
 import ldts.t09g06.model.game.elements.monsters.GenericMonster;
 import ldts.t09g06.model.game.elements.monsters.ZombieMonster;
@@ -87,6 +89,14 @@ public class LoadArenaBuilder extends ArenaBuilder {
 
     public  List<GenericMonster> getMonsters(){
         return monsters;
+    }
+
+    public  List<GenericAmmo> createAmmo() {
+        List<GenericAmmo> ammo = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            ammo.add(new Bullet(hero.getPosition().getX(), hero.getPosition().getY(),'o',0,0));
+        }
+        return ammo;
     }
 
 
