@@ -1,4 +1,4 @@
-package ldts.t09g06.model.game.elements;
+package ldts.t09g06.model;
 
 public class Constants {
 
@@ -12,6 +12,12 @@ public class Constants {
     public static final String LIGHTGREY = "#D3D3D3";
 
     public static final String LIGHTBLUE = "#ADD8E6";
+
+    public static final String YELLOW = "#FFD700";
+
+    //MENU
+
+    public static final String MENU = "Menu";
 
     //GAME SCREEN
     public static final int WIDTH = 110;

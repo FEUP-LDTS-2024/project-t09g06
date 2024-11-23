@@ -10,15 +10,12 @@ import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
-import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 
 import java.awt.*;
-import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.net.URL;
 
-import static ldts.t09g06.model.game.elements.Constants.*;
+import static ldts.t09g06.model.Constants.*;
 
 public class LanternaGUI implements GUI {
     private final Screen screen;
@@ -110,4 +107,9 @@ public class LanternaGUI implements GUI {
     public void close() throws IOException {
         screen.close();
     }
+    @Override
+    public Screen getScreen() {
+        return screen;
+    }
+
 }
