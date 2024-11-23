@@ -27,10 +27,11 @@ public class HeroController extends GameController {
     }
 
     private void moveHero(Position position) {
-        if (getModel().isEmpty(position)) {
+        if (getModel().isEmpty(position) && !getModel().isMonster(position)) {
             getModel().getHero().setPosition(position);
-            if (getModel().isMonster(position)) getModel().getHero().decreaseLife(1);
         }
+        if (getModel().isMonster(position)) getModel().getHero().decreaseLife(1);
+
     }
 
     @Override
