@@ -19,6 +19,9 @@ public class Constants {
 
     public static final String MENU = "Menu";
 
+    public static final int menuHeight = 10;
+    public static final int menuWidth = 30;
+
     //GAME SCREEN
     public static final int WIDTH = 110;
     public static final int HEIGHT = 60;

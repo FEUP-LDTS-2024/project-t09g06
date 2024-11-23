@@ -20,16 +20,16 @@ public class MenuViewer extends Viewer<Menu> {
         int height = size.getRows();
         int width = size.getColumns();
         int middleScreen = width / 2;
-
+        int middleHeight = height/2;
         int textStart = middleScreen - Constants.MENU.length() / 2;
-        gui.drawText(new Position(textStart, 0), Constants.MENU, Constants.WHITE);
+        gui.drawText(new Position(textStart, middleHeight-3), Constants.MENU, Constants.WHITE);
 
         for (int i = 0; i < getModel().getNumberEntries(); i++) {
 
             String modelText = getModel().getEntry(i);
             textStart = middleScreen - modelText.length() / 2;
             gui.drawText(
-                    new Position(textStart, 7 + i),
+                    new Position(textStart, middleHeight + i),
                     modelText,
                     getModel().isSelected(i) ? Constants.YELLOW : Constants.WHITE);
         }
