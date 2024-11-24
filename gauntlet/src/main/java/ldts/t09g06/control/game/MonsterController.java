@@ -26,10 +26,19 @@ public class MonsterController extends GameController {
     }
 
     private void moveMonster(GenericMonster monster, Position position) {
-        if (!getModel().wallCollision(position)) {
+        Position heroPosition = getModel().getHero().getPosition();
+        if (!getModel().wallCollision(position) && !getModel().elementsCollision(heroPosition,position)) {
             monster.setPosition(position);
-            if (getModel().getHero().getPosition().equals(position))
-                getModel().getHero().decreaseLife(1);
         }
+        if (getModel().elementsCollision(heroPosition,position))
+            getModel().getHero().decreaseLife(1);
+    }
+
+    public void setLastMovement(long lastMovement) {
+        this.lastMovement = lastMovement;
+    }
+
+    public long getLastMovement() {
+        return this.lastMovement;
     }
 }

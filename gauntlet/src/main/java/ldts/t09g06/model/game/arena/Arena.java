@@ -1,6 +1,7 @@
 package ldts.t09g06.model.game.arena;
 
 import ldts.t09g06.model.Position;
+import ldts.t09g06.model.game.elements.Element;
 import ldts.t09g06.model.game.elements.Wall;
 import ldts.t09g06.model.game.elements.ammo.Bullet;
 import ldts.t09g06.model.game.elements.ammo.GenericAmmo;
@@ -71,6 +72,10 @@ public class Arena {
             if (monster.getPosition().equals(position))
                 return true;
         return false;
+    }
+
+    public boolean elementsCollision(Position position1, Position position2){
+        return position1.equals(position2);
     }
 
     public List<GenericAmmo> getBullets() {
