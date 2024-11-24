@@ -53,8 +53,8 @@ public class AmmoController extends GameController {
             }
             if(!collided) bullet.setPosition(nextPosition);
         }
-        getModel().removeBullets(bulletsToRemove);
-        getModel().removeMonsters(monstersToRemove);
+        if(!bulletsToRemove.isEmpty()) getModel().removeBullets(bulletsToRemove);
+        if(!monstersToRemove.isEmpty())getModel().removeMonsters(monstersToRemove);
 
     }
 

@@ -32,4 +32,5 @@ public class ArenaController extends GameController {
             ammoController.step(game, action, time);
         }
     }
+
 }
