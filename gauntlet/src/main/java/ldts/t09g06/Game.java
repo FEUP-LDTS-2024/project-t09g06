@@ -28,6 +28,10 @@ public class Game {
         return this.gui;
     }
 
+    public State getState(){
+        return this.state;
+    }
+
     public void setState(State state) {
         this.state = state;
     }

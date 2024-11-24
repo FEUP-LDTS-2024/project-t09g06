@@ -24,4 +24,15 @@ public abstract class Element {
 
     public char getElement() { return  this.element;}
 
+
+    @Override
+    public boolean equals(Object o){
+        if(this == o){
+            return true;
+        }
+        if(!(o instanceof Element)){
+            return false;
+        }
+        return this.getPosition().equals(((Element) o).getPosition());
+    }
 }
