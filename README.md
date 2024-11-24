@@ -6,11 +6,6 @@ What can you experience ? Take on the role of a brave hero as you face endless w
 
 Project developed by André Gomes (up202304252@up.pt), Tiago Carvalho (up202103339@up.pt) and Vasco Alves (up202304912@up.pt) for **Software Design and Test Laboratory** subject of the second year of **Informatics and Computing Engineering Course**.
 
-# UML Class Diagram
-A UML Diagram representing the classes in the game and their methods
-
---insert img--
-
 
 # Game Controls
 ## Menu
@@ -43,14 +38,22 @@ A UML Diagram representing the classes in the game and their methods
 - [ ] **2nd Player** - Two players can play at the same time.
 - [ ] **Sound Effects** - When playing the game a background music can be heard.
 
-# Design
-## Mockups 
-This is a sketch of the multiplayer menu:
---insert img here--
-It has both player characters that each have a different model and are able to choose between different skins, it also has the map selection, controls, back to menu and the options which have the following menu:
---insert img here--
-in this menu you are able to customize your gameplay by tinkering the game features.
+# UML Class Diagram
+A UML Diagram representing the classes in the game and their methods.
 
+![uml_image](/docs/Gauntlet.png)
+<figcaption>Fig.2 - Game mock up</figcaption>
+
+
+# Mockups 
+
+Figure 1 represents a mock up of a game map.
+![menu_image](/docs/pre-game.png)
+<figcaption>Fig.2 - Game UML</figcaption>
+
+
+
+# Design
 ## Architectural Pattern
 
 #### Problem in context
@@ -100,7 +103,7 @@ Implemented in the game class.
 The game involves creating various types of game entities such as players, enemies, loot items, and obstacles. Each entity type might require specific initialization logic, attributes, and behaviors. Without a proper structure to handle the creation of these objects, it can become hard to instantiate them in multiple places throughout the game code. This can lead to redundant object creation logic, which is difficult to maintain and extend as the game grows in complexity.
 
 ### Factory Pattern
-Provides a way to delegate the creation of objects to a specialized method instead of directly calling the constructor. It allows for the creation of objects without specifying the exact class of object that will be created. The factory method can decide which class to instantiate based on the context-
+Provides a way to delegate the creation of objects to a specialized method instead of directly calling the constructor. It allows for the creation of objects without specifying the exact class of object that will be created. The factory method can decide which class to instantiate based on the context.
 
 To be implemented.
 
