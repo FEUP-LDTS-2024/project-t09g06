@@ -42,14 +42,14 @@ Project developed by André Gomes (up202304252@up.pt), Tiago Carvalho (up2021033
 A UML Diagram representing the classes in the game and their methods.
 
 ![uml_image](/docs/Gauntlet.png)
-<figcaption>Fig.2 - Game mock up</figcaption>
+<figcaption>Fig.1 - Game UML.</figcaption>
 
 
 # Mockups 
 
-Figure 1 represents a mock up of a game map.
+Figure 2 represents a mock up of a game map.
 ![menu_image](/docs/pre-game.png)
-<figcaption>Fig.2 - Game UML</figcaption>
+<figcaption>Fig.2 - Game mock up. </figcaption>
 
 
 
