@@ -57,15 +57,16 @@ class MonsterControllerTestG extends Specification{
             0*monster.setPosition(_)
     }
 
-    def "Monster collides with hero - Should decrease hero life"(){
+    def "Monster collides with hero - Should decrease hero life and not move"(){
         given:
             monsterController.setLastMovement(500)
             arena.wallCollision(_) >> false
-
+            arena.elementsCollision(_,_) >> true
         when:
             monsterController.step(game, GUI.ACTION.NONE,1200)
         then:
             0*monster.setPosition(_)
+            1*hero.decreaseLife(_)
     }
 
 }
