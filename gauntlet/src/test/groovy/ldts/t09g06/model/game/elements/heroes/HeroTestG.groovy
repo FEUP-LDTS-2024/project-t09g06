@@ -69,5 +69,5 @@ class HeroTestG extends Specification{
         then:
             hero.getDirection() == Direction.UP
     }
-    
+
 }
