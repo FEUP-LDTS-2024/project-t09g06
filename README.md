@@ -29,4 +29,11 @@ Project developed by André Gomes (up202304252@up.pt), Tiago Carvalho (up2021033
 > To do
 
 # Self Evaluation
-> To do 
+
+To streamline our collaborative work on the Gauntlet-like game, we divided the responsibilities among team members to optimize efficiency and leverage individual strengths in specific areas of the project. Each student focused on a particular group of features, contributing their skills to ensure a balanced distribution of tasks: Classes and Controllers, Viewer Classes and GUI, Tests and Otimization.
+
+    André Gomes: 33.3%
+    Tiago Carvalho: 33.3%
+    Vasco Alves: 33.3%
+
+This approach allowed each team member to specialize, enhancing productivity and cohesion throughout the development process.
