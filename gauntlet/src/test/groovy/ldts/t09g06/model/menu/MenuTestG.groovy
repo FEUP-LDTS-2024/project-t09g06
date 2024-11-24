@@ -1,4 +1,4 @@
-package ldts.t09g06.model.game.menu
+package ldts.t09g06.model.menu
 
 import ldts.t09g06.model.menu.Menu
 import spock.lang.Specification
@@ -79,6 +79,6 @@ class MenuTestG extends Specification{
             menu.previousEntry()
             menu.previousEntry()
         then:
-            menu.isSelected(0) 
+            menu.isSelected(0)
     }
 }
