@@ -59,13 +59,14 @@ public class Arena {
         return walls;
     }
 
-    public boolean isEmpty(Position position) {
+    public boolean wallCollision(Position position) {
         for (Wall wall : walls)
             if (wall.getPosition().equals(position))
-                return false;
-        return true;
+                return true;
+        return false;
     }
-    public boolean isMonster(Position position) {
+
+    public boolean monsterCollision(Position position) {
         for (GenericMonster monster : monsters)
             if (monster.getPosition().equals(position))
                 return true;

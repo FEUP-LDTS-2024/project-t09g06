@@ -30,11 +30,14 @@ public class HeroController extends GameController {
     }
 
     private void moveHero(Position position, Direction direction) {
-        if (getModel().isEmpty(position) && !getModel().isMonster(position)) {
+        if (!getModel().wallCollision(position) && !getModel().monsterCollision(position)) {
             getModel().getHero().setPosition(position);
             getModel().getHero().setDirection(direction);
         }
-        if (getModel().isMonster(position)) getModel().getHero().decreaseLife(1);
+        // If the position collides with a monster, reduce life
+        if (getModel().monsterCollision(position)) {
+            getModel().getHero().decreaseLife(1);
+        }
 
     }
     public void heroShoot() {

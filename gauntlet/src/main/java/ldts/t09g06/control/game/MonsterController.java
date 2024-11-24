@@ -26,7 +26,7 @@ public class MonsterController extends GameController {
     }
 
     private void moveMonster(GenericMonster monster, Position position) {
-        if (getModel().isEmpty(position)) {
+        if (!getModel().wallCollision(position)) {
             monster.setPosition(position);
             if (getModel().getHero().getPosition().equals(position))
                 getModel().getHero().decreaseLife(1);
