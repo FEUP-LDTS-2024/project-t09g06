@@ -91,13 +91,13 @@ public class LoadArenaBuilder extends ArenaBuilder {
         return monsters;
     }
 
-    public  List<GenericAmmo> createAmmo() {
-        List<GenericAmmo> ammo = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            ammo.add(new Bullet(hero.getPosition().getX(), hero.getPosition().getY(),'o',0,0));
-        }
-        return ammo;
-    }
+//    public  List<GenericAmmo> createAmmo() {
+//        List<GenericAmmo> ammo = new ArrayList<>();
+//        for (int i = 0; i < 5; i++) {
+//            ammo.add(new Bullet(hero.getPosition().getX()+i, hero.getPosition().getY()+i,'o',0,0));
+//        }
+//        return ammo;
+//    }
 
 
 

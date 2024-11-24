@@ -14,7 +14,7 @@ public abstract class ArenaBuilder {
         arena.setHero(getNewHero());
         arena.setMonsters(getMonsters());
         arena.setWalls(getWalls());
-        arena.setBullets(createAmmo());
+//        arena.setBullets(createAmmo());
 
         return arena;
     }
@@ -29,7 +29,7 @@ public abstract class ArenaBuilder {
 
     public abstract List<GenericMonster> getMonsters();
 
-    public abstract List<GenericAmmo> createAmmo();
+    //public abstract List<GenericAmmo> createAmmo();
 
 
 }

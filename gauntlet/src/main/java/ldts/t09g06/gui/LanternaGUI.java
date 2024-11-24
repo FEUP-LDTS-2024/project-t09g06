@@ -56,19 +56,35 @@ public class LanternaGUI implements GUI {
     }
 
     public ACTION getNextAction() throws IOException {
+
         KeyStroke keyStroke = screen.pollInput();
         if (keyStroke == null) return ACTION.NONE;
 
-        if (keyStroke.getKeyType() == KeyType.EOF) return ACTION.QUIT;
-        if (keyStroke.getKeyType() == KeyType.Character && keyStroke.getCharacter() == 'q') return ACTION.QUIT;
 
-        if (keyStroke.getKeyType() == KeyType.ArrowUp) return ACTION.UP;
-        if (keyStroke.getKeyType() == KeyType.ArrowRight) return ACTION.RIGHT;
-        if (keyStroke.getKeyType() == KeyType.ArrowDown) return ACTION.DOWN;
-        if (keyStroke.getKeyType() == KeyType.ArrowLeft) return ACTION.LEFT;
+        switch (keyStroke.getKeyType()) {
+            case EOF:
+                return ACTION.QUIT;
+            case Character:
+                if(keyStroke.getCharacter() == 'q') {
+                    return ACTION.QUIT;
+                }
+                if(keyStroke.getCharacter() == ' ') {
+                    return ACTION.SHOOT;
+                }
 
-        if (keyStroke.getKeyType() == KeyType.Enter) return ACTION.SELECT;
-
+            case ArrowRight:
+                return ACTION.RIGHT;
+            case ArrowLeft:
+                return ACTION.LEFT;
+            case ArrowUp:
+                return ACTION.UP;
+            case ArrowDown:
+                return ACTION.DOWN;
+            case Enter:
+                return ACTION.SELECT;
+            default:
+                break;
+        }
         return ACTION.NONE;
     }
 
@@ -85,6 +101,11 @@ public class LanternaGUI implements GUI {
     @Override
     public void drawMonster(Position position) {
         drawCharacter(position.getX(), position.getY(), 'M', GREEN);
+    }
+
+    @Override
+    public void drawAmmo(Position position) {
+        drawCharacter(position.getX(), position.getY(), 'o', LIGHTBLUE);
     }
 
     @Override

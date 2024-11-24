@@ -11,12 +11,16 @@ public abstract class GenericAmmo extends Element {
         this.dy = dy;
     }
 
-    public void moveAmmo() {
-        setPosition(new Position( getPosition().getX()+dx,getPosition().getY()+dy));
-    }
 
     public boolean collidesWith(Element element) {
         return getPosition().equals(element.getPosition());
     }
 
+    public int getDx() {
+        return dx;
+    }
+
+    public int getDy() {
+        return dy;
+    }
 }

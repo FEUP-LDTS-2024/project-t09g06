@@ -1,5 +1,6 @@
 package ldts.t09g06.model.game.elements.heroes;
 
+import ldts.t09g06.model.Direction;
 import ldts.t09g06.model.game.elements.Element;
 
 public class Hero extends Element {
@@ -8,7 +9,7 @@ public class Hero extends Element {
     private int ammo;
     private Direction direction;
 
-    public enum Direction {UP, DOWN, LEFT, RIGHT}
+
     public Hero(int x,int y, char c){
         super(x,y,c); this.life = 5;this.ammo = 5;
         this.direction = Direction.RIGHT;

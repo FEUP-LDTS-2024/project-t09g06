@@ -8,7 +8,7 @@ import ldts.t09g06.model.Position;
 public class AmmoViewer implements ElementViewer<GenericAmmo> {
     @Override
     public void draw(GenericAmmo ammo, GUI gui) {
-        gui.drawMonster(ammo.getPosition());
+        gui.drawAmmo(ammo.getPosition());
     }
 }
 

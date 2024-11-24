@@ -18,7 +18,7 @@ public class Arena {
     private Hero hero;
     private List<GenericMonster> monsters;
     private List<Wall> walls;
-    private List<GenericAmmo> bullets;
+    private List<GenericAmmo> bullets = new ArrayList<>();
 
     public Arena(int width, int height) {
         this.width = width;
@@ -76,47 +76,18 @@ public class Arena {
         return bullets;
     }
 
-    public void shootAmmo() {
-        Position heroPosition = hero.getPosition();
-        int dx = 0;
-        int dy = 0;
-
-        switch (hero.getDirection()) {
-            case UP:    dy = -1; break;
-            case DOWN:  dy = 1; break;
-            case LEFT:  dx = -1; break;
-            case RIGHT: dx = 1; break;
-        }
-
-        Bullet bullet = new Bullet(heroPosition.getX(), heroPosition.getY(), 'o', dx, dy);
-        bullets.add(bullet);
-    }
 
     public void setBullets(List<GenericAmmo> bullets) {
         this.bullets = bullets;
     }
 
-    public void updateBullets() {
-        List<GenericAmmo> bulletsToRemove = new ArrayList<>();
-        for (GenericAmmo bullet : bullets) {
-            bullet.moveAmmo();
+    public void addBullet(GenericAmmo bullet) {
+        bullets.add(bullet);
+    }
 
-            for (Wall wall : walls) {
-                if (bullet.collidesWith(wall)) {
-                    bulletsToRemove.add(bullet);
-                    break;
-                }
-            }
-
-            for (GenericMonster monster : monsters) {
-                if (bullet.collidesWith(monster)) {
-                    //SOMETHING TO KILL THE MONSTER
-                    bulletsToRemove.add(bullet);
-                    break;
-                }
-            }
-        }
-
+    public void removeBullets(List<GenericAmmo> bulletsToRemove) {
         bullets.removeAll(bulletsToRemove);
     }
+
+    public void removeMonsters(List<GenericMonster> monstersToRemove) {monsters.removeAll(monstersToRemove);}
 }

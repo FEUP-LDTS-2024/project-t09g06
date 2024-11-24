@@ -21,6 +21,10 @@ public class GameViewer extends Viewer<Arena> {
         drawElements(gui, getModel().getMonsters(), new MonsterViewer());
         drawElement(gui, getModel().getHero(), new HeroViewer());
 
+
+        if(!getModel().getBullets().isEmpty())
+            drawElements(gui, getModel().getBullets(), new AmmoViewer());
+
         gui.drawText(new Position(0, 0), "Energy: " + getModel().getHero().getLife(), "#FFD700");
         gui.drawText(new Position(10, 0), "Ammo: " + getModel().getHero().getAmmo(), "#FFD700" );
     }

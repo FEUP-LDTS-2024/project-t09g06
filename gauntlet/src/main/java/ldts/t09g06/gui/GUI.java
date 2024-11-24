@@ -16,6 +16,7 @@ public interface GUI {
 
     void drawMonster(Position position);
 
+    void drawAmmo(Position position);
     void drawText(Position position, String text, String color);
 
     void clear();

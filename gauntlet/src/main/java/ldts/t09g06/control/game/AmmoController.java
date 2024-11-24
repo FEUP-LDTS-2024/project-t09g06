@@ -4,10 +4,13 @@ import ldts.t09g06.Game;
 import ldts.t09g06.gui.GUI;
 import ldts.t09g06.model.Position;
 import ldts.t09g06.model.game.arena.Arena;
+import ldts.t09g06.model.game.elements.Wall;
 import ldts.t09g06.model.game.elements.ammo.GenericAmmo;
 import ldts.t09g06.model.game.elements.monsters.GenericMonster;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AmmoController extends GameController {
     //save last direction hero walked and shoot that way
@@ -16,12 +19,47 @@ public class AmmoController extends GameController {
     }
     @Override
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
+        updateAmmo();
     }
 
-    private void moveAmmo(GenericAmmo ammo, Position position) {
-        if (getModel().isEmpty(position)) {
-            ammo.setPosition(position);
-            getModel().killMonster(getModel().getMonsters(), position);
+    private void updateAmmo() {
+        List<GenericAmmo> bulletsToRemove = new ArrayList<>();
+        List<Wall> walls = getModel().getWalls();
+        List<GenericMonster> monsters = getModel().getMonsters();
+        List<GenericMonster> monstersToRemove = new ArrayList<>();
+
+        boolean collided = false;
+
+        for (GenericAmmo bullet : getModel().getBullets()) {
+            Position nextPosition =  getNextPosition(bullet);
+
+            for (Wall wall : walls) {
+                if (bullet.collidesWith(wall)) {
+                    bulletsToRemove.add(bullet);
+                    collided = true;
+                    break;
+                }
+            }
+
+            if(!collided) {
+                for (GenericMonster monster : monsters) {
+                    if (bullet.collidesWith(monster)) {
+                        monstersToRemove.add(monster);
+                        bulletsToRemove.add(bullet);
+                        collided = true;
+                        break;
+                    }
+                }
+            }
+            if(!collided) bullet.setPosition(nextPosition);
         }
+        getModel().removeBullets(bulletsToRemove);
+        getModel().removeMonsters(monstersToRemove);
+
+    }
+
+    public Position getNextPosition(GenericAmmo ammo) {
+        Position next = new Position(ammo.getPosition().getX()+ammo.getDx(),ammo.getPosition().getY()+ ammo.getDy());
+        return next;
     }
 }
