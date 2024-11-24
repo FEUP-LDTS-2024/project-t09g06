@@ -33,4 +33,15 @@ public class ArenaController extends GameController {
         }
     }
 
+    public HeroController getHeroController() {
+        return heroController;
+    }
+
+    public MonsterController getMonsterController() {
+        return monsterController;
+    }
+
+    public AmmoController getAmmoController() {
+        return ammoController;
+    }
 }
