@@ -1,5 +1,7 @@
 package ldts.t09g06.gui;
 
+import com.googlecode.lanterna.screen.Screen;
+import com.googlecode.lanterna.screen.TerminalScreen;
 import ldts.t09g06.model.Position;
 import ldts.t09g06.model.game.elements.Element;
 
@@ -14,6 +16,7 @@ public interface GUI {
 
     void drawMonster(Position position);
 
+    void drawAmmo(Position position);
     void drawText(Position position, String text, String color);
 
     void clear();
@@ -21,5 +24,8 @@ public interface GUI {
     void refresh() throws IOException;
 
     void close() throws IOException;
+
+    Screen getScreen();
+
     enum ACTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, SELECT, SHOOT}
 }

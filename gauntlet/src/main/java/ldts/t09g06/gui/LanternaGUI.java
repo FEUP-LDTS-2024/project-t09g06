@@ -10,18 +10,15 @@ import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
-import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 
 import java.awt.*;
-import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.net.URL;
 
-import static ldts.t09g06.model.game.elements.Constants.*;
+import static ldts.t09g06.model.Constants.*;
 
 public class LanternaGUI implements GUI {
-    private final Screen screen;
+    private  Screen screen;
 
     public LanternaGUI(Screen screen) {
         this.screen = screen;
@@ -42,6 +39,7 @@ public class LanternaGUI implements GUI {
         return screen;
     }
 
+
     private Terminal createTerminal(int width, int height) throws IOException {
         TerminalSize terminalSize = new TerminalSize(width, height + 1);
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory()
@@ -51,20 +49,42 @@ public class LanternaGUI implements GUI {
         return terminal;
     }
 
+    public void resizeScreen(int width, int height) throws IOException {
+        if (screen != null) screen.close();
+        Terminal terminal = createTerminal(width,height);
+        this.screen = createScreen(terminal);
+    }
+
     public ACTION getNextAction() throws IOException {
+
         KeyStroke keyStroke = screen.pollInput();
         if (keyStroke == null) return ACTION.NONE;
 
-        if (keyStroke.getKeyType() == KeyType.EOF) return ACTION.QUIT;
-        if (keyStroke.getKeyType() == KeyType.Character && keyStroke.getCharacter() == 'q') return ACTION.QUIT;
 
-        if (keyStroke.getKeyType() == KeyType.ArrowUp) return ACTION.UP;
-        if (keyStroke.getKeyType() == KeyType.ArrowRight) return ACTION.RIGHT;
-        if (keyStroke.getKeyType() == KeyType.ArrowDown) return ACTION.DOWN;
-        if (keyStroke.getKeyType() == KeyType.ArrowLeft) return ACTION.LEFT;
+        switch (keyStroke.getKeyType()) {
+            case EOF:
+                return ACTION.QUIT;
+            case Character:
+                if(keyStroke.getCharacter() == 'q') {
+                    return ACTION.QUIT;
+                }
+                if(keyStroke.getCharacter() == ' ') {
+                    return ACTION.SHOOT;
+                }
 
-        if (keyStroke.getKeyType() == KeyType.Enter) return ACTION.SELECT;
-
+            case ArrowRight:
+                return ACTION.RIGHT;
+            case ArrowLeft:
+                return ACTION.LEFT;
+            case ArrowUp:
+                return ACTION.UP;
+            case ArrowDown:
+                return ACTION.DOWN;
+            case Enter:
+                return ACTION.SELECT;
+            default:
+                break;
+        }
         return ACTION.NONE;
     }
 
@@ -81,6 +101,11 @@ public class LanternaGUI implements GUI {
     @Override
     public void drawMonster(Position position) {
         drawCharacter(position.getX(), position.getY(), 'M', GREEN);
+    }
+
+    @Override
+    public void drawAmmo(Position position) {
+        drawCharacter(position.getX(), position.getY(), 'o', LIGHTBLUE);
     }
 
     @Override
@@ -110,4 +135,9 @@ public class LanternaGUI implements GUI {
     public void close() throws IOException {
         screen.close();
     }
+    @Override
+    public Screen getScreen() {
+        return screen;
+    }
+
 }

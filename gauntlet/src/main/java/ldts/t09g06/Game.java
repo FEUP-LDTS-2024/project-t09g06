@@ -1,9 +1,7 @@
 package ldts.t09g06;
 
-import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.screen.Screen;
-import com.googlecode.lanterna.input.KeyType;
 import ldts.t09g06.gui.LanternaGUI;
+import ldts.t09g06.model.Constants;
 import ldts.t09g06.model.menu.Menu;
 import ldts.t09g06.states.MenuState;
 import ldts.t09g06.states.State;
@@ -17,7 +15,8 @@ public class Game {
     private State state;
 
     public Game() throws FontFormatException, IOException, URISyntaxException {
-        this.gui = new LanternaGUI(100, 50);
+        //this.gui = new LanternaGUI(100, 50);
+        this.gui = new LanternaGUI(Constants.menuWidth, Constants.menuHeight);
         this.state = new MenuState(new Menu());
     }
 
@@ -25,12 +24,16 @@ public class Game {
         new Game().start();
     }
 
+    public LanternaGUI getGui() {
+        return this.gui;
+    }
+
     public void setState(State state) {
         this.state = state;
     }
 
     private void start() throws IOException {
-        int FPS = 10;
+        int FPS = 30;
         int frameTime = 1000 / FPS;
 
         while (this.state != null) {

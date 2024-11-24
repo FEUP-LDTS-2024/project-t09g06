@@ -2,6 +2,8 @@ package ldts.t09g06.model.game.arena;
 
 import ldts.t09g06.model.Position;
 import ldts.t09g06.model.game.elements.Wall;
+import ldts.t09g06.model.game.elements.ammo.Bullet;
+import ldts.t09g06.model.game.elements.ammo.GenericAmmo;
 import ldts.t09g06.model.game.elements.heroes.Hero;
 import ldts.t09g06.model.game.elements.monsters.GenericMonster;
 import ldts.t09g06.model.game.elements.monsters.ZombieMonster;
@@ -16,6 +18,7 @@ public class Arena {
     private Hero hero;
     private List<GenericMonster> monsters;
     private List<Wall> walls;
+    private List<GenericAmmo> bullets = new ArrayList<>();
 
     public Arena(int width, int height) {
         this.width = width;
@@ -56,16 +59,36 @@ public class Arena {
         return walls;
     }
 
-    public boolean isEmpty(Position position) {
+    public boolean wallCollision(Position position) {
         for (Wall wall : walls)
             if (wall.getPosition().equals(position))
-                return false;
-        return true;
+                return true;
+        return false;
     }
-    public boolean isMonster(Position position) {
+
+    public boolean monsterCollision(Position position) {
         for (GenericMonster monster : monsters)
             if (monster.getPosition().equals(position))
                 return true;
         return false;
     }
+
+    public List<GenericAmmo> getBullets() {
+        return bullets;
+    }
+
+
+    public void setBullets(List<GenericAmmo> bullets) {
+        this.bullets = bullets;
+    }
+
+    public void addBullet(GenericAmmo bullet) {
+        bullets.add(bullet);
+    }
+
+    public void removeBullets(List<GenericAmmo> bulletsToRemove) {
+        bullets.removeAll(bulletsToRemove);
+    }
+
+    public void removeMonsters(List<GenericMonster> monstersToRemove) {monsters.removeAll(monstersToRemove);}
 }

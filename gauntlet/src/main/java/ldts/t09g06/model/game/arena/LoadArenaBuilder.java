@@ -1,6 +1,9 @@
 package ldts.t09g06.model.game.arena;
 
+import ldts.t09g06.model.game.elements.Element;
 import ldts.t09g06.model.game.elements.Wall;
+import ldts.t09g06.model.game.elements.ammo.Bullet;
+import ldts.t09g06.model.game.elements.ammo.GenericAmmo;
 import ldts.t09g06.model.game.elements.heroes.Hero;
 import ldts.t09g06.model.game.elements.monsters.GenericMonster;
 import ldts.t09g06.model.game.elements.monsters.ZombieMonster;
@@ -18,6 +21,10 @@ public class LoadArenaBuilder extends ArenaBuilder {
     //have to think about how we will make levels
     private int level;
     private final List<String> lines;
+    List<Wall> walls = new ArrayList<>();
+    List<GenericMonster> monsters = new ArrayList<>();
+    protected  Hero hero;
+    private static Element [][] gameElements;
     private int width;
     private int height;
 
@@ -51,39 +58,47 @@ public class LoadArenaBuilder extends ArenaBuilder {
     }
 
     @Override
-    protected List<Wall> createWalls() {
-        List<Wall> walls = new ArrayList<>();
-
+    protected void parseGameElements() {
         for (int y = 0; y < lines.size(); y++) {
             String line = lines.get(y);
-            for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == '#') walls.add(new Wall(x, y));
+            for (int x = 0; x < line.length(); x++) {
+                char currChar = line.charAt(x);
+                switch (currChar) {
+                    case '#':
+                        walls.add(new Wall(x, y, currChar));
+                        break;
+                    case 'H':
+                        hero = new Hero(x, y, currChar);
+                        break;
+                    case 'M':
+                        monsters.add(new ZombieMonster(x, y, currChar));
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
+    }
+    public Hero getNewHero() {
+        return hero;
+    }
 
+    public List<Wall> getWalls() {
         return walls;
     }
 
-    @Override
-    protected List<GenericMonster> createMonsters() {
-        List<GenericMonster> monsters = new ArrayList<>();
-
-        for (int y = 0; y < lines.size(); y++) {
-            String line = lines.get(y);
-            for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == 'M') monsters.add(new ZombieMonster(x, y));
-        }
-
+    public  List<GenericMonster> getMonsters(){
         return monsters;
     }
 
-    @Override
-    protected Hero createHero() {
-        for (int y = 0; y < lines.size(); y++) {
-            String line = lines.get(y);
-            for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == 'H') return new Hero(x, y);
-        }
-        return null;
-    }
+//    public  List<GenericAmmo> createAmmo() {
+//        List<GenericAmmo> ammo = new ArrayList<>();
+//        for (int i = 0; i < 5; i++) {
+//            ammo.add(new Bullet(hero.getPosition().getX()+i, hero.getPosition().getY()+i,'o',0,0));
+//        }
+//        return ammo;
+//    }
+
+
 
 }
