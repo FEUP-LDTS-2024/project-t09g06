@@ -1,4 +1,4 @@
-# LDST_T09G06 Gauntlet
+# LDTS_T09G06 Gauntlet
 
 Welcome to our home made Gauntlet inspired game. Dive into relentless adventure where danger lurks around every corner, and only the most skilled players will survive.
 
