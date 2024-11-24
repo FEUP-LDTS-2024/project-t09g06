@@ -6,6 +6,12 @@ What can you experience ? Take on the role of a brave hero as you face endless w
 
 Project developed by André Gomes (up202304252@up.pt), Tiago Carvalho (up202103339@up.pt) and Vasco Alves (up202304912@up.pt) for **Software Design and Test Laboratory** subject of the second year of **Informatics and Computing Engineering Course**.
 
+# UML Class Diagram
+A UML Diagram representing the classes in the game and their methods
+
+--insert img--
+
+
 # Game Controls
 ## Menu
 - **Navigation** - Up and Down Arrow keys to navigate through each menu option;
@@ -38,6 +44,12 @@ Project developed by André Gomes (up202304252@up.pt), Tiago Carvalho (up2021033
 - [ ] **Sound Effects** - When playing the game a background music can be heard.
 
 # Design
+## Mockups 
+This is a sketch of the multiplayer menu:
+--insert img here--
+It has both player characters that each have a different model and are able to choose between different skins, it also has the map selection, controls, back to menu and the options which have the following menu:
+--insert img here--
+in this menu you are able to customize your gameplay by tinkering the game features.
 
 ## Architectural Pattern
 
