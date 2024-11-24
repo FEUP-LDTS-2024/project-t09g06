@@ -71,6 +71,7 @@ public class LanternaGUI implements GUI {
                 if(keyStroke.getCharacter() == ' ') {
                     return ACTION.SHOOT;
                 }
+                break;
 
             case ArrowRight:
                 return ACTION.RIGHT;
