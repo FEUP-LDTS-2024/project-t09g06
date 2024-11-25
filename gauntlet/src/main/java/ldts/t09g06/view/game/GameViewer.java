@@ -27,8 +27,8 @@ public class GameViewer extends Viewer<Arena> {
 
         gui.drawText(new Position(0, 0), "Energy: " + getModel().getHero().getLife(), "#FFD700");
         gui.drawText(new Position(10, 0), "Ammo: " + getModel().getHero().getAmmo(), "#FFD700" );
+        gui.drawText(new Position(30,0),"Score: " + getModel().getHero().getScore(), "#FFD700");
     }
-
     private <T extends Element> void drawElements(GUI gui, List<T> elements, ElementViewer<T> viewer) {
         for (T element : elements)
             drawElement(gui, element, viewer);

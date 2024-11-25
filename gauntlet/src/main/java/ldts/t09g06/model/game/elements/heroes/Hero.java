@@ -7,10 +7,19 @@ public class Hero extends Element {
 
     private int life;
     private int ammo;
+    private int score = 0;
     private Direction direction;
 
 
-    public Hero(int x,int y, char c){
+    public int getScore() {
+        return score;
+    }
+
+    public void increase_score(){
+        score+=10;
+    }
+
+    public Hero(int x, int y, char c){
         super(x,y,c); this.life = 5;this.ammo = 5;
         this.direction = Direction.RIGHT;
     }
