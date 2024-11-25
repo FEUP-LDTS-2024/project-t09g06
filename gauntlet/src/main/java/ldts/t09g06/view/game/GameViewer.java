@@ -26,9 +26,10 @@ public class GameViewer extends Viewer<Arena> {
             drawElements(gui, getModel().getBullets(), new AmmoViewer());
 
         gui.drawText(new Position(0, 0), "Energy: " + getModel().getHero().getLife(), "#FFD700");
-        gui.drawText(new Position(10, 0), "Ammo: " + getModel().getHero().getAmmo(), "#FFD700" );
+        gui.drawText(new Position(11, 0), "Ammo: " + getModel().getHero().getAmmo(), "#FFD700" );
+        gui.drawText(new Position(20,0), "Monsters Left: " + getModel().getMonsters().size(), "#FFD700");
+        gui.drawText(new Position(39,0),"Score: " + getModel().getHero().getScore(), "#FFD700");
     }
-
     private <T extends Element> void drawElements(GUI gui, List<T> elements, ElementViewer<T> viewer) {
         for (T element : elements)
             drawElement(gui, element, viewer);

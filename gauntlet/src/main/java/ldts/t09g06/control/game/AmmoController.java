@@ -46,6 +46,7 @@ public class AmmoController extends GameController {
                     if (bullet.collidesWith(monster)) {
                         monstersToRemove.add(monster);
                         bulletsToRemove.add(bullet);
+                        getModel().getHero().increase_score();
                         collided = true;
                         break;
                     }

@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca4ac4b9-05bb-4312-9f02-a770a184b9b7" name="Changes" comment="" />
+    <list default="true" id="ca4ac4b9-05bb-4312-9f02-a770a184b9b7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/view/game/GameViewer.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/view/game/GameViewer.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,8 +80,9 @@
   "keyToString": {
     "Gradle.gauntlet [build].executor": "Run",
     "Gradle.gauntlet [run].executor": "Run",
+    "JUnit.groovy in gauntlet.test.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "bug__report__otherKeyMovement",
+    "git-widget-placeholder": "feature__score",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/agomes/Desktop/LDTS/PROJECT/project-t09g06",
     "project.structure.last.edited": "Project",
@@ -133,9 +136,18 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="groovy in gauntlet.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="gauntlet.test" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/gauntlet/src/test/groovy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.gauntlet [run]" />
+        <item itemvalue="JUnit.groovy in gauntlet.test" />
         <item itemvalue="Gradle.gauntlet [build]" />
       </list>
     </recent_temporary>
