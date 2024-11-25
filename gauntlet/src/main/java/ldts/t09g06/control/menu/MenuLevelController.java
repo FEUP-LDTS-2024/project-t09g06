@@ -5,16 +5,20 @@ import ldts.t09g06.gui.GUI;
 import ldts.t09g06.model.Constants;
 import ldts.t09g06.model.game.arena.Arena;
 import ldts.t09g06.model.game.arena.LoadArenaBuilder;
+import ldts.t09g06.model.menu.GenericMenu;
 import ldts.t09g06.model.menu.Menu;
 import ldts.t09g06.control.Controller;
 import ldts.t09g06.model.menu.MenuLevel;
 import ldts.t09g06.states.GameState;
-import ldts.t09g06.states.MenuLevelState;
 
 import java.io.IOException;
 
-public class MenuController extends Controller<Menu> {
-    public MenuController(Menu menu) {
+
+import ldts.t09g06.gui.GUI;
+import ldts.t09g06.model.Constants;
+
+public class MenuLevelController extends Controller<MenuLevel> {
+    public MenuLevelController (MenuLevel menu) {
         super(menu);
     }
 
@@ -28,10 +32,9 @@ public class MenuController extends Controller<Menu> {
                 getModel().nextEntry();
                 break;
             case SELECT:
-                if (getModel().isSelectedExit()) game.setState(null);
-                if (getModel().isSelectedStart()){
-                    game.setState(new MenuLevelState(new MenuLevel()));
-                }
+                Arena arena = new LoadArenaBuilder(getModel().getCurrentEntry()+1).createArena();
+                game.setState(new GameState(arena));
+                game.getGui().resizeScreen(arena.getWidth(), arena.getHeight());
         }
     }
 }
