@@ -22,9 +22,12 @@ public class Constants {
     public static final int menuHeight = 10;
     public static final int menuWidth = 30;
 
-    //GAME SCREEN
+    //ARENA SIZE
     public static final int WIDTH = 100;
     public static final int HEIGHT = 50;
+    //SCREEN SIZE
+    public static final int SCREEN_WIDTH = 70;
+    public static final int SCREEN_HEIGHT = 30;
 
     // LEADERBOARD
     public static final int maxNameLength = 10;
