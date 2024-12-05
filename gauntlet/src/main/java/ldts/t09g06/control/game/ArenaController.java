@@ -24,7 +24,7 @@ public class ArenaController extends GameController {
         this.monsterController = new MonsterController(arena);
         this.ammoController = new AmmoController(arena);
     }
-
+ //acho que este codigo ta a mais, ja o dupliquei para o screencontroller
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
         if (action == GUI.ACTION.QUIT) {
             game.getGui().resizeScreen(Constants.menuWidth, Constants.menuHeight);
