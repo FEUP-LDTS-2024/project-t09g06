@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca4ac4b9-05bb-4312-9f02-a770a184b9b7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/game/HeroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/game/HeroController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +65,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Valves734"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "git@github.com:FEUP-LDTS-2024/project-t09g06.git",
+    "accountId": "1426de35-ca1a-4c40-a2e3-ceeb310393b9"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -82,9 +94,10 @@
     "Gradle.gauntlet [run].executor": "Run",
     "JUnit.groovy in gauntlet.test.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "hero__movement__old",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/agomes/Desktop/LDTS/PROJECT/project-t09g06",
+    "last_opened_file_path": "/home/vasco-alves/Desktop",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.0",
