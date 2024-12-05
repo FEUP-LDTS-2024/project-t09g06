@@ -64,7 +64,6 @@ public class LanternaGUI implements GUI {
 
         KeyStroke keyStroke = screen.pollInput();
         if (keyStroke == null) return ACTION.NONE;
-        System.out.println("Key Pressed: " + keyStroke);
 
         switch (keyStroke.getKeyType()) {
             case EOF:
