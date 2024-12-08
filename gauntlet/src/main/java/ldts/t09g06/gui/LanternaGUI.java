@@ -122,6 +122,12 @@ public class LanternaGUI implements GUI {
         tg.putString(x, y + 1, "" + c);
     }
 
+    public void drawPixel(double x, double y, TextColor color) {
+        TextGraphics tg = screen.newTextGraphics();
+        tg.setBackgroundColor(color);
+        tg.setCharacter((int) x, (int) y, ' ');
+    }
+
     @Override
     public void clear() {
         screen.clear();

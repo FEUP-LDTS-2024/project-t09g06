@@ -1,5 +1,7 @@
 package ldts.t09g06.gui;
 
+import com.googlecode.lanterna.TextCharacter;
+import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import ldts.t09g06.model.Position;
@@ -27,6 +29,8 @@ public interface GUI {
     void close() throws IOException;
 
     Screen getScreen();
+
+    void drawPixel(double v, double v1, TextColor c);
 
     enum ACTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, SELECT, SHOOT}
 }
