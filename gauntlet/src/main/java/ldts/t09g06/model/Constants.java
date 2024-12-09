@@ -25,4 +25,7 @@ public class Constants {
     //GAME SCREEN
     public static final int WIDTH = 100;
     public static final int HEIGHT = 50;
+
+    // LEADERBOARD
+    public static final int maxNameLength = 10;
 }
