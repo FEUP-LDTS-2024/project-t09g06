@@ -26,7 +26,7 @@ public class ArenaController extends GameController {
     }
 
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
-        if (action == GUI.ACTION.QUIT || getModel().getHero().getLife() == 0) {
+        if (action == GUI.ACTION.QUIT) {
             //game.getGui().resizeScreen(Constants.menuWidth, Constants.menuHeight);
             game.setState(new MenuState(new Menu(), game.getSpriteLoader()));
         }
