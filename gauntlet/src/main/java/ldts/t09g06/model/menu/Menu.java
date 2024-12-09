@@ -6,13 +6,17 @@ import java.util.List;
 public class Menu extends GenericMenu{
     public Menu() {
         super();
-        this.entries = Arrays.asList("Start", "Instructions", "Exit");
+        this.entries = Arrays.asList("Start", "Leaderboard","Instructions", "Exit");
     }
     public boolean isSelectedExit() {
-        return isSelected(2);
+        return isSelected(3);
     }
 
     public boolean isSelectedStart() {
         return isSelected(0);
+    }
+
+    public boolean isSelectedLeaderboard() {
+        return isSelected(1);
     }
 }

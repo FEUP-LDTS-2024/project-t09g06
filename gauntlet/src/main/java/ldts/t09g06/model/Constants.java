@@ -26,6 +26,9 @@ public class Constants {
     public static final int WIDTH = 100;
     public static final int HEIGHT = 50;
 
+    // LEADERBOARD
+    public static final int maxNameLength = 10;
+
     //SPRITES
     public static final int SPRITE_SIZE = 16;
 }

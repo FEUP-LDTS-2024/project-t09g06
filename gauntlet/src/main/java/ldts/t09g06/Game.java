@@ -2,6 +2,7 @@ package ldts.t09g06;
 
 import ldts.t09g06.gui.LanternaGUI;
 import ldts.t09g06.model.Constants;
+import ldts.t09g06.model.leaderboard.Leaderboard;
 import ldts.t09g06.model.menu.Menu;
 import ldts.t09g06.states.MenuState;
 import ldts.t09g06.states.State;
@@ -14,11 +15,13 @@ import java.net.URISyntaxException;
 
 public class Game {
     private final LanternaGUI gui;
+    private final Leaderboard leaderboard;
     private State state;
     private final SpriteLoader spriteLoader;
 
     public Game() throws FontFormatException, IOException, URISyntaxException {
         this.gui = new LanternaGUI(320, 200);
+        this.leaderboard = new Leaderboard(null, "src/main/resources/leaderboard/leaderboard.txt");
         //this.gui = new LanternaGUI(Constants.menuWidth, Constants.menuHeight);
         this.spriteLoader = new SpriteMapLoader();
         this.state = new MenuState(new Menu(), spriteLoader);
@@ -62,5 +65,9 @@ public class Game {
         }
 
         gui.close();
+    }
+
+    public Leaderboard getLeaderboard() {
+        return leaderboard;
     }
 }
