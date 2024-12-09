@@ -5,6 +5,8 @@ import ldts.t09g06.model.Constants;
 import ldts.t09g06.model.menu.Menu;
 import ldts.t09g06.states.MenuState;
 import ldts.t09g06.states.State;
+import ldts.t09g06.view.SpriteLoader;
+import ldts.t09g06.view.SpriteMapLoader;
 
 import java.awt.*;
 import java.io.IOException;
@@ -13,11 +15,13 @@ import java.net.URISyntaxException;
 public class Game {
     private final LanternaGUI gui;
     private State state;
+    private final SpriteLoader spriteLoader;
 
     public Game() throws FontFormatException, IOException, URISyntaxException {
         //this.gui = new LanternaGUI(100, 50);
         this.gui = new LanternaGUI(Constants.menuWidth, Constants.menuHeight);
-        this.state = new MenuState(new Menu());
+        this.spriteLoader = new SpriteMapLoader();
+        this.state = new MenuState(new Menu(), spriteLoader);
     }
 
     public static void main(String[] args) throws IOException, FontFormatException, URISyntaxException {
@@ -35,6 +39,8 @@ public class Game {
     public void setState(State state) {
         this.state = state;
     }
+
+    public SpriteLoader getSpriteLoader() {return spriteLoader;}
 
     private void start() throws IOException {
         int FPS = 30;

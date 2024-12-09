@@ -5,19 +5,23 @@ import ldts.t09g06.model.Position;
 import ldts.t09g06.model.game.arena.Arena;
 import ldts.t09g06.model.game.elements.Element;
 import ldts.t09g06.view.Viewer;
+import ldts.t09g06.view.ViewerManager;
 
+import java.io.IOException;
 import java.util.List;
 
 public class GameViewer extends Viewer<Arena> {
-    public GameViewer(Arena arena) {
+    private final WallViewer wallViewer;
+    public GameViewer(Arena arena, ViewerManager viewerManager) {
         super(arena);
+        this.wallViewer = viewerManager.getWallViewer();
     }
 
     @Override
-    public void drawModel(GUI gui) {
+    public void drawModel(GUI gui){
 
 
-        drawElements(gui, getModel().getWalls(), new WallViewer());
+        drawElements(gui, getModel().getWalls(),wallViewer);
         drawElements(gui, getModel().getMonsters(), new MonsterViewer());
         drawElement(gui, getModel().getHero(), new HeroViewer());
 

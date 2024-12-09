@@ -8,9 +8,10 @@ import ldts.t09g06.model.menu.Menu;
 import ldts.t09g06.model.menu.MenuLevel;
 import ldts.t09g06.view.Viewer;
 import ldts.t09g06.model.Constants.*;
+import ldts.t09g06.view.ViewerManager;
 
 public class MenuLevelViewer extends Viewer<MenuLevel> {
-    public MenuLevelViewer(MenuLevel menu) {
+    public MenuLevelViewer(MenuLevel menu, ViewerManager viewerManager) {
         super(menu);
     }
 
