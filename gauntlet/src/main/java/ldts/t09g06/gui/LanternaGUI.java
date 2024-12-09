@@ -1,5 +1,6 @@
 package ldts.t09g06.gui;
 
+import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import ldts.t09g06.model.Position;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
@@ -12,21 +13,26 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.net.URL;
 
 import static ldts.t09g06.model.Constants.*;
 
 public class LanternaGUI implements GUI {
     private  Screen screen;
+    AWTTerminalFontConfiguration fontConfiguration;
 
     public LanternaGUI(Screen screen) {
         this.screen = screen;
     }
 
     public LanternaGUI(int width, int height) throws IOException, FontFormatException, URISyntaxException {
-        Terminal terminal = createTerminal(width, height);
+        fontConfiguration = loadFont();
+        Terminal terminal = createTerminal(width, height,fontConfiguration);
         this.screen = createScreen(terminal);
+
     }
 
     private Screen createScreen(Terminal terminal) throws IOException {
@@ -40,18 +46,32 @@ public class LanternaGUI implements GUI {
     }
 
 
-    private Terminal createTerminal(int width, int height) throws IOException {
+    private Terminal createTerminal(int width, int height, AWTTerminalFontConfiguration fontConfiguration) throws IOException {
         TerminalSize terminalSize = new TerminalSize(width, height + 1);
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory()
                 .setInitialTerminalSize(terminalSize);
         terminalFactory.setForceAWTOverSwing(true);
+        terminalFactory.setTerminalEmulatorFontConfiguration(fontConfiguration);
         Terminal terminal = terminalFactory.createTerminal();
         return terminal;
     }
 
+    private AWTTerminalFontConfiguration loadFont() throws URISyntaxException, FontFormatException, IOException {
+        URL resource = getClass().getClassLoader().getResource("fonts/square.ttf");
+        File fontFile = new File(resource.toURI());
+        Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        ge.registerFont(font);
+
+        Font loadedFont = font.deriveFont(Font.PLAIN, 6);
+        AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
+        return fontConfig;
+    }
+
     public void resizeScreen(int width, int height) throws IOException {
         if (screen != null) screen.close();
-        Terminal terminal = createTerminal(width,height);
+        Terminal terminal = createTerminal(width,height,fontConfiguration);
         this.screen = createScreen(terminal);
     }
 
