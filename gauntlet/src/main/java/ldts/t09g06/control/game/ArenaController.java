@@ -31,7 +31,7 @@ public class ArenaController extends GameController {
             game.setState(new MenuState(new Menu(), game.getSpriteLoader()));
         }
         else if(getModel().getHero().getLife() == 0){
-            game.setState(new InsertNameState(new InsertName(getModel().getHero())));
+            game.setState(new InsertNameState(new InsertName(getModel().getHero()), game.getSpriteLoader()));
         }
         else {
             heroController.step(game, action, time);

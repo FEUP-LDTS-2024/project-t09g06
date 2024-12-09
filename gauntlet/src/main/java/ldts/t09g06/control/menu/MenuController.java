@@ -35,7 +35,7 @@ public class MenuController extends Controller<Menu> {
                 }
                 if(getModel().isSelectedLeaderboard()) {
                     game.getGui().resizeScreen(Constants.WIDTH, Constants.HEIGHT);
-                    game.setState(new LeaderboardState(game.getLeaderboard()));
+                    game.setState(new LeaderboardState(game.getLeaderboard(), game.getSpriteLoader()));
                 }
         }
     }

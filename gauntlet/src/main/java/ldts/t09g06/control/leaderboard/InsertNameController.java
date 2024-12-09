@@ -34,13 +34,13 @@ public class InsertNameController extends Controller<InsertName> {
                             getModel().getName(),
                             getModel().getHero().getScore());
                     game.getLeaderboard().addPlayertoLeaderboard(player);
-                    game.setState(new MenuState(new Menu()));
+                    game.setState(new MenuState(new Menu(), game.getSpriteLoader()));
                 } else {
                     invalidInput();
                 }
                 break;
             case QUIT:
-                game.setState(new MenuState(new Menu()));
+                game.setState(new MenuState(new Menu(), game.getSpriteLoader()));
                 break;
         }
     }
