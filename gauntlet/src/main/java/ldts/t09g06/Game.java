@@ -18,7 +18,7 @@ public class Game {
     private final SpriteLoader spriteLoader;
 
     public Game() throws FontFormatException, IOException, URISyntaxException {
-        this.gui = new LanternaGUI(100, 50);
+        this.gui = new LanternaGUI(320, 200);
         //this.gui = new LanternaGUI(Constants.menuWidth, Constants.menuHeight);
         this.spriteLoader = new SpriteMapLoader();
         this.state = new MenuState(new Menu(), spriteLoader);

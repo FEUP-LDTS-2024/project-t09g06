@@ -25,7 +25,7 @@ public class Sprite {
                 int argb = image.getRGB(xx, yy);
                 int alpha = (argb >> 24) & 0xff;
                 if (alpha == 0) continue;
-                gui.drawPixel(xx + x, yy + y, getRGB(argb));
+                gui.drawPixel(xx + x*16, yy + y*16, getRGB(argb));
             }
         }
     }
