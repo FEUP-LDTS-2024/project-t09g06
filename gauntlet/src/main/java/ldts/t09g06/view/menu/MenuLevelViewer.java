@@ -23,7 +23,7 @@ public class MenuLevelViewer extends Viewer<MenuLevel> {
         int middleScreen = width / 2;
         int middleHeight = height/2;
         int textStart = middleScreen - Constants.MENU.length() / 2;
-        gui.drawText(new Position(textStart, middleHeight-3), Constants.MENU, Constants.WHITE);
+        gui.drawText(new Position(textStart-6, middleHeight-3), "----- Levels -----", Constants.WHITE);
 
         for (int i = 0; i < getModel().getNumberEntries(); i++) {
 
@@ -32,7 +32,7 @@ public class MenuLevelViewer extends Viewer<MenuLevel> {
             gui.drawText(
                     new Position(textStart, middleHeight + i),
                     modelText,
-                    getModel().isSelected(i) ? Constants.YELLOW : Constants.WHITE);
+                    getModel().isSelected(i) ? "#0A97B0" : Constants.WHITE);
         }
     }
 }

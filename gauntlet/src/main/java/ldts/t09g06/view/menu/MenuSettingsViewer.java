@@ -4,12 +4,12 @@ import com.googlecode.lanterna.TerminalSize;
 import ldts.t09g06.gui.GUI;
 import ldts.t09g06.model.Constants;
 import ldts.t09g06.model.Position;
-import ldts.t09g06.model.menu.Menu;
+import ldts.t09g06.model.menu.MenuLevel;
+import ldts.t09g06.model.menu.MenuSettings;
 import ldts.t09g06.view.Viewer;
-import ldts.t09g06.model.Constants.*;
 
-public class MenuViewer extends Viewer<Menu> {
-    public MenuViewer(Menu menu) {
+public class MenuSettingsViewer extends Viewer<MenuSettings> {
+    public MenuSettingsViewer(MenuSettings menu) {
         super(menu);
     }
 
@@ -22,7 +22,7 @@ public class MenuViewer extends Viewer<Menu> {
         int middleScreen = width / 2;
         int middleHeight = height/2;
         int textStart = middleScreen - Constants.MENU.length() / 2;
-        gui.drawText(new Position(textStart, middleHeight-3), Constants.MENU, Constants.WHITE);
+        gui.drawText(new Position(textStart-8, middleHeight-3), "----- Settings -----", "#074799");
 
         for (int i = 0; i < getModel().getNumberEntries(); i++) {
 
@@ -33,5 +33,6 @@ public class MenuViewer extends Viewer<Menu> {
                     modelText,
                     getModel().isSelected(i) ? "#0A97B0" : Constants.WHITE);
         }
+        gui.drawText(new Position(width-26, height-1), "press 'q' to save and exit", Constants.WHITE);
     }
 }

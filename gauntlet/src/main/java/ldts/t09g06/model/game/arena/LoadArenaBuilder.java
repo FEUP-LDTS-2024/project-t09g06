@@ -28,11 +28,9 @@ public class LoadArenaBuilder extends ArenaBuilder {
     private int width;
     private int height;
 
-
-    public LoadArenaBuilder(int l) throws IOException {
+    public LoadArenaBuilder(int l, String difficulty) throws IOException {
         this.level = l;
-
-        URL resource = LoadArenaBuilder.class.getResource("/levels/level" + level + ".lvl");
+        URL resource = LoadArenaBuilder.class.getResource("/levels/level" + level + difficulty + ".lvl");
         assert resource != null;
         BufferedReader br = new BufferedReader(new FileReader(resource.getFile()));
 
