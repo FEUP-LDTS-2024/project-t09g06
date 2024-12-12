@@ -26,6 +26,9 @@ public class Constants {
     public static final int WIDTH = 100;
     public static final int HEIGHT = 50;
 
+    //Instructions size
+    public static final int INSTRUCTIONS_SIZEX = 95;
+    public static final int INSTRUCTIONS_SIZEY = 27;
     //radius around player
     public static int VIEW_SIZE = 30;
 

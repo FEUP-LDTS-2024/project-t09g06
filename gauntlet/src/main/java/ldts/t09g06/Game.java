@@ -2,6 +2,7 @@ package ldts.t09g06;
 
 import ldts.t09g06.gui.LanternaGUI;
 import ldts.t09g06.model.Constants;
+import ldts.t09g06.model.instructions.Instructions;
 import ldts.t09g06.model.leaderboard.Leaderboard;
 import ldts.t09g06.model.menu.Menu;
 import ldts.t09g06.states.MenuState;
@@ -14,6 +15,7 @@ import java.net.URISyntaxException;
 public class Game {
     private final LanternaGUI gui;
     private final Leaderboard leaderboard;
+    private final Instructions instructions;
     private State state;
 
 
@@ -22,7 +24,7 @@ public class Game {
         this.leaderboard = new Leaderboard(null, "src/main/resources/leaderboard/leaderboard.txt");
         this.gui = new LanternaGUI(Constants.menuWidth, Constants.menuHeight);
         this.state = new MenuState(new Menu());
-
+        this.instructions = new Instructions("src/main/resources/instructions.txt");
     }
 
     public static void main(String[] args) throws IOException, FontFormatException, URISyntaxException {
@@ -66,4 +68,5 @@ public class Game {
     public Leaderboard getLeaderboard() {
         return leaderboard;
     }
+    public Instructions getInstructions(){ return instructions;}
 }

@@ -8,10 +8,7 @@ import ldts.t09g06.model.game.arena.LoadArenaBuilder;
 import ldts.t09g06.model.menu.Menu;
 import ldts.t09g06.control.Controller;
 import ldts.t09g06.model.menu.MenuLevel;
-import ldts.t09g06.states.GameState;
-import ldts.t09g06.states.LeaderboardState;
-import ldts.t09g06.states.MenuLevelState;
-import ldts.t09g06.states.MenuState;
+import ldts.t09g06.states.*;
 
 import java.io.IOException;
 
@@ -33,6 +30,10 @@ public class MenuController extends Controller<Menu> {
                 if (getModel().isSelectedExit()) game.setState(null);
                 if (getModel().isSelectedStart()){
                     game.setState(new MenuLevelState(new MenuLevel()));
+                }
+                if(getModel().isSelectedInstructions()){
+                    game.getGui().resizeScreen(Constants.INSTRUCTIONS_SIZEX, Constants.INSTRUCTIONS_SIZEY);
+                    game.setState(new InstructionsState(game.getInstructions()));
                 }
                 if(getModel().isSelectedLeaderboard()) {
                     game.getGui().resizeScreen(Constants.WIDTH, Constants.HEIGHT);

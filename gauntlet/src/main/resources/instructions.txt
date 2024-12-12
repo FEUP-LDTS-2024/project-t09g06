@@ -1,0 +1,25 @@
+                                  GAME INSTRUCTIONS
+
+    Welcome to the 2D Map Adventure Game! In this game, you take on the role of a heroic
+character navigating a dangerous map while avoiding monsters, utilizing strategic skills,
+            and overcoming obstacles. Here’s everything you need to know to play...
+
+                                     OBJECTIVE
+
+ Survive as long as possible by avoiding monsters, managing your resources, and using your
+    skills strategically. Earn points by outsmarting the monsters and staying alive.
+
+                                     CONTROLS
+
+Movement: Use the arrow keys (↑, ↓, ←, →)  or (w,s,a,d) to move your hero across the map.
+
+Shoot: Press the SPACEBAR to shoot bullets.
+
+                                       TIPS
+
+    -> When shooting, to hero will shoot in the last direction you moved, so plan ahead
+                     your movement to not be caught defendless.
+    -> You have limited ammo, so use your shots wisely.
+    -> There is a reload time after using your bullets.
+
+--------------------------------------------------------------------------press 'q' to exit

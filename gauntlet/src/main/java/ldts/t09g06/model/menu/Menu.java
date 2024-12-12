@@ -15,7 +15,7 @@ public class Menu extends GenericMenu{
     public boolean isSelectedStart() {
         return isSelected(0);
     }
-
+    public boolean isSelectedInstructions(){return isSelected(2);}
     public boolean isSelectedLeaderboard() {
         return isSelected(1);
     }
