@@ -26,6 +26,9 @@ public class Constants {
     public static final int WIDTH = 100;
     public static final int HEIGHT = 50;
 
+    //radius around player
+    public static int VIEW_SIZE = 30;
+
     // LEADERBOARD
     public static final int maxNameLength = 10;
 }

@@ -11,6 +11,7 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import ldts.t09g06.model.leaderboard.Player;
+import ldts.t09g06.view.Viewer;
 
 import java.awt.*;
 import java.io.IOException;
@@ -23,7 +24,17 @@ import static ldts.t09g06.model.Constants.*;
 public class LanternaGUI implements GUI {
     private  Screen screen;
     private char currChar;
+    private Position translation; //just hero position
+    private Position translation_actual = new Position(0, 0);
 
+    public void setTranslation(Position translation) {
+        Position result = new Position(translation.getX() - VIEW_SIZE/2, translation.getY() - VIEW_SIZE/2);
+        if(result.getX() < 0) result.setX(0);
+        if(result.getY() <0) result.setY(0);
+        if(result.getX() > WIDTH-VIEW_SIZE) result.setX(WIDTH-VIEW_SIZE);
+        if(result.getY() > HEIGHT -VIEW_SIZE) result.setY(HEIGHT-VIEW_SIZE);
+        this.translation_actual = result;
+    }
     public LanternaGUI(Screen screen) {
         this.screen = screen;
     }
@@ -32,8 +43,8 @@ public class LanternaGUI implements GUI {
         Terminal terminal = createTerminal(width, height);
         this.screen = createScreen(terminal);
         this.currChar = 'x';
+        this.translation = new Position (0,0);
     }
-
     private Screen createScreen(Terminal terminal) throws IOException {
         final Screen screen;
         screen = new TerminalScreen(terminal);
@@ -189,7 +200,7 @@ public class LanternaGUI implements GUI {
     private void drawCharacter(int x, int y, char c, String color) {
         TextGraphics tg = screen.newTextGraphics();
         tg.setForegroundColor(TextColor.Factory.fromString(color));
-        tg.putString(x, y + 1, "" + c);
+        tg.putString(x - translation_actual.getX(), y + 1 - translation_actual.getY(), "" + c);
     }
 
     @Override
@@ -218,4 +229,5 @@ public class LanternaGUI implements GUI {
     public void setCurrChar(char currChar) {
         this.currChar = currChar;
     }
+
 }

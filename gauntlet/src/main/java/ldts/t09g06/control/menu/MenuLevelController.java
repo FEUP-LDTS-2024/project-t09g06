@@ -17,6 +17,8 @@ import java.io.IOException;
 import ldts.t09g06.gui.GUI;
 import ldts.t09g06.model.Constants;
 
+import static ldts.t09g06.model.Constants.VIEW_SIZE;
+
 public class MenuLevelController extends Controller<MenuLevel> {
     public MenuLevelController (MenuLevel menu) {
         super(menu);
@@ -34,7 +36,8 @@ public class MenuLevelController extends Controller<MenuLevel> {
             case SELECT:
                 Arena arena = new LoadArenaBuilder(getModel().getCurrentEntry()+1).createArena();
                 game.setState(new GameState(arena));
-                game.getGui().resizeScreen(arena.getWidth(), arena.getHeight());
+                game.getGui().resizeScreen(VIEW_SIZE, VIEW_SIZE);
+                game.getGui().setTranslation(arena.getHero().getPosition());
         }
     }
 }
