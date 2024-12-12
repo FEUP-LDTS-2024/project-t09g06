@@ -32,6 +32,7 @@ public class ArenaController extends GameController {
 
         }
         else if(getModel().getHero().getLife() == 0){
+            game.getGui().resizeScreen(Constants.insertNameWidth, Constants.insertNameHeight); //this should be included in each setState
             game.setState(new InsertNameState(new InsertName(getModel().getHero())));
         }
         else {

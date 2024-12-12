@@ -22,6 +22,11 @@ public class Constants {
     public static final int menuHeight = 10;
     public static final int menuWidth = 30;
 
+    //insertname menu size
+
+    public static final int insertNameWidth = 100;
+    public static final int insertNameHeight = 50;
+
     //GAME SCREEN
     public static final int WIDTH = 100;
     public static final int HEIGHT = 50;
