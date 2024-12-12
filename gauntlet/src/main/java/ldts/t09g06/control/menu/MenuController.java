@@ -29,15 +29,15 @@ public class MenuController extends Controller<Menu> {
             case SELECT:
                 if (getModel().isSelectedExit()) game.setState(null);
                 if (getModel().isSelectedStart()){
-                    game.setState(new MenuLevelState(new MenuLevel()));
+                    game.setState(new MenuLevelState(new MenuLevel(), game.getSpriteLoader()));
                 }
                 if(getModel().isSelectedInstructions()){
                     game.getGui().resizeScreen(Constants.INSTRUCTIONS_SIZEX, Constants.INSTRUCTIONS_SIZEY);
-                    game.setState(new InstructionsState(game.getInstructions()));
+                    game.setState(new InstructionsState(game.getInstructions(), game.getSpriteLoader()));
                 }
                 if(getModel().isSelectedLeaderboard()) {
                     game.getGui().resizeScreen(Constants.WIDTH, Constants.HEIGHT);
-                    game.setState(new LeaderboardState(game.getLeaderboard()));
+                    game.setState(new LeaderboardState(game.getLeaderboard(), game.getSpriteLoader()));
                 }
         }
     }

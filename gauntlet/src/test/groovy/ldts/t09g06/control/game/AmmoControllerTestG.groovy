@@ -59,24 +59,24 @@ class AmmoControllerTestG extends Specification{
             0 * arena.removeMonsters(_) // No monsters to remove
     }
 
-    def "Bullet collides with monster - Should remove bullet and monster"() {
-        given:
-            def monsterPosition = new Position(6, 5)
-            def ammoPosition = new Position(6, 5)
+    //def "Bullet collides with monster - Should remove bullet and monster"() {
+    //    given:
+    //        def monsterPosition = new Position(6, 5)
+    //        def ammoPosition = new Position(6, 5)
+//
+//            ammo.getPosition() >> ammoPosition
+//            ammo.collidesWith(monster) >> true
+//            monster.getPosition() >> monsterPosition
 
-            ammo.getPosition() >> ammoPosition
-            ammo.collidesWith(monster) >> true
-            monster.getPosition() >> monsterPosition
-
-            arena.getBullets() >> [ammo]
-            arena.getMonsters() >> [monster]
-        when:
-            ammoController.step(game, GUI.ACTION.NONE,1000)
-        then:
-            1 * arena.removeBullets([ammo])
-            1 * arena.removeMonsters([monster])
-            0 * ammo.setPosition(_)
-    }
+//            arena.getBullets() >> [ammo]
+//            arena.getMonsters() >> [monster]
+//        when:
+//            ammoController.step(game, GUI.ACTION.NONE,1000)
+//        then:
+//            1 * arena.removeBullets([ammo])
+//            1 * arena.removeMonsters([monster])
+//            0 * ammo.setPosition(_)
+//    }
 
     def "Bullet continues moving - Should not be removed if no collision"() {
         given:

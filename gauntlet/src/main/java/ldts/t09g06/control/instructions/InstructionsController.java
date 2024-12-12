@@ -19,7 +19,7 @@ public class InstructionsController extends Controller<Instructions>{
             switch (action) {
                 case QUIT:
                     game.getGui().resizeScreen(Constants.menuWidth, Constants.menuHeight);
-                    game.setState(new MenuState(new Menu()));
+                    game.setState(new MenuState(new Menu(), game.getSpriteLoader()));
             }
 
         }

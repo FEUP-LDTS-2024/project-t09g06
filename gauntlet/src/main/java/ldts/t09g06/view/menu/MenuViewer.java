@@ -7,9 +7,10 @@ import ldts.t09g06.model.Position;
 import ldts.t09g06.model.menu.Menu;
 import ldts.t09g06.view.Viewer;
 import ldts.t09g06.model.Constants.*;
+import ldts.t09g06.view.ViewerManager;
 
 public class MenuViewer extends Viewer<Menu> {
-    public MenuViewer(Menu menu) {
+    public MenuViewer(Menu menu, ViewerManager viewerManager) {
         super(menu);
     }
 

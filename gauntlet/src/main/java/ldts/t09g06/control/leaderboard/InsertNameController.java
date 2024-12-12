@@ -52,14 +52,14 @@ public class InsertNameController extends Controller<InsertName> {
                             getModel().getHero().getScore());
                     game.getLeaderboard().addPlayertoLeaderboard(player);
                     game.getGui().resizeScreen(Constants.menuWidth, Constants.menuHeight); //this should be included in each setState
-                    game.setState(new MenuState(new Menu()));
+                    game.setState(new MenuState(new Menu(), game.getSpriteLoader()));
                 } else {
                     invalidInput();
                 }
                 break;
             case QUIT:
                 game.getGui().resizeScreen(Constants.menuWidth, Constants.menuHeight); //this should be included in each setState
-                game.setState(new MenuState(new Menu()));
+                game.setState(new MenuState(new Menu(), game.getSpriteLoader()));
                 break;
         }
     }

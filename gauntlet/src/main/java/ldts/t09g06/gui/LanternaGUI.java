@@ -1,5 +1,6 @@
 package ldts.t09g06.gui;
 
+import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import ldts.t09g06.model.Position;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
@@ -14,8 +15,10 @@ import ldts.t09g06.model.leaderboard.Player;
 import ldts.t09g06.view.Viewer;
 
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Collections;
 import java.util.List;
 
@@ -23,16 +26,17 @@ import static ldts.t09g06.model.Constants.*;
 
 public class LanternaGUI implements GUI {
     private  Screen screen;
+    AWTTerminalFontConfiguration fontConfiguration;
     private char currChar;
     private Position translation; //just hero position
     private Position translation_actual = new Position(0, 0);
 
     public void setTranslation(Position translation) {
-        Position result = new Position(translation.getX() - VIEW_SIZE/2, translation.getY() - VIEW_SIZE/2);
+        Position result = new Position(translation.getX() - VIEW_SIZEx/2, translation.getY() - VIEW_SIZEy/2);
         if(result.getX() < 0) result.setX(0);
         if(result.getY() <0) result.setY(0);
-        if(result.getX() > WIDTH-VIEW_SIZE) result.setX(WIDTH-VIEW_SIZE);
-        if(result.getY() > HEIGHT -VIEW_SIZE) result.setY(HEIGHT-VIEW_SIZE);
+        if(result.getX() > WIDTH-VIEW_SIZEx) result.setX(WIDTH-VIEW_SIZEx);
+        if(result.getY() > HEIGHT -VIEW_SIZEy) result.setY(HEIGHT-VIEW_SIZEy);
         this.translation_actual = result;
     }
     public LanternaGUI(Screen screen) {
@@ -40,8 +44,10 @@ public class LanternaGUI implements GUI {
     }
 
     public LanternaGUI(int width, int height) throws IOException, FontFormatException, URISyntaxException {
-        Terminal terminal = createTerminal(width, height);
+        fontConfiguration = loadFont();
+        Terminal terminal = createTerminal(width, height,fontConfiguration);
         this.screen = createScreen(terminal);
+
         this.currChar = 'x';
         this.translation = new Position (0,0);
     }
@@ -56,18 +62,32 @@ public class LanternaGUI implements GUI {
     }
 
 
-    private Terminal createTerminal(int width, int height) throws IOException {
+    private Terminal createTerminal(int width, int height, AWTTerminalFontConfiguration fontConfiguration) throws IOException {
         TerminalSize terminalSize = new TerminalSize(width, height + 1);
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory()
                 .setInitialTerminalSize(terminalSize);
         terminalFactory.setForceAWTOverSwing(true);
+        terminalFactory.setTerminalEmulatorFontConfiguration(fontConfiguration);
         Terminal terminal = terminalFactory.createTerminal();
         return terminal;
     }
 
+    private AWTTerminalFontConfiguration loadFont() throws URISyntaxException, FontFormatException, IOException {
+        URL resource = getClass().getClassLoader().getResource("fonts/square.ttf");
+        File fontFile = new File(resource.toURI());
+        Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        ge.registerFont(font);
+
+        Font loadedFont = font.deriveFont(Font.PLAIN, 6);
+        AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
+        return fontConfig;
+    }
+
     public void resizeScreen(int width, int height) throws IOException {
         if (screen != null) screen.close();
-        Terminal terminal = createTerminal(width,height);
+        Terminal terminal = createTerminal(width,height,fontConfiguration);
         this.screen = createScreen(terminal);
     }
 
@@ -222,6 +242,12 @@ public class LanternaGUI implements GUI {
         TextGraphics tg = screen.newTextGraphics();
         tg.setForegroundColor(TextColor.Factory.fromString(color));
         tg.putString(x - translation_actual.getX(), y + 1 - translation_actual.getY(), "" + c);
+    }
+
+    public void drawPixel(double x, double y, TextColor color) {
+        TextGraphics tg = screen.newTextGraphics();
+        tg.setBackgroundColor(color);
+        tg.setCharacter((int) x, (int) y, ' ');
     }
 
     @Override

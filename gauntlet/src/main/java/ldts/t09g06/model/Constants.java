@@ -35,8 +35,12 @@ public class Constants {
     public static final int INSTRUCTIONS_SIZEX = 95;
     public static final int INSTRUCTIONS_SIZEY = 27;
     //radius around player
-    public static int VIEW_SIZE = 30;
+    public static int VIEW_SIZEx = 320;
+    public static int VIEW_SIZEy = 200;
 
     // LEADERBOARD
     public static final int maxNameLength = 10;
+
+    //SPRITES
+    public static final int SPRITE_SIZE = 16;
 }
