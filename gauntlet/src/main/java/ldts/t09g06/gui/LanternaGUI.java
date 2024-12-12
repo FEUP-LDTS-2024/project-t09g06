@@ -32,12 +32,18 @@ public class LanternaGUI implements GUI {
     private Position translation_actual = new Position(0, 0);
 
     public void setTranslation(Position translation) {
-        Position result = new Position(translation.getX() - VIEW_SIZE/2, translation.getY() - VIEW_SIZE/2);
+        Position result = new Position(translation.getX()*16 - VIEW_SIZE/2, translation.getY()*16 - VIEW_SIZE/2);
         if(result.getX() < 0) result.setX(0);
         if(result.getY() <0) result.setY(0);
-        if(result.getX() > WIDTH-VIEW_SIZE) result.setX(WIDTH-VIEW_SIZE);
-        if(result.getY() > HEIGHT -VIEW_SIZE) result.setY(HEIGHT-VIEW_SIZE);
+        if(result.getX() > 16*WIDTH-VIEW_SIZE) result.setX(320-VIEW_SIZE);
+        if(result.getY() > 16* HEIGHT -VIEW_SIZE) result.setY(320-VIEW_SIZE);
         this.translation_actual = result;
+    }
+
+    public void drawPixel(double x, double y, TextColor color) {
+        TextGraphics tg = screen.newTextGraphics();
+        tg.setBackgroundColor(color);
+        tg.setCharacter((int) x -translation_actual.getX(), (int) y-translation_actual.getY(), ' ');
     }
     public LanternaGUI(Screen screen) {
         this.screen = screen;
@@ -244,11 +250,6 @@ public class LanternaGUI implements GUI {
         tg.putString(x - translation_actual.getX(), y + 1 - translation_actual.getY(), "" + c);
     }
 
-    public void drawPixel(double x, double y, TextColor color) {
-        TextGraphics tg = screen.newTextGraphics();
-        tg.setBackgroundColor(color);
-        tg.setCharacter((int) x, (int) y, ' ');
-    }
 
     @Override
     public void clear() {
