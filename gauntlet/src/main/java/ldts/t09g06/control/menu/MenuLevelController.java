@@ -37,6 +37,7 @@ public class MenuLevelController extends Controller<MenuLevel> {
                 Arena arena = new LoadArenaBuilder(getModel().getCurrentEntry()+1).createArena();
                 game.setState(new GameState(arena));
                 game.getGui().resizeScreen(VIEW_SIZE, VIEW_SIZE);
+                game.getGui().setTranslation(arena.getHero().getPosition());
         }
     }
 }
