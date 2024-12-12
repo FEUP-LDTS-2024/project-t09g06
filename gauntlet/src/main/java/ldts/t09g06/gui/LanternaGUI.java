@@ -88,6 +88,18 @@ public class LanternaGUI implements GUI {
                 if(keyStroke.getCharacter() == ' ') {
                     return ACTION.SHOOT;
                 }
+                if(keyStroke.getCharacter() == 'w') {
+                    return ACTION.UP;
+                }
+                if(keyStroke.getCharacter() == 's') {
+                    return ACTION.DOWN;
+                }
+                if(keyStroke.getCharacter() == 'a') {
+                    return ACTION.LEFT;
+                }
+                if(keyStroke.getCharacter() == 'd') {
+                    return ACTION.RIGHT;
+                }
                 else {
                     return ACTION.TYPE;
                 }
@@ -167,6 +179,15 @@ public class LanternaGUI implements GUI {
         List<String> options = Collections.singletonList("Back to Menu");
 
     }
+
+    public void drawInstructions(List<String> instructions) {
+        Position position = new Position(2, 2); // Starting position on the screen
+        for (String line : instructions) {
+            drawText(position, line, WHITE); // Draw each line with the desired color
+            position.setY(position.getY() + 1); // Move to the next line
+        }
+    }
+
 
     public void drawInsertName(String name, boolean invalidInput) {
         Position pos = new Position(3,5);
