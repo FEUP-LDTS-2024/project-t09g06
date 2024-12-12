@@ -32,11 +32,11 @@ public class LanternaGUI implements GUI {
     private Position translation_actual = new Position(0, 0);
 
     public void setTranslation(Position translation) {
-        Position result = new Position(translation.getX() - VIEW_SIZEx/2, translation.getY() - VIEW_SIZEy/2);
+        Position result = new Position(translation.getX() - VIEW_SIZE/2, translation.getY() - VIEW_SIZE/2);
         if(result.getX() < 0) result.setX(0);
         if(result.getY() <0) result.setY(0);
-        if(result.getX() > WIDTH-VIEW_SIZEx) result.setX(WIDTH-VIEW_SIZEx);
-        if(result.getY() > HEIGHT -VIEW_SIZEy) result.setY(HEIGHT-VIEW_SIZEy);
+        if(result.getX() > WIDTH-VIEW_SIZE) result.setX(WIDTH-VIEW_SIZE);
+        if(result.getY() > HEIGHT -VIEW_SIZE) result.setY(HEIGHT-VIEW_SIZE);
         this.translation_actual = result;
     }
     public LanternaGUI(Screen screen) {

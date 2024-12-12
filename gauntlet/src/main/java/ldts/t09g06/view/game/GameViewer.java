@@ -15,11 +15,13 @@ public class GameViewer extends Viewer<Arena> {
     private final WallViewer wallViewer;
     private final HeroViewer heroViewer;
     private final MonsterViewer monsterViewer;
+    private final AmmoViewer ammoViewer;
     public GameViewer(Arena arena, ViewerManager viewerManager) {
         super(arena);
         this.wallViewer = viewerManager.getWallViewer();
         this.heroViewer = viewerManager.getHeroViewer();
         this.monsterViewer = viewerManager.getMonsterViewer();
+        this.ammoViewer = viewerManager.getAmmoViewer();
 
     }
 
@@ -33,7 +35,7 @@ public class GameViewer extends Viewer<Arena> {
 
 
         if(!getModel().getBullets().isEmpty())
-            drawElements(gui, getModel().getBullets(), new AmmoViewer());
+            drawElements(gui, getModel().getBullets(),ammoViewer);
 
         gui.drawText(new Position(0, 0), "Energy: " + getModel().getHero().getLife(), "#FFD700");
         gui.drawText(new Position(11, 0), "Ammo: " + getModel().getHero().getAmmo(), "#FFD700" );
