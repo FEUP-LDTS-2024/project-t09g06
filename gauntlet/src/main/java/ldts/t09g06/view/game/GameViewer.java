@@ -4,6 +4,7 @@ import ldts.t09g06.gui.GUI;
 import ldts.t09g06.model.Position;
 import ldts.t09g06.model.game.arena.Arena;
 import ldts.t09g06.model.game.elements.Element;
+import ldts.t09g06.model.game.elements.heroes.Hero;
 import ldts.t09g06.view.Viewer;
 import ldts.t09g06.view.ViewerManager;
 
@@ -12,9 +13,12 @@ import java.util.List;
 
 public class GameViewer extends Viewer<Arena> {
     private final WallViewer wallViewer;
+    private final HeroViewer heroViewer;
     public GameViewer(Arena arena, ViewerManager viewerManager) {
         super(arena);
         this.wallViewer = viewerManager.getWallViewer();
+        this.heroViewer = viewerManager.getHeroViewer();
+
     }
 
     @Override
@@ -23,7 +27,7 @@ public class GameViewer extends Viewer<Arena> {
 
         drawElements(gui, getModel().getWalls(),wallViewer);
         drawElements(gui, getModel().getMonsters(), new MonsterViewer());
-        drawElement(gui, getModel().getHero(), new HeroViewer());
+        drawElement(gui, getModel().getHero(),heroViewer);
 
 
         if(!getModel().getBullets().isEmpty())
