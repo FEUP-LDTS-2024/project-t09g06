@@ -32,6 +32,10 @@ public class MenuSettingsController extends Controller<MenuSettings> {
             case DOWN:
                 getModel().nextEntry();
                 break;
+            case SELECT:
+                game.getGui().setDifficulty(getModel().getCurrentEntry());
+                getModel().setCurrent_difficulty(getModel().getCurrentEntry());
+                getModel().updateEntries();
         }
     }
 }

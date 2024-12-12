@@ -24,8 +24,30 @@ import static ldts.t09g06.model.Constants.*;
 public class LanternaGUI implements GUI {
     private  Screen screen;
     private char currChar;
-    private Position translation; //just hero position
+    private Position translation; //just hero position, i think it does nothing now
     private Position translation_actual = new Position(0, 0);
+    private String difficulty ;
+
+    public String getDifficulty() {
+        return this.difficulty;
+    }
+
+    public void setDifficulty(int dif) {
+        switch (dif){
+            case 0:
+                this.difficulty = "Easy";
+                break;
+            case 1:
+                this.difficulty = "Medium";
+                break;
+            case 2:
+                this.difficulty = "Hard";
+                break;
+            case 3:
+                this.difficulty = "Impossible";
+                break;
+        }
+    }
 
     public void setTranslation(Position translation) {
         Position result = new Position(translation.getX() - VIEW_SIZE/2, translation.getY() - VIEW_SIZE/2);
@@ -43,7 +65,8 @@ public class LanternaGUI implements GUI {
         Terminal terminal = createTerminal(width, height);
         this.screen = createScreen(terminal);
         this.currChar = 'x';
-        this.translation = new Position (0,0);
+        this.translation = new Position (0,0); //i think this doesnt do shit
+        this.difficulty = "Easy";
     }
     private Screen createScreen(Terminal terminal) throws IOException {
         final Screen screen;
