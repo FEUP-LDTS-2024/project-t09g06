@@ -22,7 +22,7 @@ public class MenuSettingsViewer extends Viewer<MenuSettings> {
         int middleScreen = width / 2;
         int middleHeight = height/2;
         int textStart = middleScreen - Constants.MENU.length() / 2;
-        gui.drawText(new Position(textStart, middleHeight-3), Constants.MENU, Constants.WHITE);
+        gui.drawText(new Position(textStart-8, middleHeight-3), "----- Settings -----", "#074799");
 
         for (int i = 0; i < getModel().getNumberEntries(); i++) {
 
@@ -31,7 +31,8 @@ public class MenuSettingsViewer extends Viewer<MenuSettings> {
             gui.drawText(
                     new Position(textStart, middleHeight + i),
                     modelText,
-                    getModel().isSelected(i) ? Constants.YELLOW : Constants.WHITE);
+                    getModel().isSelected(i) ? "#0A97B0" : Constants.WHITE);
         }
+        gui.drawText(new Position(width-26, height-1), "press 'q' to save and exit", Constants.WHITE);
     }
 }

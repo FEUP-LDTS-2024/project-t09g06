@@ -33,7 +33,6 @@ public class LanternaGUI implements GUI {
     }
     public int getDifficultyLevel() {
         return switch (difficulty) {
-            case "Easy" -> 0;
             case "Medium" -> 1;
             case "Hard" -> 2;
             case "Impossible" -> 3;
