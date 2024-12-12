@@ -16,6 +16,7 @@ import java.io.IOException;
 
 import ldts.t09g06.gui.GUI;
 import ldts.t09g06.model.Constants;
+import ldts.t09g06.states.MenuState;
 
 import static ldts.t09g06.model.Constants.VIEW_SIZE;
 
@@ -27,6 +28,9 @@ public class MenuLevelController extends Controller<MenuLevel> {
     @Override
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
         switch (action) {
+            case QUIT:
+                game.getGui().resizeScreen(Constants.menuWidth, Constants.menuHeight);
+                game.setState(new MenuState(new Menu()));
             case UP:
                 getModel().previousEntry();
                 break;
