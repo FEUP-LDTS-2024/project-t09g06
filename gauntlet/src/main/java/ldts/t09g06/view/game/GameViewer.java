@@ -14,10 +14,12 @@ import java.util.List;
 public class GameViewer extends Viewer<Arena> {
     private final WallViewer wallViewer;
     private final HeroViewer heroViewer;
+    private final MonsterViewer monsterViewer;
     public GameViewer(Arena arena, ViewerManager viewerManager) {
         super(arena);
         this.wallViewer = viewerManager.getWallViewer();
         this.heroViewer = viewerManager.getHeroViewer();
+        this.monsterViewer = viewerManager.getMonsterViewer();
 
     }
 
@@ -26,7 +28,7 @@ public class GameViewer extends Viewer<Arena> {
 
 
         drawElements(gui, getModel().getWalls(),wallViewer);
-        drawElements(gui, getModel().getMonsters(), new MonsterViewer());
+        drawElements(gui, getModel().getMonsters(),monsterViewer);
         drawElement(gui, getModel().getHero(),heroViewer);
 
 

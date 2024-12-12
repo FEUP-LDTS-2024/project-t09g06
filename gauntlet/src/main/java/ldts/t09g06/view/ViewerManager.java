@@ -12,14 +12,14 @@ public class ViewerManager {
     private final WallViewer wallViewer;
     private final HeroViewer heroViewer;
     //private final AmmoViewer ammoViewer;
-    //private final MonsterViewer monsterViewer;
+    private final MonsterViewer monsterViewer;
     //private final TileViewer tileViewer;
 
     public ViewerManager(SpriteLoader spriteLoader) throws IOException {
         this.wallViewer = new WallViewer(spriteLoader);
         this.heroViewer = new HeroViewer(spriteLoader);
         //this.ammoViewer = new AmmoViewer(spriteLoader);
-        //this.monsterViewer = new MonsterViewer(spriteLoader);
+        this.monsterViewer = new MonsterViewer(spriteLoader);
         //this.tileViewer = new TileViewer(spriteLoader);
     }
 
@@ -29,7 +29,7 @@ public class ViewerManager {
 
     //public AmmoViewer getAmmoViewer() {return ammoViewer;}
 
-    //public MonsterViewer getMonsterViewer() {return monsterViewer;}
+    public MonsterViewer getMonsterViewer() {return monsterViewer;}
 
     //public TileViewer getTileViewer() {return tileViewer;}
 }
