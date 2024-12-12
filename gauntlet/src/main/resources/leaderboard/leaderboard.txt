@@ -2,6 +2,7 @@ h	80
 Tiago!	60	
 Player	50	
 213323231	50	
+vasc	40	
 Psssss	30	
 PTiago22	10	
 Justino	10	
