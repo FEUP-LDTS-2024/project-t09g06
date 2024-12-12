@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca4ac4b9-05bb-4312-9f02-a770a184b9b7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/game/ArenaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/game/ArenaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/game/HeroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/game/HeroController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/leaderboard/InsertNameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/leaderboard/InsertNameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/gui/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/gui/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/gui/LanternaGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/gui/LanternaGUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +85,7 @@
     "Gradle.gauntlet [run].executor": "Run",
     "JUnit.groovy in gauntlet.test.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "feature__instructions__and__wsad",
+    "git-widget-placeholder": "bug__wsadkeys__insertname",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/agomes/Downloads/projects_example_2023/project-l01gr06",
     "project.structure.last.edited": "Project",

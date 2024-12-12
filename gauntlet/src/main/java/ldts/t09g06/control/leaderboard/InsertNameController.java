@@ -20,10 +20,26 @@ public class InsertNameController extends Controller<InsertName> {
 
     @Override
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
-
+        char currChar;
         switch(action) {
             case TYPE:
-                char currChar = game.getGui().getCurrChar();
+                currChar = game.getGui().getCurrChar();
+                getModel().setName(getModel().getName() + currChar);
+                break;
+            case A:
+                currChar = 'a';
+                getModel().setName(getModel().getName() + currChar);
+                break;
+            case D:
+                currChar = 'd';
+                getModel().setName(getModel().getName() + currChar);
+                break;
+            case S:
+                currChar = 's';
+                getModel().setName(getModel().getName() + currChar);
+                break;
+            case W:
+                currChar = 'w';
                 getModel().setName(getModel().getName() + currChar);
                 break;
             case UNDO:

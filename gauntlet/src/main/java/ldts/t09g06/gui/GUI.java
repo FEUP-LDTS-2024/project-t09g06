@@ -33,5 +33,5 @@ public interface GUI {
 
     Screen getScreen();
 
-    enum ACTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, SELECT, SHOOT, UNDO, TYPE}
+    enum ACTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, SELECT, SHOOT, UNDO, TYPE,W,S,A,D}
 }

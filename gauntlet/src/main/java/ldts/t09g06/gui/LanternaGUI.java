@@ -89,16 +89,16 @@ public class LanternaGUI implements GUI {
                     return ACTION.SHOOT;
                 }
                 if(keyStroke.getCharacter() == 'w') {
-                    return ACTION.UP;
+                    return ACTION.W;
                 }
                 if(keyStroke.getCharacter() == 's') {
-                    return ACTION.DOWN;
+                    return ACTION.S;
                 }
                 if(keyStroke.getCharacter() == 'a') {
-                    return ACTION.LEFT;
+                    return ACTION.A;
                 }
                 if(keyStroke.getCharacter() == 'd') {
-                    return ACTION.RIGHT;
+                    return ACTION.D;
                 }
                 else {
                     return ACTION.TYPE;
