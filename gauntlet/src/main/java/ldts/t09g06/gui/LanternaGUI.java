@@ -28,8 +28,17 @@ public class LanternaGUI implements GUI {
     private Position translation_actual = new Position(0, 0);
     private String difficulty ;
 
-    public String getDifficulty() {
+    public String getDifficulty(){
         return this.difficulty;
+    }
+    public int getDifficultyLevel() {
+        return switch (difficulty) {
+            case "Easy" -> 0;
+            case "Medium" -> 1;
+            case "Hard" -> 2;
+            case "Impossible" -> 3;
+            default -> 0;
+        };
     }
 
     public void setDifficulty(int dif) {

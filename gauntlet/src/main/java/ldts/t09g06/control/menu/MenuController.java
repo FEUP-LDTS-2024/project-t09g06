@@ -37,7 +37,7 @@ public class MenuController extends Controller<Menu> {
                     game.setState(new InstructionsState(game.getInstructions()));
                 }
                 if(getModel().isSelectedSettings()){
-                    game.setState(new MenuSettingsState(new MenuSettings()));
+                    game.setState(new MenuSettingsState(new MenuSettings(game.getGui().getDifficultyLevel())));
                 }
                 if(getModel().isSelectedLeaderboard()) {
                     game.getGui().resizeScreen(Constants.WIDTH, Constants.HEIGHT);

@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 public class MenuSettings extends GenericMenu{
     private int current_difficulty;
-    public MenuSettings(){
+    public MenuSettings(int current_difficulty){
         super();
-        this.current_difficulty = 0;
+        this.current_difficulty = current_difficulty;
         updateEntries();
     }
 
