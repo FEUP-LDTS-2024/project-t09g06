@@ -49,7 +49,7 @@ public class Game {
     public SpriteLoader getSpriteLoader() {return spriteLoader;}
 
     private void start() throws IOException {
-        int FPS = 30;
+        int FPS = 300;
         int frameTime = 1000 / FPS;
 
         while (this.state != null) {

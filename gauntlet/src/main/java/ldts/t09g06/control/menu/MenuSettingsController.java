@@ -14,8 +14,8 @@ import ldts.t09g06.states.MenuState;
 
 import java.io.IOException;
 
-import static ldts.t09g06.model.Constants.VIEW_SIZE;
-
+import static ldts.t09g06.model.Constants.VIEW_SIZE_X;
+import static ldts.t09g06.model.Constants.VIEW_SIZE_Y;
 public class MenuSettingsController extends Controller<MenuSettings> {
     public MenuSettingsController (MenuSettings menu) {
         super(menu);

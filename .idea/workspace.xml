@@ -6,7 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="ca4ac4b9-05bb-4312-9f02-a770a184b9b7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/menu/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/menu/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/menu/MenuLevelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/menu/MenuLevelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/menu/MenuSettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/menu/MenuSettingsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/gui/LanternaGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/gui/LanternaGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level1Easy.lvl" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level1Easy.lvl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level2Easy.lvl" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level2Easy.lvl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level4Easy.lvl" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level4Easy.lvl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +91,7 @@
     "Gradle.gauntlet [run].executor": "Run",
     "JUnit.groovy in gauntlet.test.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "feature__loading__correct__size__screen",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/agomes/Downloads/projects_example_2023/project-l01gr06",
     "project.structure.last.edited": "Project",

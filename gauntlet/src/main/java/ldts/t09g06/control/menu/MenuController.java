@@ -40,7 +40,7 @@ public class MenuController extends Controller<Menu> {
                     game.setState(new MenuSettingsState(new MenuSettings(game.getGui().getDifficultyLevel()), game.getSpriteLoader()));
                 }
                 if(getModel().isSelectedLeaderboard()) {
-                    game.getGui().resizeScreen(Constants.WIDTH, Constants.HEIGHT);
+                    game.getGui().resizeScreen(Constants.leaderboard_x, Constants.leaderboard_y);
                     game.setState(new LeaderboardState(game.getLeaderboard(), game.getSpriteLoader()));
                 }
         }
