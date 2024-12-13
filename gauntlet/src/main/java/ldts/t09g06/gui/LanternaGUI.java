@@ -1,6 +1,7 @@
 package ldts.t09g06.gui;
 
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
+import ldts.t09g06.model.Constants;
 import ldts.t09g06.model.Position;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
@@ -28,8 +29,38 @@ public class LanternaGUI implements GUI {
     private  Screen screen;
     AWTTerminalFontConfiguration fontConfiguration;
     private char currChar;
-    private Position translation; //just hero position
+    private Position translation; //just hero position, i think it does nothing now
     private Position translation_actual = new Position(0, 0);
+    private String difficulty ;
+
+    public String getDifficulty(){
+        return this.difficulty;
+    }
+    public int getDifficultyLevel() {
+        return switch (difficulty) {
+            case "Medium" -> 1;
+            case "Hard" -> 2;
+            case "Impossible" -> 3;
+            default -> 0;
+        };
+    }
+
+    public void setDifficulty(int dif) {
+        switch (dif){
+            case 0:
+                this.difficulty = "Easy";
+                break;
+            case 1:
+                this.difficulty = "Medium";
+                break;
+            case 2:
+                this.difficulty = "Hard";
+                break;
+            case 3:
+                this.difficulty = "Impossible";
+                break;
+        }
+    }
 
     public void setTranslation(Position translation) {
         Position result = new Position(translation.getX()*16 - VIEW_SIZE/2, translation.getY()*16 - VIEW_SIZE/2);
@@ -55,7 +86,8 @@ public class LanternaGUI implements GUI {
         this.screen = createScreen(terminal);
 
         this.currChar = 'x';
-        this.translation = new Position (0,0);
+        this.translation = new Position (0,0); //i think this doesnt do shit
+        this.difficulty = "Easy";
     }
     private Screen createScreen(Terminal terminal) throws IOException {
         final Screen screen;
@@ -170,14 +202,18 @@ public class LanternaGUI implements GUI {
 
     @Override
     public void drawLeaderboard(List<Player> players) {
+        TerminalSize size = getScreen().getTerminalSize();
+        int height = size.getRows();
+        int width = size.getColumns();
+        int middleScreen = width / 2;
+        int middleHeight = height/2;
+        int textStart = middleScreen - Constants.MENU.length() / 2;
 
-        Position pos = new Position(2,5);
 
-        drawText(pos,"Leaderboard",WHITE);
-        pos.setY(pos.getY()+4);
-        drawText(pos,"Pos  " + "Name" + "           Score", WHITE);
+        drawText(new Position(textStart-4, 3),"Leaderboard","#0A3981");
+        drawText(new Position(textStart-10, 5),"Pos      Name      Score", "#0A97B0");
 
-        pos.setY(pos.getY()+2);
+        Position pos = new Position(textStart-9,7);
 
         int playerRank = players.size();
         if (playerRank > 23){
@@ -216,23 +252,22 @@ public class LanternaGUI implements GUI {
 
 
     public void drawInsertName(String name, boolean invalidInput) {
-        Position pos = new Position(3,5);
+        TerminalSize size = getScreen().getTerminalSize();
+        int height = size.getRows();
+        int width = size.getColumns();
+        int middleScreen = width / 2;
+        int middleHeight = height/2;
+        int textStart = middleScreen - Constants.MENU.length() / 2;
+        drawText(new Position(textStart-15,middleHeight), "---------- GAME OVER ----------", "#0A3981");
+        drawText(new Position(3,middleHeight + 3), "Please insert your name (it must be less than 10 chars):", "#0A97B0");
 
-        drawText(pos, "You just lose the game!", WHITE);
-        pos.setY(pos.getY()+1);
-        drawText(pos, "Please insert your name (it must be less than 10 chars).", WHITE);
+        drawText(new Position(0,middleHeight +5), name , WHITE);
 
-        pos.setY(pos.getY()+2);
-
-        drawText(pos,name , GREEN);
-
-        pos.setY(pos.getY()+3);
         if(invalidInput) {
-            drawText(pos,"Must contain chars and smaller than 10!", RED);
+            drawText(new Position(0, middleHeight+4),"Must contain chars and smaller than 10!", RED);
         }
 
-        pos.setY(pos.getY()+5);
-        drawText(pos, "Press enter to submit", WHITE);
+        drawText(new Position(textStart,height-2), "Press enter to submit", WHITE);
 
     }
 
@@ -249,7 +284,6 @@ public class LanternaGUI implements GUI {
         tg.setForegroundColor(TextColor.Factory.fromString(color));
         tg.putString(x - translation_actual.getX(), y + 1 - translation_actual.getY(), "" + c);
     }
-
 
     @Override
     public void clear() {

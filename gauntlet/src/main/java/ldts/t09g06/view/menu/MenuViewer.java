@@ -32,7 +32,7 @@ public class MenuViewer extends Viewer<Menu> {
             gui.drawText(
                     new Position(textStart, middleHeight + i),
                     modelText,
-                    getModel().isSelected(i) ? Constants.YELLOW : Constants.WHITE);
+                    getModel().isSelected(i) ? "#0A97B0" : Constants.WHITE);
         }
     }
 }
