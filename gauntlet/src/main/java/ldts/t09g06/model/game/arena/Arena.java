@@ -2,6 +2,7 @@ package ldts.t09g06.model.game.arena;
 
 import ldts.t09g06.model.Position;
 import ldts.t09g06.model.game.elements.Element;
+import ldts.t09g06.model.game.elements.Tile;
 import ldts.t09g06.model.game.elements.Wall;
 import ldts.t09g06.model.game.elements.ammo.Bullet;
 import ldts.t09g06.model.game.elements.ammo.GenericAmmo;
@@ -20,6 +21,7 @@ public class Arena {
     private List<GenericMonster> monsters;
     private List<Wall> walls;
     private List<GenericAmmo> bullets = new ArrayList<>();
+    private List<Tile> tiles;
 
     public Arena(int width, int height) {
         this.width = width;
@@ -44,6 +46,10 @@ public class Arena {
         this.walls = walls;
     }
 
+    public void setTiles(List<Tile> tiles) {
+        this.tiles = tiles;
+    }
+
     public int getWidth() {
         return width;
     }
@@ -59,6 +65,7 @@ public class Arena {
     public List<Wall> getWalls() {
         return walls;
     }
+    public List<Tile> getTiles() {return tiles;}
 
     public boolean wallCollision(Position position) {
         for (Wall wall : walls)

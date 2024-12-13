@@ -1,6 +1,7 @@
 package ldts.t09g06.model.game.arena;
 
 import ldts.t09g06.model.game.elements.Element;
+import ldts.t09g06.model.game.elements.Tile;
 import ldts.t09g06.model.game.elements.Wall;
 import ldts.t09g06.model.game.elements.ammo.Bullet;
 import ldts.t09g06.model.game.elements.ammo.GenericAmmo;
@@ -22,6 +23,7 @@ public class LoadArenaBuilder extends ArenaBuilder {
     private int level;
     private final List<String> lines;
     List<Wall> walls = new ArrayList<>();
+    List<Tile> tiles = new ArrayList<>();
     List<GenericMonster> monsters = new ArrayList<>();
     protected  Hero hero;
     private static Element [][] gameElements;
@@ -67,11 +69,17 @@ public class LoadArenaBuilder extends ArenaBuilder {
                     case '#':
                         walls.add(new Wall(x, y, currChar));
                         break;
+                    case 'J':
+                    case 'G':
+                        tiles.add(new Tile(x,y,currChar));
+                        break;
                     case 'H':
                         hero = new Hero(x, y, currChar);
+                        tiles.add(new Tile(x,y,'G'));
                         break;
                     case 'M':
                         monsters.add(new ZombieMonster(x, y, currChar));
+                        tiles.add(new Tile(x,y,'J'));
                         break;
                     default:
                         break;
@@ -90,6 +98,8 @@ public class LoadArenaBuilder extends ArenaBuilder {
     public  List<GenericMonster> getMonsters(){
         return monsters;
     }
+
+    public List<Tile> getTiles() {return tiles;}
 
 //    public  List<GenericAmmo> createAmmo() {
 //        List<GenericAmmo> ammo = new ArrayList<>();

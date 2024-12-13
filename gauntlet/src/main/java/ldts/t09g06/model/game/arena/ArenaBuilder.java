@@ -1,5 +1,6 @@
 package ldts.t09g06.model.game.arena;
 
+import ldts.t09g06.model.game.elements.Tile;
 import ldts.t09g06.model.game.elements.Wall;
 import ldts.t09g06.model.game.elements.ammo.GenericAmmo;
 import ldts.t09g06.model.game.elements.heroes.Hero;
@@ -14,6 +15,7 @@ public abstract class ArenaBuilder {
         arena.setHero(getNewHero());
         arena.setMonsters(getMonsters());
         arena.setWalls(getWalls());
+        arena.setTiles(getTiles());
 //        arena.setBullets(createAmmo());
 
         return arena;
@@ -26,7 +28,7 @@ public abstract class ArenaBuilder {
     protected abstract void parseGameElements();
     public abstract Hero getNewHero();
     public abstract List<Wall> getWalls();
-
+    public abstract List<Tile> getTiles();
     public abstract List<GenericMonster> getMonsters();
 
     //public abstract List<GenericAmmo> createAmmo();

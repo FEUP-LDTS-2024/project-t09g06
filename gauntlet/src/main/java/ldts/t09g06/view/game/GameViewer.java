@@ -16,12 +16,14 @@ public class GameViewer extends Viewer<Arena> {
     private final HeroViewer heroViewer;
     private final MonsterViewer monsterViewer;
     private final AmmoViewer ammoViewer;
+    private final TileViewer tileViewer;
     public GameViewer(Arena arena, ViewerManager viewerManager) {
         super(arena);
         this.wallViewer = viewerManager.getWallViewer();
         this.heroViewer = viewerManager.getHeroViewer();
         this.monsterViewer = viewerManager.getMonsterViewer();
         this.ammoViewer = viewerManager.getAmmoViewer();
+        this.tileViewer = viewerManager.getTileViewer();
 
     }
 
@@ -30,6 +32,7 @@ public class GameViewer extends Viewer<Arena> {
 
 
         drawElements(gui, getModel().getWalls(),wallViewer);
+        drawElements(gui, getModel().getTiles(),tileViewer);
         drawElements(gui, getModel().getMonsters(),monsterViewer);
         drawElement(gui, getModel().getHero(),heroViewer);
 
