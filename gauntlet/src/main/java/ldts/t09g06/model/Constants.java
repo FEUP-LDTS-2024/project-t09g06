@@ -65,8 +65,8 @@ public class Constants {
     public static final int HEIGHT2 = 50;
     public static final int WIDTH3 = 100;
     public static final int HEIGHT3 = 50;
-    public static final int WIDTH4= 100;
-    public static final int HEIGHT4 = 50;
+    public static final int WIDTH4= 20;
+    public static final int HEIGHT4 = 200;
     public static final int WIDTH5= 20;
     public static final int HEIGHT5 = 20;
 

@@ -38,7 +38,7 @@ public class MenuLevelController extends Controller<MenuLevel> {
                 getModel().nextEntry();
                 break;
             case SELECT:
-                Arena arena = new LoadArenaBuilder(getModel().getCurrentEntry()+1, game.getGui().getDifficulty()).createArena();
+                Arena arena = new LoadArenaBuilder(getModel().getCurrentEntry()+1, game.getGui().getDifficulty()).createArena(game.getGui().getDifficultyLevel());
                 setDimensions(getModel().getCurrentEntry());
                 game.setState(new GameState(arena, game.getSpriteLoader()));
                 game.getGui().resizeScreen(VIEW_SIZE_X, VIEW_SIZE_Y);

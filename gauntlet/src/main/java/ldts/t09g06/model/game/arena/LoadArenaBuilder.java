@@ -44,6 +44,22 @@ public class LoadArenaBuilder extends ArenaBuilder {
             lines.add(line);
         return lines;
     }
+    @Override
+    protected void setAmmoAndLife(int level){
+        switch(level){
+            case 0:
+                getNewHero().setAmmo_and_life(1000, 10);
+                break;
+            case 1:
+                getNewHero().setAmmo_and_life(200, 5);
+                break;
+            case 2:
+                getNewHero().setAmmo_and_life(100, 3);
+                break;
+            case 3:
+                getNewHero().setAmmo_and_life(10, 1);
+        }
+    }
 
     @Override
     protected int getWidth() {

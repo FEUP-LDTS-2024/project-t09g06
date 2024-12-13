@@ -62,6 +62,7 @@ public class LanternaGUI implements GUI {
         }
     }
 
+
     public void setTranslation(Position translation) {
         Position result = new Position(translation.getX()*SPRITE_SIZE - VIEW_SIZE_X/2, translation.getY()*SPRITE_SIZE - VIEW_SIZE_Y/2);
         if(result.getX() < 0) result.setX(0);
