@@ -43,8 +43,22 @@ public class Position {
         return new Position(x, y + 1);
     }
 
-    public Position getCloserTo(){
+    public Position getCloserTo( Position p){
         //for now just return random
+        int hx = p.getX();
+        int hy = p.getY();
+        int mx = x;
+        int my = y;
+        int difx = mx -hx;
+        int dify = my -hy;
+        if(Math.abs(mx-hx) < 8 || Math.abs(my-hy) < 8){
+            if(Math.abs(dify) > Math.abs(difx)){
+                if(dify>0) return getUp();
+                else return getDown();
+            }else if(difx>0){
+                return getLeft();
+            }else return getRight();
+        }
         int n = (int) (Math.random() * 4);
         switch (n) {
             case 0:

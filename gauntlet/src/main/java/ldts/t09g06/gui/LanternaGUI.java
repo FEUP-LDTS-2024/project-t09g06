@@ -29,13 +29,13 @@ public class LanternaGUI implements GUI {
     private  Screen screen;
     AWTTerminalFontConfiguration fontConfiguration;
     private char currChar;
-    private Position translation; //just hero position, i think it does nothing now
     private Position translation_actual = new Position(0, 0);
     private String difficulty ;
 
     public String getDifficulty(){
         return this.difficulty;
     }
+
     public int getDifficultyLevel() {
         return switch (difficulty) {
             case "Medium" -> 1;
@@ -87,7 +87,6 @@ public class LanternaGUI implements GUI {
         this.screen = createScreen(terminal);
 
         this.currChar = 'x';
-        this.translation = new Position (0,0); //i think this doesnt do shit
         this.difficulty = "Easy";
     }
     private Screen createScreen(Terminal terminal) throws IOException {
