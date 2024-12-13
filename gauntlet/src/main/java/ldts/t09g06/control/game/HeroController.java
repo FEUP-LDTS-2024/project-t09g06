@@ -8,6 +8,7 @@ import ldts.t09g06.model.game.arena.Arena;
 import ldts.t09g06.model.game.elements.ammo.Bullet;
 import ldts.t09g06.model.game.elements.heroes.Hero;
 import ldts.t09g06.gui.LanternaGUI;
+import ldts.t09g06.model.game.elements.monsters.GenericMonster;
 
 public class HeroController extends GameController {
     public HeroController(Arena arena) {
@@ -34,6 +35,7 @@ public class HeroController extends GameController {
         if (!getModel().wallCollision(position) && !getModel().monsterCollision(position)) {
             getModel().getHero().setPosition(position);
             game.getGui().setTranslation(getModel().getHero().getPosition());
+            for(GenericMonster m: getModel().getMonsters()) m.setHeroPosition(getModel().getHero().getPosition());
             getModel().getHero().setDirection(direction);
 
         }

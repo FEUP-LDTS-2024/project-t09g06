@@ -5,6 +5,7 @@ import ldts.t09g06.gui.GUI;
 import ldts.t09g06.model.Constants;
 import ldts.t09g06.model.game.arena.Arena;
 import ldts.t09g06.model.game.arena.LoadArenaBuilder;
+import ldts.t09g06.model.game.elements.monsters.GenericMonster;
 import ldts.t09g06.model.menu.GenericMenu;
 import ldts.t09g06.model.menu.Menu;
 import ldts.t09g06.control.Controller;
@@ -43,6 +44,7 @@ public class MenuLevelController extends Controller<MenuLevel> {
                 game.setState(new GameState(arena, game.getSpriteLoader()));
                 game.getGui().resizeScreen(VIEW_SIZE_X, VIEW_SIZE_Y);
                 game.getGui().setTranslation(arena.getHero().getPosition());
+                for(GenericMonster m: arena.getMonsters()) m.setHeroPosition(arena.getHero().getPosition());
         }
     }
 }
