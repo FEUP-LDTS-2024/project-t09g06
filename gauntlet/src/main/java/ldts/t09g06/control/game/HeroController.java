@@ -44,19 +44,30 @@ public class HeroController extends GameController {
 
     }
     public void heroShoot() {
-        Position heroPosition = getModel().getHero().getPosition();
-        int dx = 0;
-        int dy = 0;
+        if(getModel().getHero().getAmmo()> 0) {
+            Position heroPosition = getModel().getHero().getPosition();
+            int dx = 0;
+            int dy = 0;
 
-        switch (getModel().getHero().getDirection()) {
-            case UP:    dy = -1; break;
-            case DOWN:  dy = 1; break;
-            case LEFT:  dx = -1; break;
-            case RIGHT: dx = 1; break;
+            switch (getModel().getHero().getDirection()) {
+                case UP:
+                    dy = -1;
+                    break;
+                case DOWN:
+                    dy = 1;
+                    break;
+                case LEFT:
+                    dx = -1;
+                    break;
+                case RIGHT:
+                    dx = 1;
+                    break;
+            }
+
+            Bullet bullet = new Bullet(heroPosition.getX() + dx, heroPosition.getY() + dy, 'o', dx, dy);
+            getModel().addBullet(bullet);
+            getModel().getHero().decreaseAmmo();
         }
-
-        Bullet bullet = new Bullet(heroPosition.getX()+dx, heroPosition.getY()+dy, 'o', dx, dy);
-        getModel().addBullet(bullet);
     }
 
     @Override

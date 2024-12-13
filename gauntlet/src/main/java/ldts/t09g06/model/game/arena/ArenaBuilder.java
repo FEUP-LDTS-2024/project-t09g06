@@ -9,10 +9,11 @@ import ldts.t09g06.model.game.elements.monsters.GenericMonster;
 import java.util.List;
 
 public abstract class ArenaBuilder {
-    public Arena createArena() {
+    public Arena createArena(int level) {
         Arena arena = new Arena(getWidth(), getHeight());
         parseGameElements();
         arena.setHero(getNewHero());
+        setAmmoAndLife(level);
         arena.setMonsters(getMonsters());
         arena.setWalls(getWalls());
         arena.setTiles(getTiles());
@@ -20,7 +21,7 @@ public abstract class ArenaBuilder {
 
         return arena;
     }
-
+    protected abstract void setAmmoAndLife(int level);
     protected abstract int getWidth();
 
     protected abstract int getHeight();
