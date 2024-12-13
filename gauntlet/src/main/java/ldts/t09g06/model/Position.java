@@ -1,5 +1,7 @@
 package ldts.t09g06.model;
 
+import ldts.t09g06.model.game.arena.Arena;
+
 import java.util.Objects;
 
 public class Position {
@@ -43,7 +45,7 @@ public class Position {
         return new Position(x, y + 1);
     }
 
-    public Position getCloserTo( Position p){
+    public Position getCloserTo(Arena arena, Position p){
         //for now just return random
         int hx = p.getX();
         int hy = p.getY();
@@ -51,13 +53,15 @@ public class Position {
         int my = y;
         int difx = mx -hx;
         int dify = my -hy;
-        if(Math.abs(mx-hx) < 8 || Math.abs(my-hy) < 8){
+        if(Math.abs(mx-hx) < 10 && Math.abs(my-hy) < 10){
             if(Math.abs(dify) > Math.abs(difx)){
-                if(dify>0) return getUp();
-                else return getDown();
-            }else if(difx>0){
-                return getLeft();
-            }else return getRight();
+                if(dify>0 && !arena.wallCollision(getUp())) return getUp();
+                else if(dify<0 && !arena.wallCollision(getDown())) return getDown();
+            }
+            if (difx>0 && !arena.wallCollision(getLeft()))return getLeft();
+            else if(difx<0 && !arena.wallCollision((getRight()))) return getRight();
+            if(dify>0 && !arena.wallCollision(getUp())) return getUp();
+            else if(dify<0 && !arena.wallCollision(getDown())) return getDown();
         }
         int n = (int) (Math.random() * 4);
         switch (n) {
