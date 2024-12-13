@@ -25,15 +25,15 @@ Project developed by André Gomes (up202304252@up.pt), Tiago Carvalho (up2021033
 
 # Planned Features
 
-- [ ] **Instructions Menu** -  Menu displaying game instructions;
-- [ ] **GameOver Screen** - When a player looses it's shown a game over screen.
+- [A] **Instructions Menu** -  Menu displaying game instructions;
+- [A] **GameOver Screen** - When a player looses it's shown a game over screen.
 - [ ] **Map Movement** - When a player moves, the map moves around the player instead of the player, allowing dynamic views;
-- [ ] **Variety of Enemies** - There can be various type of enemies with diferent skills and power; 
-- [ ] **Enemies Atack** - Enemies atack the player hurting him or killing him;
-- [ ] **Enemy Movement** -  Enemies move in different ways, according to the desired map difficulty;
-- [ ] **Loot Items** - When the player sees a item in the map, he can pick it up(i.e. weapons and coins);
-- [ ] **Increasing Levels** - As time goes by the games gets more difficult (stronger enemies and higher enemies generation);
-- [ ] **Score Ranking** - After loosing the player can write is player name to be saved in the ranking;
+- [V] **Variety of Enemies** - There can be various type of enemies with diferent skills and power; 
+- [V] **Enemies Atack** - Enemies atack the player hurting him or killing him;
+- [V] **Enemy Movement** -  Enemies move in different ways, according to the desired map difficulty;
+- [V] **Loot Items** - When the player sees a item in the map, he can pick it up(i.e. weapons and coins);
+- [A] **Increasing Levels** - As time goes by the games gets more difficult (stronger enemies and higher enemies generation);
+- [A] **Score Ranking** - After loosing the player can write is player name to be saved in the ranking;
 - [ ] **Save and Load Game** - A player may be able to load a previous game;
 - [ ] **2nd Player** - Two players can play at the same time.
 - [ ] **Sound Effects** - When playing the game a background music can be heard.
