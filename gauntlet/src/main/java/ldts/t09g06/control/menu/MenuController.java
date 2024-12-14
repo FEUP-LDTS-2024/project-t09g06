@@ -33,14 +33,12 @@ public class MenuController extends Controller<Menu> {
                     game.setState(new MenuLevelState(new MenuLevel(), game.getSpriteLoader()));
                 }
                 if(getModel().isSelectedInstructions()){
-                    game.getGui().resizeScreen(Constants.INSTRUCTIONS_SIZEX, Constants.INSTRUCTIONS_SIZEY);
                     game.setState(new InstructionsState(game.getInstructions(), game.getSpriteLoader()));
                 }
                 if(getModel().isSelectedSettings()){
                     game.setState(new MenuSettingsState(new MenuSettings(game.getGui().getDifficultyLevel()), game.getSpriteLoader()));
                 }
                 if(getModel().isSelectedLeaderboard()) {
-                    game.getGui().resizeScreen(Constants.leaderboard_x, Constants.leaderboard_y);
                     game.setState(new LeaderboardState(game.getLeaderboard(), game.getSpriteLoader()));
                 }
         }

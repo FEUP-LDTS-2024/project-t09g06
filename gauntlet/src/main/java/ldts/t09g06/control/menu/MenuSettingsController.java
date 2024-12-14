@@ -24,7 +24,6 @@ public class MenuSettingsController extends Controller<MenuSettings> {
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
         switch (action) {
             case QUIT:
-                game.getGui().resizeScreen(Constants.menuWidth, Constants.menuHeight);
                 game.setState(new MenuState(new Menu(), game.getSpriteLoader()));
             case UP:
                 getModel().previousEntry();

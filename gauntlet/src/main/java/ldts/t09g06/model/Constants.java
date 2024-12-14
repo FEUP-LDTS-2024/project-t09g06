@@ -19,16 +19,10 @@ public class Constants {
 
     public static final String MENU = "Menu";
 
-    public static final int menuHeight = 10;
-    public static final int menuWidth = 30;
+    public static final int menuHeight = 200;
+    public static final int menuWidth = 320;
 
     //insertname menu size
-
-    public static final int insertNameWidth = 100;
-    public static final int insertNameHeight = 50;
-
-    public static final int leaderboard_x = 100;
-    public static final int leaderboard_y = 50;
 
     public static int WIDTH;
     public static int HEIGHT;
@@ -70,10 +64,6 @@ public class Constants {
     public static final int WIDTH5= 20;
     public static final int HEIGHT5 = 20;
 
-
-    //Instructions size
-    public static final int INSTRUCTIONS_SIZEX = 95;
-    public static final int INSTRUCTIONS_SIZEY = 27;
     //radius around player
     public static int VIEW_SIZE_X = 320;
     public static int VIEW_SIZE_Y = 160;

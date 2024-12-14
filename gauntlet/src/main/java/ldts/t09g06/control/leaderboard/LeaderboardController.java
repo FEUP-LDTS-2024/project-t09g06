@@ -27,7 +27,6 @@ public class LeaderboardController extends Controller<Leaderboard> {
             case QUIT:
                 game.setState(new MenuState(new Menu(), game.getSpriteLoader()));
             case SELECT:
-                game.getGui().resizeScreen(Constants.menuWidth, Constants.menuHeight);
                 if (Objects.equals(getModel().getCurrentEntry(), "Back to Menu")) game.setState(new MenuState(new Menu(), game.getSpriteLoader()));
         }
 

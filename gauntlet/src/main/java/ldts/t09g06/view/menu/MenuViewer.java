@@ -28,7 +28,7 @@ public class MenuViewer extends Viewer<Menu> {
         for (int i = 0; i < getModel().getNumberEntries(); i++) {
 
             String modelText = getModel().getEntry(i);
-            textStart = middleScreen - modelText.length() / 2;
+            textStart = middleScreen - modelText.length()/ 2;
             gui.drawText(
                     new Position(textStart, middleHeight + i),
                     modelText,

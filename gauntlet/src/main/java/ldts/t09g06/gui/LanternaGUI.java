@@ -27,7 +27,9 @@ import static ldts.t09g06.model.Constants.*;
 
 public class LanternaGUI implements GUI {
     private  Screen screen;
+    Terminal terminal;
     AWTTerminalFontConfiguration fontConfiguration;
+    AWTTerminalFontConfiguration fontConfigurationMenu;
     private char currChar;
     private Position translation_actual = new Position(0, 0);
     private String difficulty ;
@@ -82,8 +84,9 @@ public class LanternaGUI implements GUI {
     }
 
     public LanternaGUI(int width, int height) throws IOException, FontFormatException, URISyntaxException {
-        fontConfiguration = loadFont();
-        Terminal terminal = createTerminal(width, height,fontConfiguration);
+        fontConfiguration = loadFont(6);
+        fontConfigurationMenu = loadFont(24);
+        terminal = createTerminal(width, height,fontConfigurationMenu);
         this.screen = createScreen(terminal);
 
         this.currChar = 'x';
@@ -110,7 +113,7 @@ public class LanternaGUI implements GUI {
         return terminal;
     }
 
-    private AWTTerminalFontConfiguration loadFont() throws URISyntaxException, FontFormatException, IOException {
+    private AWTTerminalFontConfiguration loadFont(int size) throws URISyntaxException, FontFormatException, IOException {
         URL resource = getClass().getClassLoader().getResource("fonts/square.ttf");
         File fontFile = new File(resource.toURI());
         Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
@@ -118,14 +121,15 @@ public class LanternaGUI implements GUI {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge.registerFont(font);
 
-        Font loadedFont = font.deriveFont(Font.PLAIN, 6);
+        Font loadedFont = font.deriveFont(Font.PLAIN, size);
         AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
         return fontConfig;
     }
 
-    public void resizeScreen(int width, int height) throws IOException {
+    public void changeScreen(int width, int height, int size) throws IOException {
         if (screen != null) screen.close();
-        Terminal terminal = createTerminal(width,height,fontConfiguration);
+        if(size == 6) {terminal = createTerminal(width,height,fontConfiguration);}
+        else{terminal = createTerminal(width,height,fontConfigurationMenu);}
         this.screen = createScreen(terminal);
     }
 
@@ -203,17 +207,15 @@ public class LanternaGUI implements GUI {
     @Override
     public void drawLeaderboard(List<Player> players) {
         TerminalSize size = getScreen().getTerminalSize();
-        int height = size.getRows();
-        int width = size.getColumns();
-        int middleScreen = width / 2;
-        int middleHeight = height/2;
-        int textStart = middleScreen - Constants.MENU.length() / 2;
+
+        int middleScreen = menuWidth / 2;
+        int middleHeight = menuHeight/2;
 
 
-        drawText(new Position(textStart-4, 3),"Leaderboard","#0A3981");
-        drawText(new Position(textStart-10, 5),"Pos      Name      Score", "#0A97B0");
+        drawText(new Position(middleScreen+10, 3),"Leaderboard","#0A3981");
+        drawText(new Position(middleScreen, 5),"Pos      Name      Score", "#0A97B0");
 
-        Position pos = new Position(textStart-9,7);
+        Position pos = new Position(middleScreen,7);
 
         int playerRank = players.size();
         if (playerRank > 23){
