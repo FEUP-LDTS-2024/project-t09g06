@@ -20,8 +20,8 @@ public class BossController extends GameController {
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
         if (time - lastMovement > 500) {
             GenericMonster boss = getModel().getBoss();
-            if(boss!=null) {
-                moveBoss(boss, boss.getPosition().getCloserTo());
+            if(!getModel().isBossDefeated()) {
+                moveBoss(boss, boss.getPosition().getCloserTo(getModel(),boss.getHeroPosition()));
                 this.lastMovement = time;
             }
         }

@@ -45,6 +45,9 @@ public class MenuLevelController extends Controller<MenuLevel> {
                 game.getGui().resizeScreen(VIEW_SIZE_X, VIEW_SIZE_Y);
                 game.getGui().setTranslation(arena.getHero().getPosition());
                 for(GenericMonster m: arena.getMonsters()) m.setHeroPosition(arena.getHero().getPosition());
+                GenericMonster boss = arena.getBoss();
+                boss.setHeroPosition(arena.getHero().getPosition());
+
         }
     }
 }

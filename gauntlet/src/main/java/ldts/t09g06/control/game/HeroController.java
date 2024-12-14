@@ -36,7 +36,10 @@ public class HeroController extends GameController {
             getModel().getHero().setPosition(position);
             game.getGui().setTranslation(getModel().getHero().getPosition());
             for(GenericMonster m: getModel().getMonsters()) m.setHeroPosition(getModel().getHero().getPosition());
+            GenericMonster boss = getModel().getBoss();
+            boss.setHeroPosition(getModel().getHero().getPosition());
             getModel().getHero().setDirection(direction);
+
 
         }
         // If the position collides with a monster, reduce life
