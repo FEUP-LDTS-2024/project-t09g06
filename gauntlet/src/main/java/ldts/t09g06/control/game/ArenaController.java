@@ -32,7 +32,7 @@ public class ArenaController extends GameController {
             game.getGui().resizeScreen(Constants.menuWidth, Constants.menuHeight);
             game.setState(new MenuState(new Menu(), game.getSpriteLoader()));
         }
-        else if(getModel().getHero().getLife() == 0) {
+        else if(getModel().getHero().getLife() <= 0) {
             game.getGui().resizeScreen(Constants.insertNameWidth, Constants.insertNameHeight); //this should be included in each setState
             game.setState(new InsertNameState(new InsertName(getModel().getHero()), game.getSpriteLoader()));
         }

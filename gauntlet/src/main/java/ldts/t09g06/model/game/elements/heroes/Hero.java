@@ -19,7 +19,7 @@ public class Hero extends Element {
     }
 
     public Hero(int x, int y, char c){
-        super(x,y,c); this.life = 5;
+        super(x,y,c);
         this.direction = Direction.RIGHT;
     }
 
