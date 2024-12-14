@@ -31,7 +31,7 @@ public class HeroController extends GameController {
     }
 
     private void moveHero(Position position, Direction direction, Game game) {
-        if (!getModel().wallCollision(position) && !getModel().monsterCollision(position)) {
+        if (!getModel().wallCollision(position) && !getModel().monsterCollision(position) && !getModel().bossCollision(position)) {
             getModel().getHero().setPosition(position);
             game.getGui().setTranslation(getModel().getHero().getPosition());
             getModel().getHero().setDirection(direction);
@@ -40,6 +40,9 @@ public class HeroController extends GameController {
         // If the position collides with a monster, reduce life
         if (getModel().monsterCollision(position)) {
             getModel().getHero().decreaseLife(1);
+        }
+        if (getModel().bossCollision(position) && !getModel().isBossDefeated()) {
+            getModel().getHero().decreaseLife(5);
         }
 
     }

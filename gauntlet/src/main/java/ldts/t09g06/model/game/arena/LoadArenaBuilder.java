@@ -6,6 +6,7 @@ import ldts.t09g06.model.game.elements.Wall;
 import ldts.t09g06.model.game.elements.ammo.Bullet;
 import ldts.t09g06.model.game.elements.ammo.GenericAmmo;
 import ldts.t09g06.model.game.elements.heroes.Hero;
+import ldts.t09g06.model.game.elements.monsters.BossMonster;
 import ldts.t09g06.model.game.elements.monsters.GenericMonster;
 import ldts.t09g06.model.game.elements.monsters.ZombieMonster;
 
@@ -26,6 +27,7 @@ public class LoadArenaBuilder extends ArenaBuilder {
     List<Tile> tiles = new ArrayList<>();
     List<GenericMonster> monsters = new ArrayList<>();
     protected  Hero hero;
+    protected GenericMonster boss;
     private static Element [][] gameElements;
     private int width;
     private int height;
@@ -95,6 +97,11 @@ public class LoadArenaBuilder extends ArenaBuilder {
                         monsters.add(new ZombieMonster(x, y, currChar));
                         tiles.add(new Tile(x,y,'J'));
                         break;
+                    case 'B':
+                        boss = new BossMonster(x, y, currChar) {
+                        };
+                        tiles.add(new Tile(x,y,'G'));
+                        break;
                     default:
                         break;
                 }
@@ -112,6 +119,8 @@ public class LoadArenaBuilder extends ArenaBuilder {
     public  List<GenericMonster> getMonsters(){
         return monsters;
     }
+
+    public GenericMonster getBoss() {return boss;}
 
     public List<Tile> getTiles() {return tiles;}
 
