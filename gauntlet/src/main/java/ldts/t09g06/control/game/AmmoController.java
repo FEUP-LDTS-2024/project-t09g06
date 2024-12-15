@@ -26,6 +26,7 @@ public class AmmoController extends GameController {
         List<GenericAmmo> bulletsToRemove = new ArrayList<>();
         List<Wall> walls = getModel().getWalls();
         List<GenericMonster> monsters = getModel().getMonsters();
+        GenericMonster boss = getModel().getBoss();
         List<GenericMonster> monstersToRemove = new ArrayList<>();
 
         boolean collided = false;
@@ -46,7 +47,17 @@ public class AmmoController extends GameController {
                     if (bullet.collidesWith(monster)) {
                         monstersToRemove.add(monster);
                         bulletsToRemove.add(bullet);
-                        getModel().getHero().increase_score();
+                        getModel().getHero().increase_score(10);
+                        collided = true;
+                        break;
+                    }
+                    if(bullet.collidesWith(boss)){
+                        getModel().getBoss().decreaseLife(1);
+                        bulletsToRemove.add(bullet);
+                        if(getModel().getBoss().getLife()<=0) {
+                            getModel().removeBoss(boss);
+                            getModel().getHero().increase_score(50);
+                        }
                         collided = true;
                         break;
                     }

@@ -17,27 +17,30 @@ public class ArenaController extends GameController {
     private final HeroController heroController;
     private final MonsterController monsterController;
     private final AmmoController ammoController;
+    private final BossController bossController;
     public ArenaController(Arena arena) {
         super(arena);
 
         this.heroController = new HeroController(arena);
         this.monsterController = new MonsterController(arena);
         this.ammoController = new AmmoController(arena);
+        this.bossController = new BossController(arena);
     }
 
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
         if (action == GUI.ACTION.QUIT) {
-            game.getGui().resizeScreen(Constants.menuWidth, Constants.menuHeight);
-            game.setState(new MenuState(new Menu()));
-
+            game.getGui().changeScreen(Constants.menuWidth, Constants.menuHeight, 25);
+            game.setState(new MenuState(new Menu(), game.getSpriteLoader()));
         }
-        else if(getModel().getHero().getLife() == 0){
-            game.setState(new InsertNameState(new InsertName(getModel().getHero())));
+        else if(getModel().getHero().getLife() <= 0) {
+            game.getGui().changeScreen(Constants.menuWidth, Constants.menuHeight, 25); //this should be included in each setState
+            game.setState(new InsertNameState(new InsertName(getModel().getHero()), game.getSpriteLoader()));
         }
         else {
             heroController.step(game, action, time);
             monsterController.step(game, action, time);
             ammoController.step(game, action, time);
+            bossController.step(game, action, time);
         }
     }
 
@@ -52,4 +55,6 @@ public class ArenaController extends GameController {
     public AmmoController getAmmoController() {
         return ammoController;
     }
+
+    public BossController getBossController(){return bossController;}
 }

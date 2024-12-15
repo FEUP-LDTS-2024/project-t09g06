@@ -2,6 +2,7 @@ package ldts.t09g06.model.game.arena;
 
 import ldts.t09g06.model.Position;
 import ldts.t09g06.model.game.elements.Element;
+import ldts.t09g06.model.game.elements.Tile;
 import ldts.t09g06.model.game.elements.Wall;
 import ldts.t09g06.model.game.elements.ammo.Bullet;
 import ldts.t09g06.model.game.elements.ammo.GenericAmmo;
@@ -18,8 +19,12 @@ public class Arena {
     private final int height;
     private Hero hero;
     private List<GenericMonster> monsters;
+    private GenericMonster boss;
     private List<Wall> walls;
     private List<GenericAmmo> bullets = new ArrayList<>();
+    private List<Tile> tiles;
+    //temporary boss removal
+    private boolean bossDefeated = false;
 
     public Arena(int width, int height) {
         this.width = width;
@@ -30,6 +35,9 @@ public class Arena {
     }
     public void setMonsters(List<GenericMonster> monsters) {
         this.monsters = monsters;
+    }
+    public void setBoss(GenericMonster boss) {
+        this.boss = boss;
     }
     public void killMonster(List<GenericMonster> monsters, Position position){
         //is there a way to make it more efficient and just look at that position and not all monsters??
@@ -44,6 +52,10 @@ public class Arena {
         this.walls = walls;
     }
 
+    public void setTiles(List<Tile> tiles) {
+        this.tiles = tiles;
+    }
+
     public int getWidth() {
         return width;
     }
@@ -56,9 +68,13 @@ public class Arena {
     public List<GenericMonster> getMonsters() {
         return monsters;
     }
+    public GenericMonster getBoss() {
+        return boss;
+    }
     public List<Wall> getWalls() {
         return walls;
     }
+    public List<Tile> getTiles() {return tiles;}
 
     public boolean wallCollision(Position position) {
         for (Wall wall : walls)
@@ -72,6 +88,14 @@ public class Arena {
             if (monster.getPosition().equals(position))
                 return true;
         return false;
+    }
+
+    public boolean isBossDefeated() {
+        return bossDefeated;
+    }
+
+    public boolean bossCollision(Position position) {
+        return boss.getPosition().equals(position);
     }
 
     public boolean elementsCollision(Position position1, Position position2){
@@ -96,4 +120,9 @@ public class Arena {
     }
 
     public void removeMonsters(List<GenericMonster> monstersToRemove) {monsters.removeAll(monstersToRemove);}
+
+    public void removeBoss(GenericMonster boss) {
+        boss.setPosition(new Position(-1, -1));
+        this.bossDefeated=true;
+    }
 }

@@ -17,15 +17,60 @@ public class Constants {
 
     //MENU
 
-    public static final String MENU = "Menu";
+    public static final String MENU = "MENU";
 
-    public static final int menuHeight = 10;
-    public static final int menuWidth = 30;
+    public static final int menuHeight = 40;
+    public static final int menuWidth = 80;
 
+    //insertname menu size
+
+    public static int WIDTH;
+    public static int HEIGHT;
+
+    public static void setDimensions(int level) {
+        switch(level){
+            case 0:
+                Constants.HEIGHT = HEIGHT1;
+                Constants.WIDTH = WIDTH1;
+                break;
+            case 1:
+                Constants.HEIGHT = HEIGHT2;
+                Constants.WIDTH = WIDTH2;
+                break;
+            case 2:
+                Constants.HEIGHT = HEIGHT3;
+                Constants.WIDTH = WIDTH3;
+                break;
+            case 3:
+                Constants.HEIGHT = HEIGHT4;
+                Constants.WIDTH = WIDTH4;
+                break;
+            case 4:
+                Constants.HEIGHT = HEIGHT5;
+                Constants.WIDTH = WIDTH5;
+                break;
+        }
+
+    }
     //GAME SCREEN
-    public static final int WIDTH = 100;
-    public static final int HEIGHT = 50;
+    public static final int WIDTH1 = 100;
+    public static final int HEIGHT1 = 50;
+    public static final int WIDTH2 = 100;
+    public static final int HEIGHT2 = 50;
+    public static final int WIDTH3 = 100;
+    public static final int HEIGHT3 = 50;
+    public static final int WIDTH4= 20;
+    public static final int HEIGHT4 = 200;
+    public static final int WIDTH5= 20;
+    public static final int HEIGHT5 = 20;
+
+    //radius around player
+    public static int VIEW_SIZE_X = 320;
+    public static int VIEW_SIZE_Y = 160;
 
     // LEADERBOARD
     public static final int maxNameLength = 10;
+
+    //SPRITES
+    public static final int SPRITE_SIZE = 16;
 }

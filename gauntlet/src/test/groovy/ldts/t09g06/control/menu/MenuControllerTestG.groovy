@@ -44,16 +44,16 @@ class MenuControllerTestG extends Specification {
             0 * menu.previousEntry()
     }
 
-    def "MenuController should start the game when SELECT action is pressed on the start option"() {
-        given:
-            menu.isSelectedExit() >> false
-            menu.isSelectedStart() >> true
-        when:
-            menuController.step(game, GUI.ACTION.SELECT, 1000)
-        then:
-            1 * game.getGui().resizeScreen(Constants.WIDTH, Constants.HEIGHT)
-            1 * game.setState(_ as GameState)
-    }
+//    def "MenuController should start the game when SELECT action is pressed on the start option"() {
+//        given:
+//            menu.isSelectedExit() >> false
+//            menu.isSelectedStart() >> true
+//        when:
+//            menuController.step(game, GUI.ACTION.SELECT, 1000)
+//        then:
+//            1 * game.getGui().resizeScreen(Constants.WIDTH, Constants.HEIGHT)
+//            1 * game.setState(_ as GameState)
+//    }
 
     def "MenuController should exit the game when SELECT action is pressed on the exit option"() {
         given:

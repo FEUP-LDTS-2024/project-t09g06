@@ -8,9 +8,8 @@ import ldts.t09g06.model.game.arena.LoadArenaBuilder;
 import ldts.t09g06.model.menu.Menu;
 import ldts.t09g06.control.Controller;
 import ldts.t09g06.model.menu.MenuLevel;
-import ldts.t09g06.states.GameState;
-import ldts.t09g06.states.LeaderboardState;
-import ldts.t09g06.states.MenuLevelState;
+import ldts.t09g06.model.menu.MenuSettings;
+import ldts.t09g06.states.*;
 
 import java.io.IOException;
 
@@ -31,11 +30,16 @@ public class MenuController extends Controller<Menu> {
             case SELECT:
                 if (getModel().isSelectedExit()) game.setState(null);
                 if (getModel().isSelectedStart()){
-                    game.setState(new MenuLevelState(new MenuLevel()));
+                    game.setState(new MenuLevelState(new MenuLevel(), game.getSpriteLoader()));
+                }
+                if(getModel().isSelectedInstructions()){
+                    game.setState(new InstructionsState(game.getInstructions(), game.getSpriteLoader()));
+                }
+                if(getModel().isSelectedSettings()){
+                    game.setState(new MenuSettingsState(new MenuSettings(game.getGui().getDifficultyLevel()), game.getSpriteLoader()));
                 }
                 if(getModel().isSelectedLeaderboard()) {
-                    game.getGui().resizeScreen(Constants.WIDTH, Constants.HEIGHT);
-                    game.setState(new LeaderboardState(game.getLeaderboard()));
+                    game.setState(new LeaderboardState(game.getLeaderboard(), game.getSpriteLoader()));
                 }
         }
     }

@@ -3,6 +3,7 @@ package ldts.t09g06.control.leaderboard;
 import ldts.t09g06.Game;
 import ldts.t09g06.control.Controller;
 import ldts.t09g06.gui.GUI;
+import ldts.t09g06.model.Constants;
 import ldts.t09g06.model.leaderboard.InsertName;
 import ldts.t09g06.model.leaderboard.Player;
 import ldts.t09g06.model.menu.Menu;
@@ -19,10 +20,26 @@ public class InsertNameController extends Controller<InsertName> {
 
     @Override
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
-
+        char currChar;
         switch(action) {
             case TYPE:
-                char currChar = game.getGui().getCurrChar();
+                currChar = game.getGui().getCurrChar();
+                getModel().setName(getModel().getName() + currChar);
+                break;
+            case A:
+                currChar = 'a';
+                getModel().setName(getModel().getName() + currChar);
+                break;
+            case D:
+                currChar = 'd';
+                getModel().setName(getModel().getName() + currChar);
+                break;
+            case S:
+                currChar = 's';
+                getModel().setName(getModel().getName() + currChar);
+                break;
+            case W:
+                currChar = 'w';
                 getModel().setName(getModel().getName() + currChar);
                 break;
             case UNDO:
@@ -34,13 +51,13 @@ public class InsertNameController extends Controller<InsertName> {
                             getModel().getName(),
                             getModel().getHero().getScore());
                     game.getLeaderboard().addPlayertoLeaderboard(player);
-                    game.setState(new MenuState(new Menu()));
+                    game.setState(new MenuState(new Menu(), game.getSpriteLoader()));
                 } else {
                     invalidInput();
                 }
                 break;
             case QUIT:
-                game.setState(new MenuState(new Menu()));
+                game.setState(new MenuState(new Menu(), game.getSpriteLoader()));
                 break;
         }
     }

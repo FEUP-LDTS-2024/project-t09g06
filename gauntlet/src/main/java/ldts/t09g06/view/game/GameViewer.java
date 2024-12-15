@@ -4,26 +4,45 @@ import ldts.t09g06.gui.GUI;
 import ldts.t09g06.model.Position;
 import ldts.t09g06.model.game.arena.Arena;
 import ldts.t09g06.model.game.elements.Element;
+import ldts.t09g06.model.game.elements.heroes.Hero;
 import ldts.t09g06.view.Viewer;
+import ldts.t09g06.view.ViewerManager;
 
+import java.io.IOException;
 import java.util.List;
 
 public class GameViewer extends Viewer<Arena> {
-    public GameViewer(Arena arena) {
+    private final WallViewer wallViewer;
+    private final HeroViewer heroViewer;
+    private final MonsterViewer monsterViewer;
+    private final AmmoViewer ammoViewer;
+    private final TileViewer tileViewer;
+    private final BossViewer bossViewer;
+    public GameViewer(Arena arena, ViewerManager viewerManager) {
         super(arena);
+        this.wallViewer = viewerManager.getWallViewer();
+        this.heroViewer = viewerManager.getHeroViewer();
+        this.monsterViewer = viewerManager.getMonsterViewer();
+        this.ammoViewer = viewerManager.getAmmoViewer();
+        this.tileViewer = viewerManager.getTileViewer();
+        this.bossViewer = viewerManager.getBossViewer();
+
     }
 
     @Override
-    public void drawModel(GUI gui) {
+    public void drawModel(GUI gui){
 
 
-        drawElements(gui, getModel().getWalls(), new WallViewer());
-        drawElements(gui, getModel().getMonsters(), new MonsterViewer());
-        drawElement(gui, getModel().getHero(), new HeroViewer());
+        drawElements(gui, getModel().getWalls(),wallViewer);
+        drawElements(gui, getModel().getTiles(),tileViewer);
+        drawElements(gui, getModel().getMonsters(),monsterViewer);
+        drawElement(gui, getModel().getHero(),heroViewer);
+        if(!getModel().isBossDefeated())
+            drawElement(gui, getModel().getBoss(), bossViewer);
 
 
         if(!getModel().getBullets().isEmpty())
-            drawElements(gui, getModel().getBullets(), new AmmoViewer());
+            drawElements(gui, getModel().getBullets(),ammoViewer);
 
         gui.drawText(new Position(0, 0), "Energy: " + getModel().getHero().getLife(), "#FFD700");
         gui.drawText(new Position(11, 0), "Ammo: " + getModel().getHero().getAmmo(), "#FFD700" );

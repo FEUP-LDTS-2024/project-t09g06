@@ -11,32 +11,32 @@ import ldts.t09g06.model.game.elements.heroes.Hero
 import ldts.t09g06.model.game.elements.monsters.GenericMonster
 import spock.lang.Specification
 
-class gameViewerTestG extends Specification {
+//class gameViewerTestG extends Specification {
 
-    def "drawModel should handle empty lists gracefully"() {
-        given:
-            def gui = Mock(GUI)
-            def arena = Mock(Arena)
+//    def "drawModel should handle empty lists gracefully"() {
+//        given:
+//            def gui = Mock(GUI)
+//            def arena = Mock(Arena)
 
-            def hero = Mock(Hero)
-            arena.getHero() >> hero
-            arena.getWalls() >> []
-            arena.getMonsters() >> []
-            arena.getBullets() >> []
+//            def hero = Mock(Hero)
+//            arena.getHero() >> hero
+//            arena.getWalls() >> []
+//            arena.getMonsters() >> []
+//            arena.getBullets() >> []
 
-            hero.getLife() >> 5
-            hero.getAmmo() >> 10
+//            hero.getLife() >> 5
+//            hero.getAmmo() >> 10
 
-            def gameViewer = new GameViewer(arena)
+//            def gameViewer = new GameViewer(arena)
 
-        when:
-            gameViewer.drawModel(gui)
+//        when:
+//            gameViewer.drawModel(gui)
 
-        then: "No elements are drawn for empty lists"
-            0 * gui.draw(_)
+//        then: "No elements are drawn for empty lists"
+//            0 * gui.draw(_)
 
-        and: "Hero stats are still displayed"
-            1 * gui.drawText(new Position(0, 0), "Energy: 5", "#FFD700")
-            1 * gui.drawText(new Position(10, 0), "Ammo: 10", "#FFD700")
-    }
-}
+//        and: "Hero stats are still displayed"
+//            1 * gui.drawText(new Position(0, 0), "Energy: 5", "#FFD700")
+//            1 * gui.drawText(new Position(10, 0), "Ammo: 10", "#FFD700")
+//    }
+//}

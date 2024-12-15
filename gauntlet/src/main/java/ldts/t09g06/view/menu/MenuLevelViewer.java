@@ -8,9 +8,10 @@ import ldts.t09g06.model.menu.Menu;
 import ldts.t09g06.model.menu.MenuLevel;
 import ldts.t09g06.view.Viewer;
 import ldts.t09g06.model.Constants.*;
+import ldts.t09g06.view.ViewerManager;
 
 public class MenuLevelViewer extends Viewer<MenuLevel> {
-    public MenuLevelViewer(MenuLevel menu) {
+    public MenuLevelViewer(MenuLevel menu, ViewerManager viewerManager) {
         super(menu);
     }
 
@@ -22,8 +23,8 @@ public class MenuLevelViewer extends Viewer<MenuLevel> {
         int width = size.getColumns();
         int middleScreen = width / 2;
         int middleHeight = height/2;
-        int textStart = middleScreen - Constants.MENU.length() / 2;
-        gui.drawText(new Position(textStart, middleHeight-3), Constants.MENU, Constants.WHITE);
+        int textStart = middleScreen - "----- LEVELS -----".length() / 2;
+        gui.drawText(new Position(textStart, middleHeight-3), "----- LEVELS -----", Constants.WHITE);
 
         for (int i = 0; i < getModel().getNumberEntries(); i++) {
 
@@ -32,7 +33,8 @@ public class MenuLevelViewer extends Viewer<MenuLevel> {
             gui.drawText(
                     new Position(textStart, middleHeight + i),
                     modelText,
-                    getModel().isSelected(i) ? Constants.YELLOW : Constants.WHITE);
+                    getModel().isSelected(i) ? "#0A97B0" : Constants.WHITE);
         }
+        gui.drawText(new Position( middleScreen - "back to menu - press 'q'".length() / 2, height-4), "back to menu - press 'q'", Constants.WHITE);
     }
 }

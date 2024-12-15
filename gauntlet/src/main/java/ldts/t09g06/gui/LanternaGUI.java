@@ -1,5 +1,7 @@
 package ldts.t09g06.gui;
 
+import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
+import ldts.t09g06.model.Constants;
 import ldts.t09g06.model.Position;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
@@ -11,10 +13,13 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import ldts.t09g06.model.leaderboard.Player;
+import ldts.t09g06.view.Viewer;
 
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Collections;
 import java.util.List;
 
@@ -22,18 +27,71 @@ import static ldts.t09g06.model.Constants.*;
 
 public class LanternaGUI implements GUI {
     private  Screen screen;
+    Terminal terminal;
+    AWTTerminalFontConfiguration fontConfiguration;
+    AWTTerminalFontConfiguration fontConfigurationMenu;
     private char currChar;
+    private Position translation_actual = new Position(0, 0);
+    private String difficulty ;
 
+    public String getDifficulty(){
+        return this.difficulty;
+    }
+
+    public int getDifficultyLevel() {
+        return switch (difficulty) {
+            case "Medium" -> 1;
+            case "Hard" -> 2;
+            case "Impossible" -> 3;
+            default -> 0;
+        };
+    }
+
+    public void setDifficulty(int dif) {
+        switch (dif){
+            case 0:
+                this.difficulty = "Easy";
+                break;
+            case 1:
+                this.difficulty = "Medium";
+                break;
+            case 2:
+                this.difficulty = "Hard";
+                break;
+            case 3:
+                this.difficulty = "Impossible";
+                break;
+        }
+    }
+
+
+    public void setTranslation(Position translation) {
+        Position result = new Position(translation.getX()*SPRITE_SIZE - VIEW_SIZE_X/2, translation.getY()*SPRITE_SIZE - VIEW_SIZE_Y/2);
+        if(result.getX() < 0) result.setX(0);
+        if(result.getY() <0) result.setY(0);
+        if(result.getX() > SPRITE_SIZE*WIDTH - VIEW_SIZE_X) result.setX(WIDTH*SPRITE_SIZE-VIEW_SIZE_X);
+        if(result.getY() > SPRITE_SIZE* HEIGHT -VIEW_SIZE_Y) result.setY(SPRITE_SIZE* HEIGHT -VIEW_SIZE_Y);
+        this.translation_actual = result;
+    }
+
+    public void drawPixel(double x, double y, TextColor color) {
+        TextGraphics tg = screen.newTextGraphics();
+        tg.setBackgroundColor(color);
+        tg.setCharacter((int) x -translation_actual.getX(), (int) y-translation_actual.getY(), ' ');
+    }
     public LanternaGUI(Screen screen) {
         this.screen = screen;
     }
 
     public LanternaGUI(int width, int height) throws IOException, FontFormatException, URISyntaxException {
-        Terminal terminal = createTerminal(width, height);
+        fontConfiguration = loadFont(6);
+        fontConfigurationMenu = loadFont(25);
+        terminal = createTerminal(width, height,fontConfigurationMenu);
         this.screen = createScreen(terminal);
-        this.currChar = 'x';
-    }
 
+        this.currChar = 'x';
+        this.difficulty = "Easy";
+    }
     private Screen createScreen(Terminal terminal) throws IOException {
         final Screen screen;
         screen = new TerminalScreen(terminal);
@@ -45,18 +103,33 @@ public class LanternaGUI implements GUI {
     }
 
 
-    private Terminal createTerminal(int width, int height) throws IOException {
+    private Terminal createTerminal(int width, int height, AWTTerminalFontConfiguration fontConfiguration) throws IOException {
         TerminalSize terminalSize = new TerminalSize(width, height + 1);
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory()
                 .setInitialTerminalSize(terminalSize);
         terminalFactory.setForceAWTOverSwing(true);
+        terminalFactory.setTerminalEmulatorFontConfiguration(fontConfiguration);
         Terminal terminal = terminalFactory.createTerminal();
         return terminal;
     }
 
-    public void resizeScreen(int width, int height) throws IOException {
+    private AWTTerminalFontConfiguration loadFont(int size) throws URISyntaxException, FontFormatException, IOException {
+        URL resource = getClass().getClassLoader().getResource("fonts/square.ttf");
+        File fontFile = new File(resource.toURI());
+        Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        ge.registerFont(font);
+
+        Font loadedFont = font.deriveFont(Font.PLAIN, size);
+        AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
+        return fontConfig;
+    }
+
+    public void changeScreen(int width, int height, int size) throws IOException {
         if (screen != null) screen.close();
-        Terminal terminal = createTerminal(width,height);
+        if(size == 6) {terminal = createTerminal(width,height,fontConfiguration);}
+        else{terminal = createTerminal(width,height,fontConfigurationMenu);}
         this.screen = createScreen(terminal);
     }
 
@@ -76,6 +149,18 @@ public class LanternaGUI implements GUI {
                 }
                 if(keyStroke.getCharacter() == ' ') {
                     return ACTION.SHOOT;
+                }
+                if(keyStroke.getCharacter() == 'w') {
+                    return ACTION.W;
+                }
+                if(keyStroke.getCharacter() == 's') {
+                    return ACTION.S;
+                }
+                if(keyStroke.getCharacter() == 'a') {
+                    return ACTION.A;
+                }
+                if(keyStroke.getCharacter() == 'd') {
+                    return ACTION.D;
                 }
                 else {
                     return ACTION.TYPE;
@@ -121,60 +206,87 @@ public class LanternaGUI implements GUI {
 
     @Override
     public void drawLeaderboard(List<Player> players) {
+        // Get the screen size dynamically
+        TerminalSize size = getScreen().getTerminalSize();
+        int screenWidth = size.getColumns();
+        int screenHeight = size.getRows();
 
-        Position pos = new Position(2,5);
+        // Center the leaderboard horizontally
+        int middleScreen = screenWidth / 2;
 
-        drawText(pos,"Leaderboard",WHITE);
-        pos.setY(pos.getY()+4);
-        drawText(pos,"Pos  " + "Name" + "           Score", WHITE);
+        // Vertical starting point for the leaderboard (to center vertically, adjust if needed)
+        int startY = 3;
 
-        pos.setY(pos.getY()+2);
+        // Title (centered)
+        String title = "LEADERBOARD";
+        drawText(new Position(middleScreen - title.length() / 2, startY), title, "#0A3981");
 
-        int playerRank = players.size();
-        if (playerRank > 23){
-            playerRank = 23;
-        }
-        for (int i = 0; i < playerRank; i++){
+        // Column headers (centered under the title)
+        String headers = "POS      NAME      SCORE";
+        drawText(new Position(middleScreen - headers.length() / 2, startY + 2), headers, "#0A97B0");
+
+        // Starting position for player rows
+        Position pos = new Position(middleScreen - headers.length() / 2, startY + 4);
+
+        // Limit the number of players displayed
+        int playerRank = Math.min(players.size(), 23);
+
+        // Loop through players and display their rank, name, and score
+        for (int i = 0; i < playerRank; i++) {
             Player player = players.get(i);
             String name;
+
+            // Handle name length
             if (player.getName().length() <= maxNameLength) {
-                name = player.getName();
+                name = player.getName().toLowerCase();
+            } else if (player.getName().isBlank()) {
+                name = "dummy";
+            } else {
+                name = player.getName().substring(0, maxNameLength - 3).toLowerCase() + "...";
             }
-            else if (player.getName().isBlank()) {
-                name = "Dummy";
-            }
-            else {
-                name = player.getName().substring(0, maxNameLength-3) + "...";
-            }
-            pos.setY(pos.getY()+1);
-            drawText(pos,String.valueOf(i+1) + "    " + name, WHITE);
-            pos.setX(pos.getX()+20);
-            drawText(pos,String.valueOf(player.getScore()), WHITE);
-            pos.setX(pos.getX()-20);
+
+            // Build the row text
+            String row = String.format("%-8d%-12s%-6d", i + 1, name, player.getScore());
+
+            // Draw the row at the current position
+            drawText(pos, row, WHITE);
+
+            // Move to the next line
+            pos.setY(pos.getY() + 1);
         }
 
-        List<String> options = Collections.singletonList("Back to Menu");
-
+        // Add the "Back to Menu" option at the bottom
+        List<String> options = Collections.singletonList("back to menu - press 'q'");
+        drawText(new Position(middleScreen - options.get(0).length() / 2, screenHeight - 4), options.get(0), WHITE);
     }
 
+
+    public void drawInstructions(List<String> instructions) {
+        Position position = new Position(2, 2); // Starting position on the screen
+        for (String line : instructions) {
+            drawText(position, line, WHITE); // Draw each line with the desired color
+            position.setY(position.getY() + 1); // Move to the next line
+        }
+    }
+
+
     public void drawInsertName(String name, boolean invalidInput) {
-        Position pos = new Position(3,5);
+        TerminalSize size = getScreen().getTerminalSize();
+        int height = size.getRows();
+        int width = size.getColumns();
+        int middleScreen = width / 2;
+        int middleHeight = height/2;
+        int textStart = middleScreen - Constants.MENU.length() / 2;
+        drawText(new Position(textStart-15,middleHeight), "---------- GAME OVER ----------", "#0A3981");
+        drawText(new Position(3,middleHeight + 3), "Please insert your name (it must be less than 10 chars):", "#0A97B0");
 
-        drawText(pos, "You just lose the game!", WHITE);
-        pos.setY(pos.getY()+1);
-        drawText(pos, "Please insert your name (it must be less than 10 chars).", WHITE);
+        drawText(new Position(0,middleHeight +5), name , WHITE);
 
-        pos.setY(pos.getY()+2);
-
-        drawText(pos,name , GREEN);
-
-        pos.setY(pos.getY()+3);
         if(invalidInput) {
-            drawText(pos,"Must contain chars and smaller than 10!", RED);
+            drawText(new Position(0, middleHeight+4),"Must contain chars and smaller than 10!", RED);
         }
 
-        pos.setY(pos.getY()+5);
-        drawText(pos, "Press enter to submit", WHITE);
+        drawText(new Position(textStart,height-2), "Press enter to submit", WHITE);
 
     }
 
@@ -189,7 +301,7 @@ public class LanternaGUI implements GUI {
     private void drawCharacter(int x, int y, char c, String color) {
         TextGraphics tg = screen.newTextGraphics();
         tg.setForegroundColor(TextColor.Factory.fromString(color));
-        tg.putString(x, y + 1, "" + c);
+        tg.putString(x - translation_actual.getX(), y + 1 - translation_actual.getY(), "" + c);
     }
 
     @Override
@@ -218,4 +330,5 @@ public class LanternaGUI implements GUI {
     public void setCurrChar(char currChar) {
         this.currChar = currChar;
     }
+
 }

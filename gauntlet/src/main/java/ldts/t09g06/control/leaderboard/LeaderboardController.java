@@ -6,6 +6,8 @@ import ldts.t09g06.gui.GUI;
 import ldts.t09g06.model.Constants;
 import ldts.t09g06.model.leaderboard.Leaderboard;
 import ldts.t09g06.model.menu.Menu;
+import ldts.t09g06.model.menu.MenuLevel;
+import ldts.t09g06.states.MenuLevelState;
 import ldts.t09g06.states.MenuState;
 
 import java.io.IOException;
@@ -22,9 +24,10 @@ public class LeaderboardController extends Controller<Leaderboard> {
                 getModel().previousEntry();
             case DOWN:
                 getModel().nextEntry();
+            case QUIT:
+                game.setState(new MenuState(new Menu(), game.getSpriteLoader()));
             case SELECT:
-                game.getGui().resizeScreen(Constants.menuWidth, Constants.menuHeight);
-                if (Objects.equals(getModel().getCurrentEntry(), "Back to Menu")) game.setState(new MenuState(new Menu()));
+                if (Objects.equals(getModel().getCurrentEntry(), "Back to Menu")) game.setState(new MenuState(new Menu(), game.getSpriteLoader()));
         }
 
 

@@ -1,10 +1,12 @@
 package ldts.t09g06.model.game.arena;
 
 import ldts.t09g06.model.game.elements.Element;
+import ldts.t09g06.model.game.elements.Tile;
 import ldts.t09g06.model.game.elements.Wall;
 import ldts.t09g06.model.game.elements.ammo.Bullet;
 import ldts.t09g06.model.game.elements.ammo.GenericAmmo;
 import ldts.t09g06.model.game.elements.heroes.Hero;
+import ldts.t09g06.model.game.elements.monsters.BossMonster;
 import ldts.t09g06.model.game.elements.monsters.GenericMonster;
 import ldts.t09g06.model.game.elements.monsters.ZombieMonster;
 
@@ -22,17 +24,17 @@ public class LoadArenaBuilder extends ArenaBuilder {
     private int level;
     private final List<String> lines;
     List<Wall> walls = new ArrayList<>();
+    List<Tile> tiles = new ArrayList<>();
     List<GenericMonster> monsters = new ArrayList<>();
     protected  Hero hero;
+    protected GenericMonster boss;
     private static Element [][] gameElements;
     private int width;
     private int height;
 
-
-    public LoadArenaBuilder(int l) throws IOException {
+    public LoadArenaBuilder(int l, String difficulty) throws IOException {
         this.level = l;
-
-        URL resource = LoadArenaBuilder.class.getResource("/levels/level" + level + ".lvl");
+        URL resource = LoadArenaBuilder.class.getResource("/levels/level" + level + difficulty + ".lvl");
         assert resource != null;
         BufferedReader br = new BufferedReader(new FileReader(resource.getFile()));
 
@@ -43,6 +45,26 @@ public class LoadArenaBuilder extends ArenaBuilder {
         for (String line; (line = br.readLine()) != null; )
             lines.add(line);
         return lines;
+    }
+    @Override
+    protected void setAmmoAndLife(int level){
+        switch(level){
+            case 0:
+                getNewHero().setAmmo_and_life(1000, 10);
+                getBoss().setLife(5);
+                break;
+            case 1:
+                getNewHero().setAmmo_and_life(200, 5);
+                getBoss().setLife(10);
+                break;
+            case 2:
+                getNewHero().setAmmo_and_life(100, 3);
+                getBoss().setLife(15);
+                break;
+            case 3:
+                getNewHero().setAmmo_and_life(10, 1);
+                getBoss().setLife(20);
+        }
     }
 
     @Override
@@ -67,11 +89,22 @@ public class LoadArenaBuilder extends ArenaBuilder {
                     case '#':
                         walls.add(new Wall(x, y, currChar));
                         break;
+                    case 'J':
+                    case 'G':
+                        tiles.add(new Tile(x,y,currChar));
+                        break;
                     case 'H':
                         hero = new Hero(x, y, currChar);
+                        tiles.add(new Tile(x,y,'G'));
                         break;
                     case 'M':
                         monsters.add(new ZombieMonster(x, y, currChar));
+                        tiles.add(new Tile(x,y,'J'));
+                        break;
+                    case 'B':
+                        boss = new BossMonster(x, y, currChar) {
+                        };
+                        tiles.add(new Tile(x,y,'G'));
                         break;
                     default:
                         break;
@@ -90,6 +123,10 @@ public class LoadArenaBuilder extends ArenaBuilder {
     public  List<GenericMonster> getMonsters(){
         return monsters;
     }
+
+    public GenericMonster getBoss() {return boss;}
+
+    public List<Tile> getTiles() {return tiles;}
 
 //    public  List<GenericAmmo> createAmmo() {
 //        List<GenericAmmo> ammo = new ArrayList<>();

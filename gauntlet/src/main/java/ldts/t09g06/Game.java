@@ -2,10 +2,13 @@ package ldts.t09g06;
 
 import ldts.t09g06.gui.LanternaGUI;
 import ldts.t09g06.model.Constants;
+import ldts.t09g06.model.instructions.Instructions;
 import ldts.t09g06.model.leaderboard.Leaderboard;
 import ldts.t09g06.model.menu.Menu;
 import ldts.t09g06.states.MenuState;
 import ldts.t09g06.states.State;
+import ldts.t09g06.view.SpriteLoader;
+import ldts.t09g06.view.SpriteMapLoader;
 
 import java.awt.*;
 import java.io.IOException;
@@ -14,15 +17,17 @@ import java.net.URISyntaxException;
 public class Game {
     private final LanternaGUI gui;
     private final Leaderboard leaderboard;
+    private final Instructions instructions;
     private State state;
-
+    private final SpriteLoader spriteLoader;
 
     public Game() throws FontFormatException, IOException, URISyntaxException {
-        //this.gui = new LanternaGUI(100, 50);
+        this.gui = new LanternaGUI(80, 40);
         this.leaderboard = new Leaderboard(null, "src/main/resources/leaderboard/leaderboard.txt");
-        this.gui = new LanternaGUI(Constants.menuWidth, Constants.menuHeight);
-        this.state = new MenuState(new Menu());
-
+        //this.gui = new LanternaGUI(Constants.menuWidth, Constants.menuHeight);
+        this.spriteLoader = new SpriteMapLoader();
+        this.state = new MenuState(new Menu(), spriteLoader);
+        this.instructions = new Instructions("src/main/resources/instructions.txt");
     }
 
     public static void main(String[] args) throws IOException, FontFormatException, URISyntaxException {
@@ -41,8 +46,10 @@ public class Game {
         this.state = state;
     }
 
+    public SpriteLoader getSpriteLoader() {return spriteLoader;}
+
     private void start() throws IOException {
-        int FPS = 30;
+        int FPS = 60;
         int frameTime = 1000 / FPS;
 
         while (this.state != null) {
@@ -66,4 +73,5 @@ public class Game {
     public Leaderboard getLeaderboard() {
         return leaderboard;
     }
+    public Instructions getInstructions(){ return instructions;}
 }
