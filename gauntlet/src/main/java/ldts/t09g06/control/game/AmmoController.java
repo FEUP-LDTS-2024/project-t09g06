@@ -48,6 +48,7 @@ public class AmmoController extends GameController {
                 }
                 if (!collided){
                     if (bullet.collidesWith(hero)) {
+                        AudioController.getInstance().playAudio(AudioOption.MONSTER_ATACK);
                         getModel().getHero().decreaseLife(1);
                         bulletsToRemove.add(bullet);
                         collided = true;
