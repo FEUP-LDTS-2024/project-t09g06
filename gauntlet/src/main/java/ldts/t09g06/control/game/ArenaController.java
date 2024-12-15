@@ -7,6 +7,7 @@ import ldts.t09g06.model.Constants;
 import ldts.t09g06.model.audio.AudioOption;
 import ldts.t09g06.model.audio.AudioPlayer;
 import ldts.t09g06.model.game.arena.Arena;
+import ldts.t09g06.model.game.elements.ammo.LifeReloader;
 import ldts.t09g06.model.leaderboard.InsertName;
 import ldts.t09g06.model.leaderboard.Leaderboard;
 import ldts.t09g06.model.menu.Menu;
@@ -24,6 +25,8 @@ public class ArenaController extends GameController {
     private final MonsterController monsterController;
     private final AmmoController ammoController;
     private final BossController bossController;
+    private final ReloaderController reloaderController;
+    private final LifeReloaderController lifeReloaderController;
     public ArenaController(Arena arena) {
         super(arena);
 
@@ -31,6 +34,8 @@ public class ArenaController extends GameController {
         this.monsterController = new MonsterController(arena);
         this.ammoController = new AmmoController(arena);
         this.bossController = new BossController(arena);
+        this.reloaderController = new ReloaderController(arena);
+        this.lifeReloaderController = new LifeReloaderController(arena);
     }
 
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
@@ -51,6 +56,8 @@ public class ArenaController extends GameController {
             monsterController.step(game, action, time);
             ammoController.step(game, action, time);
             bossController.step(game, action, time);
+            reloaderController.step(game,action, time);
+            lifeReloaderController.step(game, action, time);
         }
     }
 
