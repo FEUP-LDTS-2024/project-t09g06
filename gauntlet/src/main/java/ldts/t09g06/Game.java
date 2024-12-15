@@ -15,23 +15,37 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 public class Game {
+    private static Game instance;
     private final LanternaGUI gui;
     private final Leaderboard leaderboard;
     private final Instructions instructions;
     private State state;
     private final SpriteLoader spriteLoader;
 
-    public Game() throws FontFormatException, IOException, URISyntaxException {
+    private Game() throws FontFormatException, IOException, URISyntaxException {
         this.gui = new LanternaGUI(80, 40);
-        this.leaderboard = new Leaderboard(null, "src/main/resources/leaderboard/leaderboard.txt");
+        this.leaderboard    = new Leaderboard(null, "src/main/resources/leaderboard/leaderboard.txt");
         //this.gui = new LanternaGUI(Constants.menuWidth, Constants.menuHeight);
         this.spriteLoader = new SpriteMapLoader();
         this.state = new MenuState(new Menu(), spriteLoader);
         this.instructions = new Instructions("src/main/resources/instructions.txt");
     }
 
+    public static Game getInstance() throws IOException, FontFormatException, URISyntaxException {
+        if (instance == null) {
+            synchronized (Game.class) {
+                if (instance == null) {
+                    instance = new Game();
+                    instance.start();
+                }
+            }
+        }
+        return instance;
+    }
+
+
     public static void main(String[] args) throws IOException, FontFormatException, URISyntaxException {
-        new Game().start();
+       Game game =   Game.getInstance();
     }
 
     public LanternaGUI getGui() {
