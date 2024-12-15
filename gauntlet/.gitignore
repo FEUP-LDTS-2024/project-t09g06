@@ -43,3 +43,5 @@ bin/
 
 # Ignore leaderboard text
 src/main/resources/leaderboard/leaderboard.txt
+
+**/leaderboard.txt

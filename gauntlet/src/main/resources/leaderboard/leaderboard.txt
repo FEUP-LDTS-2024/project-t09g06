@@ -1,8 +1,10 @@
 QQQQQQQQQ	160	
 h	80	
 Tiago!	60	
+sorry	60	
 Player	50	
 213323231	50	
+tiago	50	
 vasc	40	
 Psssss	30	
 SSSS	30	
@@ -10,7 +12,7 @@ vvv	20
 PTiago22	10	
 Justino	10	
 j23	10	
-Player	0
-sjhjsgdjs	0
-asd	0
-ssss	0
+Player	0	
+sjhjsgdjs	0	
+asd	0	
+ssss	0	

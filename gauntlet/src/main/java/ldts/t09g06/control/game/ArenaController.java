@@ -1,8 +1,11 @@
 package ldts.t09g06.control.game;
 
 import ldts.t09g06.Game;
+import ldts.t09g06.control.game.audio.AudioController;
 import ldts.t09g06.gui.GUI;
 import ldts.t09g06.model.Constants;
+import ldts.t09g06.model.audio.AudioOption;
+import ldts.t09g06.model.audio.AudioPlayer;
 import ldts.t09g06.model.game.arena.Arena;
 import ldts.t09g06.model.leaderboard.InsertName;
 import ldts.t09g06.model.leaderboard.Leaderboard;
@@ -11,7 +14,10 @@ import ldts.t09g06.states.InsertNameState;
 import ldts.t09g06.states.LeaderboardState;
 import ldts.t09g06.states.MenuState;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
+
 
 public class ArenaController extends GameController {
     private final HeroController heroController;
@@ -25,6 +31,11 @@ public class ArenaController extends GameController {
         this.monsterController = new MonsterController(arena);
         this.ammoController = new AmmoController(arena);
         this.bossController = new BossController(arena);
+        try {
+            AudioController.getInstance().playAudio(AudioOption.GAME);
+        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
