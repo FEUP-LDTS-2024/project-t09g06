@@ -11,7 +11,7 @@ public class ReloaderViewer implements ElementViewer<Reloader> {
     private final Sprite sprite;
 
     public ReloaderViewer(SpriteLoader spriteLoader) throws IOException {
-        this.sprite = spriteLoader.get("sprites/bullet/tile_0125.png");
+        this.sprite = spriteLoader.get("sprites/bullet/tile_0062.png");
     }
 
     @Override

@@ -25,12 +25,10 @@ public class ReloaderController extends GameController{
     private void updateReloaders() {
         List<Reloader> ReloadersToRemove = new ArrayList<>();
 
-        boolean collided = false;
 
         for (Reloader reloader : getModel().getReloaders()) {
             if (reloader.collidesWith(getModel().getHero())) {
                 ReloadersToRemove.add(reloader);
-                collided = true;
                 break;
             }
         }

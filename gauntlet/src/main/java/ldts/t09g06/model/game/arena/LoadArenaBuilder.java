@@ -5,6 +5,7 @@ import ldts.t09g06.model.game.elements.Tile;
 import ldts.t09g06.model.game.elements.Wall;
 import ldts.t09g06.model.game.elements.ammo.Bullet;
 import ldts.t09g06.model.game.elements.ammo.GenericAmmo;
+import ldts.t09g06.model.game.elements.ammo.LifeReloader;
 import ldts.t09g06.model.game.elements.ammo.Reloader;
 import ldts.t09g06.model.game.elements.heroes.Hero;
 import ldts.t09g06.model.game.elements.monsters.BossMonster;
@@ -30,6 +31,7 @@ public class LoadArenaBuilder extends ArenaBuilder {
     protected  Hero hero;
     protected GenericMonster boss;
     List<Reloader> reloaders = new ArrayList<>();
+    List<LifeReloader> lifeReloaders = new ArrayList<>();
     private static Element [][] gameElements;
     private int width;
     private int height;
@@ -55,20 +57,24 @@ public class LoadArenaBuilder extends ArenaBuilder {
                 getNewHero().setAmmo_and_life(1000, 10);
                 getBoss().setLife(5);
                 for(Reloader r: getReloaders()) r.setQuantity(5);
+                for(LifeReloader r: getLifeReloaders()) r.setQuantity(4);
                 break;
             case 1:
                 getNewHero().setAmmo_and_life(200, 5);
                 getBoss().setLife(10);
                 for(Reloader r: getReloaders()) r.setQuantity(3);
+                for(LifeReloader r: getLifeReloaders()) r.setQuantity(3);
                 break;
             case 2:
                 getNewHero().setAmmo_and_life(100, 3);
                 for(Reloader r: getReloaders()) r.setQuantity(2);
+                for(LifeReloader r: getLifeReloaders()) r.setQuantity(2);
                 getBoss().setLife(15);
                 break;
             case 3:
                 getNewHero().setAmmo_and_life(10, 1);
                 for(Reloader r: getReloaders()) r.setQuantity(1);
+                for(LifeReloader r: getLifeReloaders()) r.setQuantity(1);
                 getBoss().setLife(20);
         }
     }
@@ -95,26 +101,21 @@ public class LoadArenaBuilder extends ArenaBuilder {
                     case '#':
                         walls.add(new Wall(x, y, currChar));
                         break;
-                    case 'J':
-                    case 'G':
-                        tiles.add(new Tile(x,y,currChar));
-                        break;
                     case 'H':
                         hero = new Hero(x, y, currChar);
-                        tiles.add(new Tile(x,y,'G'));
                         break;
                     case 'M':
                         monsters.add(new ZombieMonster(x, y, currChar));
-                        tiles.add(new Tile(x,y,'J'));
                         break;
                     case 'B':
                         boss = new BossMonster(x, y, currChar) {
                         };
-                        tiles.add(new Tile(x,y,'G'));
                         break;
                     case 'R':
                         reloaders.add(new Reloader(x,y,currChar));
-                        tiles.add(new Tile(x, y, 'R'));
+                        break;
+                    case 'L':
+                        lifeReloaders.add(new LifeReloader(x, y, currChar));
                     default:
                         break;
                 }
@@ -135,7 +136,7 @@ public class LoadArenaBuilder extends ArenaBuilder {
 
     public GenericMonster getBoss() {return boss;}
     public List<Reloader> getReloaders(){return reloaders;}
-
+    public List<LifeReloader> getLifeReloaders(){return lifeReloaders;}
     public List<Tile> getTiles() {return tiles;}
 
 //    public  List<GenericAmmo> createAmmo() {
