@@ -8,6 +8,7 @@ import ldts.t09g06.model.audio.AudioOption;
 import ldts.t09g06.model.game.arena.Arena;
 import ldts.t09g06.model.game.elements.Wall;
 import ldts.t09g06.model.game.elements.ammo.GenericAmmo;
+import ldts.t09g06.model.game.elements.heroes.Hero;
 import ldts.t09g06.model.game.elements.monsters.GenericMonster;
 
 import java.io.IOException;
@@ -29,45 +30,68 @@ public class AmmoController extends GameController {
         List<Wall> walls = getModel().getWalls();
         List<GenericMonster> monsters = getModel().getMonsters();
         GenericMonster boss = getModel().getBoss();
+        Hero hero = getModel().getHero();
         List<GenericMonster> monstersToRemove = new ArrayList<>();
 
         boolean collided = false;
 
         for (GenericAmmo bullet : getModel().getBullets()) {
-            Position nextPosition =  getNextPosition(bullet);
+            if(bullet.isFromBoss()) {
+                Position nextPosition = getNextPosition(bullet);
 
-            for (Wall wall : walls) {
-                if (bullet.collidesWith(wall)) {
-                    bulletsToRemove.add(bullet);
-                    collided = true;
-                    break;
-                }
-            }
-
-            if(!collided) {
-                for (GenericMonster monster : monsters) {
-                    if (bullet.collidesWith(monster)) {
-                        AudioController.getInstance().playAudio(AudioOption.MONSTER_HIT);
-                        monstersToRemove.add(monster);
+                for (Wall wall : walls) {
+                    if (bullet.collidesWith(wall)) {
                         bulletsToRemove.add(bullet);
-                        getModel().getHero().increase_score(10);
                         collided = true;
                         break;
                     }
-                    if(bullet.collidesWith(boss)){
+                }
+                if (!collided){
+                    if (bullet.collidesWith(hero)) {
+                        getModel().getHero().decreaseLife(1);
+                        bulletsToRemove.add(bullet);
+                        collided = true;
+                        break;
+                    }
+                }
+                if (!collided) bullet.setPosition(nextPosition);
+            } else{
+                Position nextPosition = getNextPosition(bullet);
+
+                for (Wall wall : walls) {
+                    if (bullet.collidesWith(wall)) {
+                        bulletsToRemove.add(bullet);
+                        collided = true;
+                        break;
+                    }
+                }
+
+                if (!collided && !bullet.isFromBoss()) {
+                    for (GenericMonster monster : monsters) {
+                        if (bullet.collidesWith(monster)) {
+                            AudioController.getInstance().playAudio(AudioOption.MONSTER_HIT);
+                            monstersToRemove.add(monster);
+                            bulletsToRemove.add(bullet);
+                            getModel().getHero().increase_score(10);
+                            collided = true;
+                            break;
+                        }
+                    }
+                    if (bullet.collidesWith(boss)) {
                         AudioController.getInstance().playAudio(AudioOption.MONSTER_HIT);
                         getModel().getBoss().decreaseLife(1);
                         bulletsToRemove.add(bullet);
-                        if(getModel().getBoss().getLife()<=0) {
+                        if (getModel().getBoss().getLife() <= 0) {
                             getModel().removeBoss(boss);
                             getModel().getHero().increase_score(50);
                         }
                         collided = true;
                         break;
                     }
+
                 }
+                if (!collided) bullet.setPosition(nextPosition);
             }
-            if(!collided) bullet.setPosition(nextPosition);
         }
         if(!bulletsToRemove.isEmpty()) getModel().removeBullets(bulletsToRemove);
         if(!monstersToRemove.isEmpty())getModel().removeMonsters(monstersToRemove);

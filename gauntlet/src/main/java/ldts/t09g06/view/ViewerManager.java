@@ -12,6 +12,8 @@ public class ViewerManager {
     private final MonsterViewer monsterViewer;
     private final TileViewer tileViewer;
     private final BossViewer bossViewer;
+    private final ReloaderViewer reloaderViewer;
+    private final LifeReloaderViewer lifeReloaderViewer;
 
     public ViewerManager(SpriteLoader spriteLoader) throws IOException {
         this.wallViewer = new WallViewer(spriteLoader);
@@ -20,6 +22,8 @@ public class ViewerManager {
         this.monsterViewer = new MonsterViewer(spriteLoader);
         this.tileViewer = new TileViewer(spriteLoader);
         this.bossViewer = new BossViewer(spriteLoader);
+        this.reloaderViewer = new ReloaderViewer(spriteLoader);
+        this.lifeReloaderViewer = new LifeReloaderViewer(spriteLoader);
     }
 
     public WallViewer getWallViewer() {return wallViewer;}
@@ -33,4 +37,8 @@ public class ViewerManager {
     public TileViewer getTileViewer() {return tileViewer;}
 
     public BossViewer getBossViewer() {return bossViewer;}
+
+    public ReloaderViewer getReloaderViewer(){return reloaderViewer;}
+
+    public LifeReloaderViewer getLifeReloaderViewer(){return lifeReloaderViewer;}
 }

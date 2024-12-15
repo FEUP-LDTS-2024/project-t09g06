@@ -21,6 +21,8 @@ public class GameViewer extends Viewer<Arena> {
     private final AmmoViewer ammoViewer;
     private final TileViewer tileViewer;
     private final BossViewer bossViewer;
+    private final ReloaderViewer reloaderViewer;
+    private final LifeReloaderViewer lifeReloaderViewer;
     public GameViewer(Arena arena, ViewerManager viewerManager) {
         super(arena);
         this.wallViewer = viewerManager.getWallViewer();
@@ -29,7 +31,8 @@ public class GameViewer extends Viewer<Arena> {
         this.ammoViewer = viewerManager.getAmmoViewer();
         this.tileViewer = viewerManager.getTileViewer();
         this.bossViewer = viewerManager.getBossViewer();
-
+        this.reloaderViewer = viewerManager.getReloaderViewer();
+        this.lifeReloaderViewer = viewerManager.getLifeReloaderViewer();
     }
 
     @Override
@@ -40,6 +43,8 @@ public class GameViewer extends Viewer<Arena> {
         drawElements(gui, getModel().getTiles(),tileViewer);
         drawElements(gui, getModel().getMonsters(),monsterViewer);
         drawElement(gui, getModel().getHero(),heroViewer);
+        drawElements(gui, getModel().getReloaders(), reloaderViewer);
+        drawElements(gui,getModel().getLifeReloaders(),lifeReloaderViewer);
         if(!getModel().isBossDefeated())
             drawElement(gui, getModel().getBoss(), bossViewer);
 
