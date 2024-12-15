@@ -12,7 +12,7 @@ public class LifeReloaderViewer implements ElementViewer<LifeReloader> {
     private final Sprite sprite;
 
     public LifeReloaderViewer(SpriteLoader spriteLoader) throws IOException {
-        this.sprite = spriteLoader.get("sprites/bullet/tile_0116.png");
+        this.sprite = spriteLoader.get("sprites/hero/tile_0116.png");
     }
 
     @Override
