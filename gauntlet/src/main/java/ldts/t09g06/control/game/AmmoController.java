@@ -52,9 +52,12 @@ public class AmmoController extends GameController {
                         break;
                     }
                     if(bullet.collidesWith(boss)){
-                        getModel().removeBoss(boss);
+                        getModel().getBoss().decreaseLife(1);
                         bulletsToRemove.add(bullet);
-                        getModel().getHero().increase_score(50);
+                        if(getModel().getBoss().getLife()<=0) {
+                            getModel().removeBoss(boss);
+                            getModel().getHero().increase_score(50);
+                        }
                         collided = true;
                         break;
                     }

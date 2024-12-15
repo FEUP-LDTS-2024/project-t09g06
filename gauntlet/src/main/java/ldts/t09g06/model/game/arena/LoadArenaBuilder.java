@@ -51,15 +51,19 @@ public class LoadArenaBuilder extends ArenaBuilder {
         switch(level){
             case 0:
                 getNewHero().setAmmo_and_life(1000, 10);
+                getBoss().setLife(5);
                 break;
             case 1:
                 getNewHero().setAmmo_and_life(200, 5);
+                getBoss().setLife(10);
                 break;
             case 2:
                 getNewHero().setAmmo_and_life(100, 3);
+                getBoss().setLife(15);
                 break;
             case 3:
                 getNewHero().setAmmo_and_life(10, 1);
+                getBoss().setLife(20);
         }
     }
 
