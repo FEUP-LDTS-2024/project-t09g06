@@ -47,6 +47,9 @@ public class Position {
 
     public Position getCloserTo(Arena arena, Position p){
         //for now just return random
+        if (p == null) {
+            return this;
+        }
         int hx = p.getX();
         int hy = p.getY();
         int mx = x;

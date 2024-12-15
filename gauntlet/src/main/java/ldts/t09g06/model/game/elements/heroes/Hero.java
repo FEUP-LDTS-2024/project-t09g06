@@ -14,8 +14,8 @@ public class Hero extends Element {
         return score;
     }
 
-    public void increase_score(){
-        score+=10;
+    public void increase_score(int num){
+        score+=num;
     }
 
     public Hero(int x, int y, char c){

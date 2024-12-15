@@ -15,6 +15,7 @@ public abstract class ArenaBuilder {
         arena.setHero(getNewHero());
         setAmmoAndLife(level);
         arena.setMonsters(getMonsters());
+        arena.setBoss(getBoss());
         arena.setWalls(getWalls());
         arena.setTiles(getTiles());
 //        arena.setBullets(createAmmo());
@@ -31,6 +32,7 @@ public abstract class ArenaBuilder {
     public abstract List<Wall> getWalls();
     public abstract List<Tile> getTiles();
     public abstract List<GenericMonster> getMonsters();
+    public abstract GenericMonster getBoss();
 
     //public abstract List<GenericAmmo> createAmmo();
 

@@ -17,12 +17,14 @@ public class ArenaController extends GameController {
     private final HeroController heroController;
     private final MonsterController monsterController;
     private final AmmoController ammoController;
+    private final BossController bossController;
     public ArenaController(Arena arena) {
         super(arena);
 
         this.heroController = new HeroController(arena);
         this.monsterController = new MonsterController(arena);
         this.ammoController = new AmmoController(arena);
+        this.bossController = new BossController(arena);
     }
 
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
@@ -38,6 +40,7 @@ public class ArenaController extends GameController {
             heroController.step(game, action, time);
             monsterController.step(game, action, time);
             ammoController.step(game, action, time);
+            bossController.step(game, action, time);
         }
     }
 
@@ -52,4 +55,6 @@ public class ArenaController extends GameController {
     public AmmoController getAmmoController() {
         return ammoController;
     }
+
+    public BossController getBossController(){return bossController;}
 }
