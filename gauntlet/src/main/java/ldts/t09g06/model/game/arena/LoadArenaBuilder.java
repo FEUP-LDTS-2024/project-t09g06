@@ -29,7 +29,7 @@ public class LoadArenaBuilder extends ArenaBuilder {
     List<GenericMonster> monsters = new ArrayList<>();
     protected  Hero hero;
     protected GenericMonster boss;
-    protected List<Reloader> reloaders = new ArrayList<>();
+    List<Reloader> reloaders = new ArrayList<>();
     private static Element [][] gameElements;
     private int width;
     private int height;
@@ -114,7 +114,7 @@ public class LoadArenaBuilder extends ArenaBuilder {
                         break;
                     case 'R':
                         reloaders.add(new Reloader(x,y,currChar));
-                        tiles.add(new Tile(x, y, currChar));
+                        tiles.add(new Tile(x, y, 'R'));
                     default:
                         break;
                 }
