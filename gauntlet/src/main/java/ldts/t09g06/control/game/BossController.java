@@ -41,8 +41,10 @@ public class BossController extends GameController {
         if (!getModel().wallCollision(position) && !getModel().elementsCollision(heroPosition,position) && !getModel().isBossDefeated()) {
             boss.setPosition(position);
         }
-        if (getModel().elementsCollision(heroPosition,position) && !getModel().isBossDefeated())
+        if (getModel().elementsCollision(heroPosition,position) && !getModel().isBossDefeated()) {
+            AudioController.getInstance().playAudio(AudioOption.MONSTER_ATACK);
             getModel().getHero().decreaseLife(5);
+        }
     }
 
     public void bossShoot() {

@@ -1,8 +1,10 @@
 package ldts.t09g06.control.game;
 
 import ldts.t09g06.Game;
+import ldts.t09g06.control.game.audio.AudioController;
 import ldts.t09g06.gui.GUI;
 import ldts.t09g06.model.Position;
+import ldts.t09g06.model.audio.AudioOption;
 import ldts.t09g06.model.game.arena.Arena;
 import ldts.t09g06.model.game.elements.monsters.GenericMonster;
 
@@ -30,8 +32,10 @@ public class MonsterController extends GameController {
         if (!getModel().wallCollision(position) && !getModel().elementsCollision(heroPosition,position)) {
             monster.setPosition(position);
         }
-        if (getModel().elementsCollision(heroPosition,position))
+        if (getModel().elementsCollision(heroPosition,position)) {
+            AudioController.getInstance().playAudio(AudioOption.MONSTER_ATACK);
             getModel().getHero().decreaseLife(1);
+        }
     }
     public void setLastMovement(long lastMovement) {
         this.lastMovement = lastMovement;

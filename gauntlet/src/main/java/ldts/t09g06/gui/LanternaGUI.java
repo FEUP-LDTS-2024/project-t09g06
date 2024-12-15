@@ -34,6 +34,9 @@ public class LanternaGUI implements GUI {
     private Position translation_actual = new Position(0, 0);
     private String difficulty ;
 
+    List<KeyType> priorityKeys = List.of(KeyType.ArrowUp, KeyType.ArrowDown, KeyType.ArrowLeft, KeyType.ArrowRight);
+
+
     public String getDifficulty(){
         return this.difficulty;
     }
@@ -138,42 +141,48 @@ public class LanternaGUI implements GUI {
         KeyStroke keyStroke = screen.pollInput();
         if (keyStroke == null) return ACTION.NONE;
 
+        KeyType keyType = keyStroke.getKeyType();
+        Character character = keyStroke.getCharacter();
 
-        switch (keyStroke.getKeyType()) {
+        if (priorityKeys.contains(keyType)) {
+            switch (keyType) {
+                case ArrowRight:
+                    return ACTION.RIGHT;
+                case ArrowLeft:
+                    return ACTION.LEFT;
+                case ArrowUp:
+                    return ACTION.UP;
+                case ArrowDown:
+                    return ACTION.DOWN;
+            }
+        }
+
+        switch (keyType) {
             case EOF:
                 return ACTION.QUIT;
             case Character:
                 setCurrChar(keyStroke.getCharacter());
-                if(keyStroke.getCharacter() == 'q') {
+                if(character == 'q') {
                     return ACTION.QUIT;
                 }
-                if(keyStroke.getCharacter() == ' ') {
+                if(character == ' ') {
                     return ACTION.SHOOT;
                 }
-                if(keyStroke.getCharacter() == 'w') {
+                if(character == 'w') {
                     return ACTION.W;
                 }
-                if(keyStroke.getCharacter() == 's') {
+                if(character == 's') {
                     return ACTION.S;
                 }
-                if(keyStroke.getCharacter() == 'a') {
+                if(character == 'a') {
                     return ACTION.A;
                 }
-                if(keyStroke.getCharacter() == 'd') {
+                if(character == 'd') {
                     return ACTION.D;
                 }
                 else {
                     return ACTION.TYPE;
                 }
-
-            case ArrowRight:
-                return ACTION.RIGHT;
-            case ArrowLeft:
-                return ACTION.LEFT;
-            case ArrowUp:
-                return ACTION.UP;
-            case ArrowDown:
-                return ACTION.DOWN;
             case Enter:
                 return ACTION.SELECT;
             case Backspace:
@@ -331,4 +340,7 @@ public class LanternaGUI implements GUI {
         this.currChar = currChar;
     }
 
+    public Position getTranslation_actual() {
+        return translation_actual;
+    }
 }
