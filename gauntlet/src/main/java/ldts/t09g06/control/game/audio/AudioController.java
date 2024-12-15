@@ -13,22 +13,26 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class AudioController {
-    private Audio shootingAudio;
-    private Audio gameAudio;
+    private final Audio shootingAudio;
+    private final Audio gameAudio;
 
-    private Audio dyingAudio;
+    private final Audio dyingAudio;
 
     private static AudioController audioController;
 
     private AudioController() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         this.shootingAudio = new Audio(new AudioLoader().loadAudio(AudioSystem.getAudioInputStream(Objects.requireNonNull(getClass().getClassLoader().getResource("audio/shooting_laser.wav"))), AudioSystem.getClip()));
-        this.gameAudio =  new Audio(new AudioLoader().loadAudio(AudioSystem.getAudioInputStream(Objects.requireNonNull(getClass().getClassLoader().getResource("audio/imperial_march.wav"))), AudioSystem.getClip()));
+        this.gameAudio =  new Audio(new AudioLoader().loadAudio(AudioSystem.getAudioInputStream(Objects.requireNonNull(getClass().getClassLoader().getResource("audio/gameloop.wav"))), AudioSystem.getClip()));
         this.dyingAudio =  new Audio(new AudioLoader().loadAudio(AudioSystem.getAudioInputStream(Objects.requireNonNull(getClass().getClassLoader().getResource("audio/dying.wav"))), AudioSystem.getClip()));
     }
 
-    public static AudioController getInstance() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+    public static AudioController getInstance() {
         if(audioController == null){
-            audioController = new AudioController();
+            try {
+                audioController = new AudioController();
+            } catch (Exception e) {
+                throw new RuntimeException("Failed to initialize AudioController", e);
+            }
         }
         return audioController;
     }

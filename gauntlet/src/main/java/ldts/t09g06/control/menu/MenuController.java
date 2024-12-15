@@ -1,8 +1,10 @@
 package ldts.t09g06.control.menu;
 
 import ldts.t09g06.Game;
+import ldts.t09g06.control.game.audio.AudioController;
 import ldts.t09g06.gui.GUI;
 import ldts.t09g06.model.Constants;
+import ldts.t09g06.model.audio.AudioOption;
 import ldts.t09g06.model.game.arena.Arena;
 import ldts.t09g06.model.game.arena.LoadArenaBuilder;
 import ldts.t09g06.model.menu.Menu;

@@ -3,6 +3,8 @@ package ldts.t09g06.states;
 
 import ldts.t09g06.control.Controller;
 import ldts.t09g06.control.game.ArenaController;
+import ldts.t09g06.control.game.audio.AudioController;
+import ldts.t09g06.model.audio.AudioOption;
 import ldts.t09g06.model.game.arena.Arena;
 import ldts.t09g06.view.SpriteLoader;
 import ldts.t09g06.view.Viewer;

@@ -81,11 +81,7 @@ public class HeroController extends GameController {
             Bullet bullet = new Bullet(heroPosition.getX() + dx, heroPosition.getY() + dy, 'o', dx, dy);
             getModel().addBullet(bullet);
             getModel().getHero().decreaseAmmo();
-            try {
                 AudioController.getInstance().playAudio(AudioOption.SHOOTING);
-            } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
-                throw new RuntimeException(e);
-            }
         }
     }
 

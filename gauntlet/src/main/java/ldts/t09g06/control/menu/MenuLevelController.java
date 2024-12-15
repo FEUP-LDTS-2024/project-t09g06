@@ -1,8 +1,10 @@
 package ldts.t09g06.control.menu;
 
 import ldts.t09g06.Game;
+import ldts.t09g06.control.game.audio.AudioController;
 import ldts.t09g06.gui.GUI;
 import ldts.t09g06.model.Constants;
+import ldts.t09g06.model.audio.AudioOption;
 import ldts.t09g06.model.game.arena.Arena;
 import ldts.t09g06.model.game.arena.LoadArenaBuilder;
 import ldts.t09g06.model.game.elements.monsters.GenericMonster;
@@ -46,6 +48,7 @@ public class MenuLevelController extends Controller<MenuLevel> {
                 for(GenericMonster m: arena.getMonsters()) m.setHeroPosition(arena.getHero().getPosition());
                 GenericMonster boss = arena.getBoss();
                 boss.setHeroPosition(arena.getHero().getPosition());
+                AudioController.getInstance().playAudio(AudioOption.GAME);
 
         }
     }

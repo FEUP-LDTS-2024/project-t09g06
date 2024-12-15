@@ -31,21 +31,20 @@ public class ArenaController extends GameController {
         this.monsterController = new MonsterController(arena);
         this.ammoController = new AmmoController(arena);
         this.bossController = new BossController(arena);
-        try {
-            AudioController.getInstance().playAudio(AudioOption.GAME);
-        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
         if (action == GUI.ACTION.QUIT) {
             game.getGui().changeScreen(Constants.menuWidth, Constants.menuHeight, 25);
+            AudioController.getInstance().stopAllAudio();
             game.setState(new MenuState(new Menu(), game.getSpriteLoader()));
         }
         else if(getModel().getHero().getLife() <= 0) {
+            AudioController.getInstance().playAudio(AudioOption.GAME);
             game.getGui().changeScreen(Constants.menuWidth, Constants.menuHeight, 25); //this should be included in each setState
             game.setState(new InsertNameState(new InsertName(getModel().getHero()), game.getSpriteLoader()));
+            AudioController.getInstance().stopAllAudio();
+
         }
         else {
             heroController.step(game, action, time);

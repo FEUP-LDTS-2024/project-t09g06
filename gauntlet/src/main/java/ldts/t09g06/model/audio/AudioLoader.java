@@ -9,8 +9,8 @@ public class AudioLoader {
     public Clip loadAudio(AudioInputStream audio, Clip audioClip) {
         try {
             audioClip.open(audio);
-        } catch (LineUnavailableException | IOException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to load Audio", e);
         }
         return audioClip;
     }
