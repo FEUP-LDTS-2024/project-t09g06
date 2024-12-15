@@ -5,6 +5,7 @@ import ldts.t09g06.model.game.elements.Tile;
 import ldts.t09g06.model.game.elements.Wall;
 import ldts.t09g06.model.game.elements.ammo.Bullet;
 import ldts.t09g06.model.game.elements.ammo.GenericAmmo;
+import ldts.t09g06.model.game.elements.ammo.Reloader;
 import ldts.t09g06.model.game.elements.heroes.Hero;
 import ldts.t09g06.model.game.elements.monsters.BossMonster;
 import ldts.t09g06.model.game.elements.monsters.GenericMonster;
@@ -28,6 +29,7 @@ public class LoadArenaBuilder extends ArenaBuilder {
     List<GenericMonster> monsters = new ArrayList<>();
     protected  Hero hero;
     protected GenericMonster boss;
+    protected List<Reloader> reloaders = new ArrayList<>();
     private static Element [][] gameElements;
     private int width;
     private int height;
@@ -52,17 +54,21 @@ public class LoadArenaBuilder extends ArenaBuilder {
             case 0:
                 getNewHero().setAmmo_and_life(1000, 10);
                 getBoss().setLife(5);
+                for(Reloader r: getReloaders()) r.setQuantity(5);
                 break;
             case 1:
                 getNewHero().setAmmo_and_life(200, 5);
                 getBoss().setLife(10);
+                for(Reloader r: getReloaders()) r.setQuantity(3);
                 break;
             case 2:
                 getNewHero().setAmmo_and_life(100, 3);
+                for(Reloader r: getReloaders()) r.setQuantity(2);
                 getBoss().setLife(15);
                 break;
             case 3:
                 getNewHero().setAmmo_and_life(10, 1);
+                for(Reloader r: getReloaders()) r.setQuantity(1);
                 getBoss().setLife(20);
         }
     }
@@ -106,6 +112,9 @@ public class LoadArenaBuilder extends ArenaBuilder {
                         };
                         tiles.add(new Tile(x,y,'G'));
                         break;
+                    case 'R':
+                        reloaders.add(new Reloader(x,y,currChar));
+                        tiles.add(new Tile(x, y, currChar));
                     default:
                         break;
                 }
@@ -125,6 +134,7 @@ public class LoadArenaBuilder extends ArenaBuilder {
     }
 
     public GenericMonster getBoss() {return boss;}
+    public List<Reloader> getReloaders(){return reloaders;}
 
     public List<Tile> getTiles() {return tiles;}
 

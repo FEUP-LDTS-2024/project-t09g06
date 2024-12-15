@@ -6,6 +6,7 @@ import ldts.t09g06.model.game.elements.Tile;
 import ldts.t09g06.model.game.elements.Wall;
 import ldts.t09g06.model.game.elements.ammo.Bullet;
 import ldts.t09g06.model.game.elements.ammo.GenericAmmo;
+import ldts.t09g06.model.game.elements.ammo.Reloader;
 import ldts.t09g06.model.game.elements.heroes.Hero;
 import ldts.t09g06.model.game.elements.monsters.GenericMonster;
 import ldts.t09g06.model.game.elements.monsters.ZombieMonster;
@@ -20,6 +21,7 @@ public class Arena {
     private Hero hero;
     private List<GenericMonster> monsters;
     private GenericMonster boss;
+    private List<Reloader> reloaders;
     private List<Wall> walls;
     private List<GenericAmmo> bullets = new ArrayList<>();
     private List<Tile> tiles;
@@ -39,6 +41,7 @@ public class Arena {
     public void setBoss(GenericMonster boss) {
         this.boss = boss;
     }
+    public void setReloaders(List<Reloader> reloaders){this.reloaders = reloaders;}
     public void killMonster(List<GenericMonster> monsters, Position position){
         //is there a way to make it more efficient and just look at that position and not all monsters??
         List<GenericMonster> m = new ArrayList<>();
@@ -71,6 +74,10 @@ public class Arena {
     public GenericMonster getBoss() {
         return boss;
     }
+    public List<Reloader> getReloaders() {
+        return reloaders;
+    }
+
     public List<Wall> getWalls() {
         return walls;
     }
@@ -98,6 +105,13 @@ public class Arena {
         return boss.getPosition().equals(position);
     }
 
+    public boolean reloaderCollision(Position position) {
+        for (Reloader reloader : reloaders) {
+            if (reloader.getPosition().equals(position))
+                return true;
+        }
+        return false;
+    }
     public boolean elementsCollision(Position position1, Position position2){
         return position1.equals(position2);
     }
@@ -117,6 +131,9 @@ public class Arena {
 
     public void removeBullets(List<GenericAmmo> bulletsToRemove) {
         bullets.removeAll(bulletsToRemove);
+    }
+    public void removeReloaders(List<Reloader> reloadersToRemove){
+        reloaders.removeAll(reloadersToRemove);
     }
 
     public void removeMonsters(List<GenericMonster> monstersToRemove) {monsters.removeAll(monstersToRemove);}
