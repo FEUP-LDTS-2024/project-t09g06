@@ -20,16 +20,16 @@ public class MenuSettings extends GenericMenu{
     public void updateEntries(){
         switch (current_difficulty){
             case 0:
-                this.entries = Arrays.asList( "EASY -> *", "Medium", "Hard", "Impossible");
+                this.entries = Arrays.asList( "EASY -> *", "medium", "hard", "impossible");
                 break;
             case 1:
-                this.entries = Arrays.asList( "Easy", "MEDIUM -> *", "Hard", "Impossible");
+                this.entries = Arrays.asList( "easy", "MEDIUM -> *", "hard", "impossible");
                 break;
             case 2:
-                this.entries = Arrays.asList( "Easy", "Medium", "HARD -> *", "Impossible");
+                this.entries = Arrays.asList( "easy", "medium", "HARD -> *", "impossible");
                 break;
             case 3:
-                this.entries = Arrays.asList( "Easy", "Medium", "Hard", "IMPOSSIBLE -> *");
+                this.entries = Arrays.asList( "easy", "medium", "hard", "IMPOSSIBLE -> *");
                 break;
         }
     }

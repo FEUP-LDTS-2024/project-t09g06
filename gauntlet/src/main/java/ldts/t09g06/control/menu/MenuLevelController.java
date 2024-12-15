@@ -30,7 +30,6 @@ public class MenuLevelController extends Controller<MenuLevel> {
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
         switch (action) {
             case QUIT:
-                game.getGui().resizeScreen(Constants.menuWidth, Constants.menuHeight);
                 game.setState(new MenuState(new Menu(), game.getSpriteLoader()));
             case UP:
                 getModel().previousEntry();
@@ -42,7 +41,7 @@ public class MenuLevelController extends Controller<MenuLevel> {
                 Arena arena = new LoadArenaBuilder(getModel().getCurrentEntry()+1, game.getGui().getDifficulty()).createArena(game.getGui().getDifficultyLevel());
                 setDimensions(getModel().getCurrentEntry());
                 game.setState(new GameState(arena, game.getSpriteLoader()));
-                game.getGui().resizeScreen(VIEW_SIZE_X, VIEW_SIZE_Y);
+                game.getGui().changeScreen(VIEW_SIZE_X, VIEW_SIZE_Y, 6);
                 game.getGui().setTranslation(arena.getHero().getPosition());
                 for(GenericMonster m: arena.getMonsters()) m.setHeroPosition(arena.getHero().getPosition());
                 GenericMonster boss = arena.getBoss();

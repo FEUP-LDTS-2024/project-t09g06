@@ -23,8 +23,8 @@ public class MenuLevelViewer extends Viewer<MenuLevel> {
         int width = size.getColumns();
         int middleScreen = width / 2;
         int middleHeight = height/2;
-        int textStart = middleScreen - Constants.MENU.length() / 2;
-        gui.drawText(new Position(textStart-6, middleHeight-3), "----- Levels -----", Constants.WHITE);
+        int textStart = middleScreen - "----- LEVELS -----".length() / 2;
+        gui.drawText(new Position(textStart, middleHeight-3), "----- LEVELS -----", Constants.WHITE);
 
         for (int i = 0; i < getModel().getNumberEntries(); i++) {
 
@@ -35,5 +35,6 @@ public class MenuLevelViewer extends Viewer<MenuLevel> {
                     modelText,
                     getModel().isSelected(i) ? "#0A97B0" : Constants.WHITE);
         }
+        gui.drawText(new Position( middleScreen - "back to menu - press 'q'".length() / 2, height-4), "back to menu - press 'q'", Constants.WHITE);
     }
 }

@@ -29,11 +29,11 @@ public class ArenaController extends GameController {
 
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
         if (action == GUI.ACTION.QUIT) {
-            game.getGui().resizeScreen(Constants.menuWidth, Constants.menuHeight);
+            game.getGui().changeScreen(Constants.menuWidth, Constants.menuHeight, 25);
             game.setState(new MenuState(new Menu(), game.getSpriteLoader()));
         }
         else if(getModel().getHero().getLife() <= 0) {
-            game.getGui().resizeScreen(Constants.insertNameWidth, Constants.insertNameHeight); //this should be included in each setState
+            game.getGui().changeScreen(Constants.menuWidth, Constants.menuHeight, 25); //this should be included in each setState
             game.setState(new InsertNameState(new InsertName(getModel().getHero()), game.getSpriteLoader()));
         }
         else {

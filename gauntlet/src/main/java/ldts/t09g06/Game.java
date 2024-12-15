@@ -22,7 +22,7 @@ public class Game {
     private final SpriteLoader spriteLoader;
 
     public Game() throws FontFormatException, IOException, URISyntaxException {
-        this.gui = new LanternaGUI(320, 200);
+        this.gui = new LanternaGUI(80, 40);
         this.leaderboard = new Leaderboard(null, "src/main/resources/leaderboard/leaderboard.txt");
         //this.gui = new LanternaGUI(Constants.menuWidth, Constants.menuHeight);
         this.spriteLoader = new SpriteMapLoader();
@@ -49,7 +49,7 @@ public class Game {
     public SpriteLoader getSpriteLoader() {return spriteLoader;}
 
     private void start() throws IOException {
-        int FPS = 300;
+        int FPS = 60;
         int frameTime = 1000 / FPS;
 
         while (this.state != null) {
