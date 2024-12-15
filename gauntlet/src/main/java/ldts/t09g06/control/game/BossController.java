@@ -13,21 +13,25 @@ import java.io.IOException;
 
 public class BossController extends GameController {
     private long lastMovement;
+    private long lastShot;
 
     public BossController(Arena arena) {
         super(arena);
         this.lastMovement = 0;
+        this.lastShot = 0;
     }
 
     @Override
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
         if (time - lastMovement > 500) {
             GenericMonster boss = getModel().getBoss();
-            bossShoot();
             if(!getModel().isBossDefeated()) {
                 moveBoss(boss, boss.getPosition().getCloserTo(getModel(),boss.getHeroPosition()));
                 this.lastMovement = time;
             }
+        } if (time - lastShot > 2000) {
+            bossShoot();
+            this.lastShot = time;
         }
     }
 
