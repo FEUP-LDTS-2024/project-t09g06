@@ -36,6 +36,7 @@ public class LanternaGUI implements GUI {
 
     List<KeyType> priorityKeys = List.of(KeyType.ArrowUp, KeyType.ArrowDown, KeyType.ArrowLeft, KeyType.ArrowRight);
 
+
     public String getDifficulty(){
         return this.difficulty;
     }
@@ -339,4 +340,7 @@ public class LanternaGUI implements GUI {
         this.currChar = currChar;
     }
 
+    public Position getTranslation_actual() {
+        return translation_actual;
+    }
 }

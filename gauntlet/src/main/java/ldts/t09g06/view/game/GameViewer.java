@@ -11,6 +11,9 @@ import ldts.t09g06.view.ViewerManager;
 import java.io.IOException;
 import java.util.List;
 
+import static ldts.t09g06.model.Constants.VIEW_SIZE_X;
+import static ldts.t09g06.model.Constants.VIEW_SIZE_Y;
+
 public class GameViewer extends Viewer<Arena> {
     private final WallViewer wallViewer;
     private final HeroViewer heroViewer;
@@ -52,6 +55,15 @@ public class GameViewer extends Viewer<Arena> {
     private <T extends Element> void drawElements(GUI gui, List<T> elements, ElementViewer<T> viewer) {
         for (T element : elements)
             drawElement(gui, element, viewer);
+    }
+
+    private boolean isVisible(GUI gui, Position position) {
+        int x = position.getX();
+        int y = position.getY();
+        return x >= gui.getTranslation_actual().getX() &&
+                y >= gui.getTranslation_actual().getY() &&
+                x < gui.getTranslation_actual().getX() + VIEW_SIZE_X &&
+                y < gui.getTranslation_actual().getY() + VIEW_SIZE_Y;
     }
 
     private <T extends Element> void drawElement(GUI gui, T element, ElementViewer<T> viewer) {

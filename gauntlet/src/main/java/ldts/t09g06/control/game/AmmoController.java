@@ -1,8 +1,10 @@
 package ldts.t09g06.control.game;
 
 import ldts.t09g06.Game;
+import ldts.t09g06.control.game.audio.AudioController;
 import ldts.t09g06.gui.GUI;
 import ldts.t09g06.model.Position;
+import ldts.t09g06.model.audio.AudioOption;
 import ldts.t09g06.model.game.arena.Arena;
 import ldts.t09g06.model.game.elements.Wall;
 import ldts.t09g06.model.game.elements.ammo.GenericAmmo;
@@ -45,6 +47,7 @@ public class AmmoController extends GameController {
             if(!collided) {
                 for (GenericMonster monster : monsters) {
                     if (bullet.collidesWith(monster)) {
+                        AudioController.getInstance().playAudio(AudioOption.MONSTER_HIT);
                         monstersToRemove.add(monster);
                         bulletsToRemove.add(bullet);
                         getModel().getHero().increase_score(10);
@@ -52,6 +55,7 @@ public class AmmoController extends GameController {
                         break;
                     }
                     if(bullet.collidesWith(boss)){
+                        AudioController.getInstance().playAudio(AudioOption.MONSTER_HIT);
                         getModel().getBoss().decreaseLife(1);
                         bulletsToRemove.add(bullet);
                         if(getModel().getBoss().getLife()<=0) {

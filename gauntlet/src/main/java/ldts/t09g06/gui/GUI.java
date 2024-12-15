@@ -37,5 +37,7 @@ public interface GUI {
 
     void drawPixel(double v, double v1, TextColor c);
 
+    public Position getTranslation_actual();
+
     enum ACTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, SELECT, SHOOT, UNDO, TYPE,W,S,A,D}
 }
