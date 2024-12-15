@@ -85,7 +85,7 @@ public class LanternaGUI implements GUI {
 
     public LanternaGUI(int width, int height) throws IOException, FontFormatException, URISyntaxException {
         fontConfiguration = loadFont(6);
-        fontConfigurationMenu = loadFont(24);
+        fontConfigurationMenu = loadFont(25);
         terminal = createTerminal(width, height,fontConfigurationMenu);
         this.screen = createScreen(terminal);
 
@@ -206,43 +206,60 @@ public class LanternaGUI implements GUI {
 
     @Override
     public void drawLeaderboard(List<Player> players) {
+        // Get the screen size dynamically
         TerminalSize size = getScreen().getTerminalSize();
+        int screenWidth = size.getColumns();
+        int screenHeight = size.getRows();
 
-        int middleScreen = menuWidth / 2;
-        int middleHeight = menuHeight/2;
+        // Center the leaderboard horizontally
+        int middleScreen = screenWidth / 2;
 
+        // Vertical starting point for the leaderboard (to center vertically, adjust if needed)
+        int startY = 3;
 
-        drawText(new Position(middleScreen+10, 3),"Leaderboard","#0A3981");
-        drawText(new Position(middleScreen, 5),"Pos      Name      Score", "#0A97B0");
+        // Title (centered)
+        String title = "LEADERBOARD";
+        drawText(new Position(middleScreen - title.length() / 2, startY), title, "#0A3981");
 
-        Position pos = new Position(middleScreen,7);
+        // Column headers (centered under the title)
+        String headers = "POS      NAME      SCORE";
+        drawText(new Position(middleScreen - headers.length() / 2, startY + 2), headers, "#0A97B0");
 
-        int playerRank = players.size();
-        if (playerRank > 23){
-            playerRank = 23;
-        }
-        for (int i = 0; i < playerRank; i++){
+        // Starting position for player rows
+        Position pos = new Position(middleScreen - headers.length() / 2, startY + 4);
+
+        // Limit the number of players displayed
+        int playerRank = Math.min(players.size(), 23);
+
+        // Loop through players and display their rank, name, and score
+        for (int i = 0; i < playerRank; i++) {
             Player player = players.get(i);
             String name;
+
+            // Handle name length
             if (player.getName().length() <= maxNameLength) {
-                name = player.getName();
+                name = player.getName().toLowerCase();
+            } else if (player.getName().isBlank()) {
+                name = "dummy";
+            } else {
+                name = player.getName().substring(0, maxNameLength - 3).toLowerCase() + "...";
             }
-            else if (player.getName().isBlank()) {
-                name = "Dummy";
-            }
-            else {
-                name = player.getName().substring(0, maxNameLength-3) + "...";
-            }
-            pos.setY(pos.getY()+1);
-            drawText(pos,String.valueOf(i+1) + "    " + name, WHITE);
-            pos.setX(pos.getX()+20);
-            drawText(pos,String.valueOf(player.getScore()), WHITE);
-            pos.setX(pos.getX()-20);
+
+            // Build the row text
+            String row = String.format("%-8d%-12s%-6d", i + 1, name, player.getScore());
+
+            // Draw the row at the current position
+            drawText(pos, row, WHITE);
+
+            // Move to the next line
+            pos.setY(pos.getY() + 1);
         }
 
-        List<String> options = Collections.singletonList("Back to Menu");
-
+        // Add the "Back to Menu" option at the bottom
+        List<String> options = Collections.singletonList("back to menu - press 'q'");
+        drawText(new Position(middleScreen - options.get(0).length() / 2, screenHeight - 4), options.get(0), WHITE);
     }
+
 
     public void drawInstructions(List<String> instructions) {
         Position position = new Position(2, 2); // Starting position on the screen

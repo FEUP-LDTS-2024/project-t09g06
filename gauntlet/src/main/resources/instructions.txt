@@ -1,25 +1,39 @@
-                                  GAME INSTRUCTIONS
+                              GAME INSTRUCTIONS
 
-    Welcome to the 2D Map Adventure Game! In this game, you take on the role of a heroic
-character navigating a dangerous map while avoiding monsters, utilizing strategic skills,
-            and overcoming obstacles. Here’s everything you need to know to play...
 
-                                     OBJECTIVE
+ welcome to the 2d map adventure game! In this game, you take on the role
 
- Survive as long as possible by avoiding monsters, managing your resources, and using your
-    skills strategically. Earn points by outsmarting the monsters and staying alive.
+ of a heroic character navigating a dangerous map while avoiding monsters
 
-                                     CONTROLS
+            utilizing strategic skills, and overcoming obstacles
 
-Movement: Use the arrow keys (↑, ↓, ←, →)  or (w,s,a,d) to move your hero across the map.
+                                 OBJECTIVE
 
-Shoot: Press the SPACEBAR to shoot bullets.
 
-                                       TIPS
+ survive as long as possible by avoiding monsters, managing your resources,
 
-    -> When shooting, to hero will shoot in the last direction you moved, so plan ahead
-                     your movement to not be caught defendless.
-    -> You have limited ammo, so use your shots wisely.
-    -> There is a reload time after using your bullets.
+  and using your skills strategically. earn points by outsmarting the
 
---------------------------------------------------------------------------press 'q' to exit
+                        monsters and staying alive
+
+                                 CONTROLS
+
+
+movement: use the arrow keys or (w,s,a,d) to move your hero across the map
+
+shoot: press the spacebar to shoot bullets
+
+                                  TIPS
+
+
+    -> when shooting, to hero will shoot in the last direction you moved,
+
+         so plan ahead your movement to not be caught defendless
+
+    -> you have limited ammo, so use your shots wisely
+
+    -> there is a reload time after using your bullets
+
+
+
+                        back to menu - press 'q'

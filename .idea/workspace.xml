@@ -7,7 +7,15 @@
     <list default="true" id="ca4ac4b9-05bb-4312-9f02-a770a184b9b7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/view/menu/MenuViewer.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/view/menu/MenuViewer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/gui/LanternaGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/gui/LanternaGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/menu/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/menu/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/menu/MenuLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/menu/MenuLevel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/menu/MenuSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/menu/MenuSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/view/menu/MenuLevelViewer.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/view/menu/MenuLevelViewer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/view/menu/MenuSettingsViewer.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/view/menu/MenuSettingsViewer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/resources/instructions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/resources/instructions.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/resources/leaderboard/leaderboard.txt" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/resources/leaderboard/leaderboard.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

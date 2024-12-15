@@ -17,10 +17,10 @@ public class Constants {
 
     //MENU
 
-    public static final String MENU = "Menu";
+    public static final String MENU = "MENU";
 
-    public static final int menuHeight = 200;
-    public static final int menuWidth = 320;
+    public static final int menuHeight = 40;
+    public static final int menuWidth = 80;
 
     //insertname menu size
 
