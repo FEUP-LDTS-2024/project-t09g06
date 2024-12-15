@@ -78,7 +78,7 @@ public class HeroController extends GameController {
                     break;
             }
 
-            Bullet bullet = new Bullet(heroPosition.getX() + dx, heroPosition.getY() + dy, 'o', dx, dy);
+            Bullet bullet = new Bullet(heroPosition.getX() + dx, heroPosition.getY() + dy, 'o', dx, dy, false);
             getModel().addBullet(bullet);
             getModel().getHero().decreaseAmmo();
                 AudioController.getInstance().playAudio(AudioOption.SHOOTING);
