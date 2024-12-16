@@ -23,6 +23,7 @@ public class GameViewer extends Viewer<Arena> {
     private final BossViewer bossViewer;
     private final ReloaderViewer reloaderViewer;
     private final LifeReloaderViewer lifeReloaderViewer;
+    private final ChestViewer chestViewer;
     public GameViewer(Arena arena, ViewerManager viewerManager) {
         super(arena);
         this.wallViewer = viewerManager.getWallViewer();
@@ -33,6 +34,7 @@ public class GameViewer extends Viewer<Arena> {
         this.bossViewer = viewerManager.getBossViewer();
         this.reloaderViewer = viewerManager.getReloaderViewer();
         this.lifeReloaderViewer = viewerManager.getLifeReloaderViewer();
+        this.chestViewer = viewerManager.getChestViewer();
     }
 
     @Override
@@ -45,6 +47,7 @@ public class GameViewer extends Viewer<Arena> {
         drawElement(gui, getModel().getHero(),heroViewer);
         drawElements(gui, getModel().getReloaders(), reloaderViewer);
         drawElements(gui,getModel().getLifeReloaders(),lifeReloaderViewer);
+        drawElement(gui,getModel().getChest(), chestViewer);
         if(!getModel().isBossDefeated())
             drawElement(gui, getModel().getBoss(), bossViewer);
 

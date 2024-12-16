@@ -4,10 +4,7 @@ import ldts.t09g06.model.Position;
 import ldts.t09g06.model.game.elements.Element;
 import ldts.t09g06.model.game.elements.Tile;
 import ldts.t09g06.model.game.elements.Wall;
-import ldts.t09g06.model.game.elements.ammo.Bullet;
-import ldts.t09g06.model.game.elements.ammo.GenericAmmo;
-import ldts.t09g06.model.game.elements.ammo.LifeReloader;
-import ldts.t09g06.model.game.elements.ammo.Reloader;
+import ldts.t09g06.model.game.elements.ammo.*;
 import ldts.t09g06.model.game.elements.heroes.Hero;
 import ldts.t09g06.model.game.elements.monsters.GenericMonster;
 import ldts.t09g06.model.game.elements.monsters.ZombieMonster;
@@ -27,6 +24,7 @@ public class Arena {
     private List<Wall> walls;
     private List<GenericAmmo> bullets = new ArrayList<>();
     private List<Tile> tiles;
+    private Chest chest;
     //temporary boss removal
     private boolean bossDefeated = false;
 
@@ -42,6 +40,9 @@ public class Arena {
     }
     public void setBoss(GenericMonster boss) {
         this.boss = boss;
+    }
+    public void setChest(Chest chest) {
+        this.chest = chest;
     }
     public void setReloaders(List<Reloader> reloaders){this.reloaders = reloaders;}
     public void setLifeReloaders(List<LifeReloader> lifeReloaders){this.lifeReloaders = lifeReloaders;}
@@ -76,6 +77,9 @@ public class Arena {
     }
     public GenericMonster getBoss() {
         return boss;
+    }
+    public Chest getChest(){
+        return chest;
     }
     public List<Reloader> getReloaders() {
         return reloaders;
@@ -140,5 +144,8 @@ public class Arena {
     public void removeBoss(GenericMonster boss) {
         boss.setPosition(new Position(-1, -1));
         this.bossDefeated=true;
+    }
+    public void removeChest(Chest chest) {
+        chest.setPosition(new Position(-2, -2));
     }
 }

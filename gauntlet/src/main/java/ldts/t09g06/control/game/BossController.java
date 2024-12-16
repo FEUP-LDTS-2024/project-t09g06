@@ -49,16 +49,14 @@ public class BossController extends GameController {
 
     public void bossShoot() {
             Position bossPosition = getModel().getBoss().getPosition();
-            int dx = 0;
-            int dy = 0;
             //temporary
-            Bullet bullet = new Bullet(bossPosition.getX() + 1, bossPosition.getY() + dy, 'o', 1, 0, true);
+            Bullet bullet = new Bullet(bossPosition.getX() + 1, bossPosition.getY() , 'o', 1, 0, true);
             getModel().addBullet(bullet);
-            Bullet bullet2 = new Bullet(bossPosition.getX() - 1, bossPosition.getY() + dy, 'o', -1, 0, true);
+            Bullet bullet2 = new Bullet(bossPosition.getX() - 1, bossPosition.getY() , 'o', -1, 0, true);
             getModel().addBullet(bullet2);
-            Bullet bullet3 = new Bullet(bossPosition.getX() , bossPosition.getY() + dy - 1 , 'o', 0, -1, true);
+            Bullet bullet3 = new Bullet(bossPosition.getX() , bossPosition.getY()  - 1 , 'o', 0, -1, true);
             getModel().addBullet(bullet3);
-            Bullet bullet4 = new Bullet(bossPosition.getX() , bossPosition.getY() + dy + 1, 'o', 0, 1, true);
+            Bullet bullet4 = new Bullet(bossPosition.getX() , bossPosition.getY()  + 1, 'o', 0, 1, true);
             getModel().addBullet(bullet4);
     }
 

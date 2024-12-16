@@ -2,6 +2,7 @@ package ldts.t09g06.model.game.arena;
 
 import ldts.t09g06.model.game.elements.Tile;
 import ldts.t09g06.model.game.elements.Wall;
+import ldts.t09g06.model.game.elements.ammo.Chest;
 import ldts.t09g06.model.game.elements.ammo.GenericAmmo;
 import ldts.t09g06.model.game.elements.ammo.LifeReloader;
 import ldts.t09g06.model.game.elements.ammo.Reloader;
@@ -20,6 +21,7 @@ public abstract class ArenaBuilder {
         arena.setBoss(getBoss());
         arena.setReloaders(getReloaders());
         arena.setLifeReloaders(getLifeReloaders());
+        arena.setChest(getChest());
         arena.setWalls(getWalls());
         arena.setTiles(getTiles());
 //        arena.setBullets(createAmmo());
@@ -39,6 +41,7 @@ public abstract class ArenaBuilder {
     public abstract GenericMonster getBoss();
     public abstract List<Reloader> getReloaders();
     public abstract List<LifeReloader> getLifeReloaders();
+    public abstract Chest getChest();
     //public abstract List<GenericAmmo> createAmmo();
 
 
