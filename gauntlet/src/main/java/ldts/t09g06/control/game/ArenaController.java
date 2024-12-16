@@ -4,6 +4,7 @@ import ldts.t09g06.Game;
 import ldts.t09g06.control.game.audio.AudioController;
 import ldts.t09g06.gui.GUI;
 import ldts.t09g06.model.Constants;
+import ldts.t09g06.model.Position;
 import ldts.t09g06.model.audio.AudioOption;
 import ldts.t09g06.model.audio.AudioPlayer;
 import ldts.t09g06.model.game.arena.Arena;
@@ -27,6 +28,8 @@ public class ArenaController extends GameController {
     private final BossController bossController;
     private final ReloaderController reloaderController;
     private final LifeReloaderController lifeReloaderController;
+    private final ChestController chestController;
+    private final Position position;
     public ArenaController(Arena arena) {
         super(arena);
 
@@ -36,6 +39,8 @@ public class ArenaController extends GameController {
         this.bossController = new BossController(arena);
         this.reloaderController = new ReloaderController(arena);
         this.lifeReloaderController = new LifeReloaderController(arena);
+        this.chestController = new ChestController(arena);
+        this.position = new Position(-2,-2);
     }
 
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
@@ -44,7 +49,7 @@ public class ArenaController extends GameController {
             AudioController.getInstance().stopAllAudio();
             game.setState(new MenuState(new Menu(), game.getSpriteLoader()));
         }
-        else if(getModel().getHero().getLife() <= 0) {
+        else if(getModel().getHero().getLife() <= 0 || getModel().getChest().getPosition().equals(position)) {
             AudioController.getInstance().playAudio(AudioOption.GAME);
             game.getGui().changeScreen(Constants.menuWidth, Constants.menuHeight, 25); //this should be included in each setState
             game.setState(new InsertNameState(new InsertName(getModel().getHero()), game.getSpriteLoader()));
@@ -58,6 +63,7 @@ public class ArenaController extends GameController {
             bossController.step(game, action, time);
             reloaderController.step(game,action, time);
             lifeReloaderController.step(game, action, time);
+            chestController.step(game,action,time);
         }
     }
 

@@ -3,10 +3,7 @@ package ldts.t09g06.model.game.arena;
 import ldts.t09g06.model.game.elements.Element;
 import ldts.t09g06.model.game.elements.Tile;
 import ldts.t09g06.model.game.elements.Wall;
-import ldts.t09g06.model.game.elements.ammo.Bullet;
-import ldts.t09g06.model.game.elements.ammo.GenericAmmo;
-import ldts.t09g06.model.game.elements.ammo.LifeReloader;
-import ldts.t09g06.model.game.elements.ammo.Reloader;
+import ldts.t09g06.model.game.elements.ammo.*;
 import ldts.t09g06.model.game.elements.heroes.Hero;
 import ldts.t09g06.model.game.elements.monsters.BossMonster;
 import ldts.t09g06.model.game.elements.monsters.GenericMonster;
@@ -30,6 +27,7 @@ public class LoadArenaBuilder extends ArenaBuilder {
     List<GenericMonster> monsters = new ArrayList<>();
     protected  Hero hero;
     protected GenericMonster boss;
+    protected Chest chest;
     List<Reloader> reloaders = new ArrayList<>();
     List<LifeReloader> lifeReloaders = new ArrayList<>();
     private static Element [][] gameElements;
@@ -111,6 +109,10 @@ public class LoadArenaBuilder extends ArenaBuilder {
                         boss = new BossMonster(x, y, currChar) {
                         };
                         break;
+                    case 'C':
+                        chest = new Chest(x, y, currChar) {
+                        };
+                        break;
                     case 'R':
                         reloaders.add(new Reloader(x,y,currChar));
                         break;
@@ -137,6 +139,7 @@ public class LoadArenaBuilder extends ArenaBuilder {
     public GenericMonster getBoss() {return boss;}
     public List<Reloader> getReloaders(){return reloaders;}
     public List<LifeReloader> getLifeReloaders(){return lifeReloaders;}
+    public Chest getChest(){return chest;}
     public List<Tile> getTiles() {return tiles;}
 
 //    public  List<GenericAmmo> createAmmo() {
