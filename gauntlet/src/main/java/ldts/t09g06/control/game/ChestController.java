@@ -18,7 +18,7 @@ public class ChestController extends GameController{
     private void updateChest(){
         //is this necessary?
         Chest chest = getModel().getChest();
-        if (chest.collidesWith(getModel().getHero()) && getModel().isBossDefeated() && getModel().getHero().getScore()>=200){
+        if (chest.collidesWith(getModel().getHero()) && getModel().isBossDefeated() && getModel().getHero().getScore()>=getModel().getMin_score()){
             getModel().removeChest(chest);
         }
     }

@@ -52,19 +52,19 @@ public class LoadArenaBuilder extends ArenaBuilder {
     protected void setAmmoAndLife(int level){
         switch(level){
             case 0:
-                getNewHero().setAmmo_and_life(1000, 10);
+                getNewHero().setAmmo_and_life(50, 10);
                 getBoss().setLife(5);
                 for(Reloader r: getReloaders()) r.setQuantity(5);
                 for(LifeReloader r: getLifeReloaders()) r.setQuantity(4);
                 break;
             case 1:
-                getNewHero().setAmmo_and_life(200, 5);
+                getNewHero().setAmmo_and_life(40, 5);
                 getBoss().setLife(10);
                 for(Reloader r: getReloaders()) r.setQuantity(3);
                 for(LifeReloader r: getLifeReloaders()) r.setQuantity(3);
                 break;
             case 2:
-                getNewHero().setAmmo_and_life(100, 3);
+                getNewHero().setAmmo_and_life(30, 3);
                 for(Reloader r: getReloaders()) r.setQuantity(2);
                 for(LifeReloader r: getLifeReloaders()) r.setQuantity(2);
                 getBoss().setLife(15);
@@ -124,6 +124,7 @@ public class LoadArenaBuilder extends ArenaBuilder {
             }
         }
     }
+
     public Hero getNewHero() {
         return hero;
     }
