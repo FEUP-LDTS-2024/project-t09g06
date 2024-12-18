@@ -7,6 +7,7 @@ import ldts.t09g06.model.Direction;
 import ldts.t09g06.model.Position;
 import ldts.t09g06.model.audio.AudioOption;
 import ldts.t09g06.model.game.arena.Arena;
+import ldts.t09g06.model.game.elements.Wall;
 import ldts.t09g06.model.game.elements.ammo.Bullet;
 import ldts.t09g06.model.game.elements.heroes.Hero;
 import ldts.t09g06.gui.LanternaGUI;
@@ -77,11 +78,14 @@ public class HeroController extends GameController {
                     dx = 1;
                     break;
             }
-
-            Bullet bullet = new Bullet(heroPosition.getX() + dx, heroPosition.getY() + dy, 'o', dx, dy, false);
+            for (Wall wall : getModel().getWalls()) {
+                if (new Position(heroPosition.getX() + dx, heroPosition.getY() + dy).collidesWith(wall))
+                    return;
+            }
+            Bullet bullet = new Bullet(heroPosition.getX() + dx, heroPosition.getY() +dy, 'o', dx, dy, false);
             getModel().addBullet(bullet);
             getModel().getHero().decreaseAmmo();
-                AudioController.getInstance().playAudio(AudioOption.SHOOTING);
+            AudioController.getInstance().playAudio(AudioOption.SHOOTING);
         }
     }
 
