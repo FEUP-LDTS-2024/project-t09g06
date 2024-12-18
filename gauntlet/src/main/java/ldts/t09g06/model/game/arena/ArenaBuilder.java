@@ -24,6 +24,7 @@ public abstract class ArenaBuilder {
         arena.setChest(getChest());
         arena.setWalls(getWalls());
         arena.setTiles(getTiles());
+        arena.setMin_score(getMonsters().size()*7 + 50);
 //        arena.setBullets(createAmmo());
 
         return arena;

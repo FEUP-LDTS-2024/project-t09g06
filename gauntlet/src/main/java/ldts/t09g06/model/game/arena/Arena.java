@@ -26,7 +26,17 @@ public class Arena {
     private List<Tile> tiles;
     private Chest chest;
     //temporary boss removal
+    private int min_score;
+
     private boolean bossDefeated = false;
+
+    public int getMin_score() {
+        return min_score;
+    }
+
+    public void setMin_score(int min_score) {
+        this.min_score = min_score;
+    }
 
     public Arena(int width, int height) {
         this.width = width;

@@ -5,7 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca4ac4b9-05bb-4312-9f02-a770a184b9b7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/view/game/LifeReloaderViewer.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/view/game/LifeReloaderViewer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/game/ChestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/game/ChestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/game/arena/Arena.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/game/arena/Arena.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/game/arena/ArenaBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/game/arena/ArenaBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/game/arena/LoadArenaBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/game/arena/LoadArenaBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level1Easy.lvl" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level1Easy.lvl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level1Hard.lvl" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level1Hard.lvl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level1Impossible.lvl" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level1Impossible.lvl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level1Medium.lvl" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level1Medium.lvl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level2Easy.lvl" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level2Easy.lvl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level2Hard.lvl" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level2Hard.lvl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level2Impossible.lvl" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level2Impossible.lvl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level2Medium.lvl" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level2Medium.lvl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level3Easy.lvl" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level3Easy.lvl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level3Hard.lvl" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level3Hard.lvl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level3Impossible.lvl" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level3Impossible.lvl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level3Medium.lvl" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level3Medium.lvl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level4Easy.lvl" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level4Easy.lvl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level4Hard.lvl" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level4Hard.lvl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level4Impossible.lvl" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level4Impossible.lvl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level4Medium.lvl" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level4Medium.lvl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level5Easy.lvl" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level5Easy.lvl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level5Hard.lvl" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level5Hard.lvl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level5Impossible.lvl" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level5Impossible.lvl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level5Medium.lvl" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/resources/levels/level5Medium.lvl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +106,7 @@
     "Gradle.gauntlet [run].executor": "Run",
     "JUnit.groovy in gauntlet.test.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "bullets__charger",
+    "git-widget-placeholder": "maps__changes",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/agomes/Desktop/LDTS/PROJECT/project-t09g06/gauntlet/src/main/resources/sprites/hero",
     "project.structure.last.edited": "Project",
