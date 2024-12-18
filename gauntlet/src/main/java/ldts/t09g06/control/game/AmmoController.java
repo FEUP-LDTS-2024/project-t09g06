@@ -40,7 +40,7 @@ public class AmmoController extends GameController {
                 Position nextPosition = getNextPosition(bullet);
 
                 for (Wall wall : walls) {
-                    if (bullet.collidesWith(wall)) {
+                    if (nextPosition.collidesWith(wall)) {
                         bulletsToRemove.add(bullet);
                         collided = true;
                         break;
@@ -56,18 +56,11 @@ public class AmmoController extends GameController {
                     }
                 }
                 if (!collided) bullet.setPosition(nextPosition);
-            } else{
+            }
+            else{
                 Position nextPosition = getNextPosition(bullet);
 
-                for (Wall wall : walls) {
-                    if (bullet.collidesWith(wall)) {
-                        bulletsToRemove.add(bullet);
-                        collided = true;
-                        break;
-                    }
-                }
-
-                if (!collided && !bullet.isFromBoss()) {
+                if (!collided ) {
                     for (GenericMonster monster : monsters) {
                         if (bullet.collidesWith(monster)) {
                             AudioController.getInstance().playAudio(AudioOption.MONSTER_HIT);
@@ -91,6 +84,15 @@ public class AmmoController extends GameController {
                     }
 
                 }
+                for (Wall wall : walls) {
+                    if (nextPosition.collidesWith(wall)) {
+                        bulletsToRemove.add(bullet);
+                        collided = true;
+                        break;
+                    }
+                }
+
+
                 if (!collided) bullet.setPosition(nextPosition);
             }
         }

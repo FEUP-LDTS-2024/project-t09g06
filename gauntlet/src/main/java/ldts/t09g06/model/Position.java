@@ -1,6 +1,7 @@
 package ldts.t09g06.model;
 
 import ldts.t09g06.model.game.arena.Arena;
+import ldts.t09g06.model.game.elements.Element;
 
 import java.util.Objects;
 
@@ -77,6 +78,10 @@ public class Position {
             default:
                 return getLeft();
         }
+    }
+
+    public boolean collidesWith(Element element) {
+        return this.equals(element.getPosition());
     }
 
     @Override

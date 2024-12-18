@@ -6,6 +6,7 @@ import ldts.t09g06.gui.GUI;
 import ldts.t09g06.model.Position;
 import ldts.t09g06.model.audio.AudioOption;
 import ldts.t09g06.model.game.arena.Arena;
+import ldts.t09g06.model.game.elements.Wall;
 import ldts.t09g06.model.game.elements.ammo.Bullet;
 import ldts.t09g06.model.game.elements.monsters.GenericMonster;
 
@@ -48,18 +49,20 @@ public class BossController extends GameController {
     }
 
     public void bossShoot() {
-            Position bossPosition = getModel().getBoss().getPosition();
-            //temporary
-            Bullet bullet = new Bullet(bossPosition.getX() + 1, bossPosition.getY() , 'o', 1, 0, true);
-            getModel().addBullet(bullet);
-            Bullet bullet2 = new Bullet(bossPosition.getX() - 1, bossPosition.getY() , 'o', -1, 0, true);
-            getModel().addBullet(bullet2);
-            Bullet bullet3 = new Bullet(bossPosition.getX() , bossPosition.getY()  - 1 , 'o', 0, -1, true);
-            getModel().addBullet(bullet3);
-            Bullet bullet4 = new Bullet(bossPosition.getX() , bossPosition.getY()  + 1, 'o', 0, 1, true);
-            getModel().addBullet(bullet4);
+        Position bossPosition = getModel().getBoss().getPosition();
+        bossShootDirection(bossPosition, 1, 0);
+        bossShootDirection(bossPosition, -1, 0);
+        bossShootDirection(bossPosition, 0, -1);
+        bossShootDirection(bossPosition, 0, 1);
     }
-
+    private void bossShootDirection(Position bossPosition, int dx, int dy){
+        for (Wall wall : getModel().getWalls()) {
+            if (new Position(bossPosition.getX() + dx, bossPosition.getY() + dy).collidesWith(wall))
+                return;
+        }
+        Bullet bullet = new Bullet(bossPosition.getX() + dx, bossPosition.getY() +dy, 'o', dx, dy, true);
+        getModel().addBullet(bullet);
+    }
     public void setLastMovement(long lastMovement) {
         this.lastMovement = lastMovement;
     }
