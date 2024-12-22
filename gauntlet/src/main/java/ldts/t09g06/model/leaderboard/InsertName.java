@@ -6,8 +6,8 @@ public class InsertName {
     private String name;
     private int maxLength = 10;
     private boolean  invalidInput;
-
     private Hero hero;
+
     public InsertName(Hero hero) {
         this.name = "";
         this.hero = hero;

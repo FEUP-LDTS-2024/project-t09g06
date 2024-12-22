@@ -15,8 +15,7 @@ import java.util.TimerTask;
 
 public class InsertNameController extends Controller<InsertName> {
 
-    public InsertNameController(InsertName model) {super(model);
-    }
+    public InsertNameController(InsertName model) {super(model);}
 
     @Override
     public void step(Game game, GUI.ACTION action, long time) throws IOException {

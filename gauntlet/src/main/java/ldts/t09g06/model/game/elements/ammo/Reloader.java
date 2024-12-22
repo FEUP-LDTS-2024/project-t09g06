@@ -2,20 +2,15 @@ package ldts.t09g06.model.game.elements.ammo;
 
 import ldts.t09g06.model.game.elements.Element;
 
-public class Reloader extends Element{
-    private int amount_bullets;
+public abstract class Reloader extends Element{
+    protected int amount;
     public Reloader(int x, int y, char c) {
         super(x, y, c);
-        this.amount_bullets = 5;
+        this.amount = 5;
     }
 
-
-    public boolean collidesWith(Element element) {
-        return getPosition().equals(element.getPosition());
-    }
-
-    public void setQuantity(int q){this.amount_bullets = q;}
-    public int getAmount_bullets() {
-        return amount_bullets;
+    public void setQuantity(int q){this.amount = q;}
+    public int getAmount() {
+        return amount;
     }
 }

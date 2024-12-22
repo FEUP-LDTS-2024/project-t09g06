@@ -22,9 +22,6 @@ public interface GUI {
 
     void drawAmmo(Position position);
 
-    void drawLeaderboard(List<Player> players);
-    void drawInstructions(List<String> Instructions);
-    void drawInsertName(String name, boolean invalidInput);
     void drawText(Position position, String text, String color);
 
     void clear();

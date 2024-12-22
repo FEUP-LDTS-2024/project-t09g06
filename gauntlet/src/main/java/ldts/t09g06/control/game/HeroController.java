@@ -1,7 +1,7 @@
 package ldts.t09g06.control.game;
 
 import ldts.t09g06.Game;
-import ldts.t09g06.control.game.audio.AudioController;
+import ldts.t09g06.control.audio.AudioController;
 import ldts.t09g06.gui.GUI;
 import ldts.t09g06.model.Direction;
 import ldts.t09g06.model.Position;
@@ -9,13 +9,7 @@ import ldts.t09g06.model.audio.AudioOption;
 import ldts.t09g06.model.game.arena.Arena;
 import ldts.t09g06.model.game.elements.Wall;
 import ldts.t09g06.model.game.elements.ammo.Bullet;
-import ldts.t09g06.model.game.elements.heroes.Hero;
-import ldts.t09g06.gui.LanternaGUI;
 import ldts.t09g06.model.game.elements.monsters.GenericMonster;
-
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.IOException;
 
 public class HeroController extends GameController {
     public HeroController(Arena arena) {
@@ -49,7 +43,7 @@ public class HeroController extends GameController {
 
 
         }
-        // If the position collides with a monster, reduce life
+
         if (getModel().monsterCollision(position)) {
             getModel().getHero().decreaseLife(1);
         }

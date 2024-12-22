@@ -26,8 +26,6 @@ public class LeaderboardController extends Controller<Leaderboard> {
                 getModel().nextEntry();
             case QUIT:
                 game.setState(new MenuState(new Menu(), game.getSpriteLoader()));
-            case SELECT:
-                if (Objects.equals(getModel().getCurrentEntry(), "Back to Menu")) game.setState(new MenuState(new Menu(), game.getSpriteLoader()));
         }
 
 

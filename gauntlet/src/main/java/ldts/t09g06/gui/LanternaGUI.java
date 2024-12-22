@@ -33,55 +33,8 @@ public class LanternaGUI implements GUI {
     private char currChar;
     private Position translation_actual = new Position(0, 0);
     private String difficulty ;
-
     List<KeyType> priorityKeys = List.of(KeyType.ArrowUp, KeyType.ArrowDown, KeyType.ArrowLeft, KeyType.ArrowRight);
 
-
-    public String getDifficulty(){
-        return this.difficulty;
-    }
-
-    public int getDifficultyLevel() {
-        return switch (difficulty) {
-            case "Medium" -> 1;
-            case "Hard" -> 2;
-            case "Impossible" -> 3;
-            default -> 0;
-        };
-    }
-
-    public void setDifficulty(int dif) {
-        switch (dif){
-            case 0:
-                this.difficulty = "Easy";
-                break;
-            case 1:
-                this.difficulty = "Medium";
-                break;
-            case 2:
-                this.difficulty = "Hard";
-                break;
-            case 3:
-                this.difficulty = "Impossible";
-                break;
-        }
-    }
-
-
-    public void setTranslation(Position translation) {
-        Position result = new Position(translation.getX()*SPRITE_SIZE - VIEW_SIZE_X/2, translation.getY()*SPRITE_SIZE - VIEW_SIZE_Y/2);
-        if(result.getX() < 0) result.setX(0);
-        if(result.getY() <0) result.setY(0);
-        if(result.getX() > SPRITE_SIZE*WIDTH - VIEW_SIZE_X) result.setX(WIDTH*SPRITE_SIZE-VIEW_SIZE_X);
-        if(result.getY() > SPRITE_SIZE* HEIGHT -VIEW_SIZE_Y) result.setY(SPRITE_SIZE* HEIGHT -VIEW_SIZE_Y);
-        this.translation_actual = result;
-    }
-
-    public void drawPixel(double x, double y, TextColor color) {
-        TextGraphics tg = screen.newTextGraphics();
-        tg.setBackgroundColor(color);
-        tg.setCharacter((int) x -translation_actual.getX(), (int) y-translation_actual.getY(), ' ');
-    }
     public LanternaGUI(Screen screen) {
         this.screen = screen;
     }
@@ -95,6 +48,13 @@ public class LanternaGUI implements GUI {
         this.currChar = 'x';
         this.difficulty = "Easy";
     }
+
+    public void drawPixel(double x, double y, TextColor color) {
+        TextGraphics tg = screen.newTextGraphics();
+        tg.setBackgroundColor(color);
+        tg.setCharacter((int) x -translation_actual.getX(), (int) y-translation_actual.getY(), ' ');
+    }
+
     private Screen createScreen(Terminal terminal) throws IOException {
         final Screen screen;
         screen = new TerminalScreen(terminal);
@@ -214,93 +174,6 @@ public class LanternaGUI implements GUI {
     }
 
     @Override
-    public void drawLeaderboard(List<Player> players) {
-        // Get the screen size dynamically
-        TerminalSize size = getScreen().getTerminalSize();
-        int screenWidth = size.getColumns();
-        int screenHeight = size.getRows();
-
-        // Center the leaderboard horizontally
-        int middleScreen = screenWidth / 2;
-
-        // Vertical starting point for the leaderboard (to center vertically, adjust if needed)
-        int startY = 3;
-
-        // Title (centered)
-        String title = "LEADERBOARD";
-        drawText(new Position(middleScreen - title.length() / 2, startY), title, "#0A3981");
-
-        // Column headers (centered under the title)
-        String headers = "POS      NAME      SCORE";
-        drawText(new Position(middleScreen - headers.length() / 2, startY + 2), headers, "#0A97B0");
-
-        // Starting position for player rows
-        Position pos = new Position(middleScreen - headers.length() / 2, startY + 4);
-
-        // Limit the number of players displayed
-        int playerRank = Math.min(players.size(), 23);
-
-        // Loop through players and display their rank, name, and score
-        for (int i = 0; i < playerRank; i++) {
-            Player player = players.get(i);
-            String name;
-
-            // Handle name length
-            if (player.getName().length() <= maxNameLength) {
-                name = player.getName().toLowerCase();
-            } else if (player.getName().isBlank()) {
-                name = "dummy";
-            } else {
-                name = player.getName().substring(0, maxNameLength - 3).toLowerCase() + "...";
-            }
-
-            // Build the row text
-            String row = String.format("%-8d%-12s%-6d", i + 1, name, player.getScore());
-
-            // Draw the row at the current position
-            drawText(pos, row, WHITE);
-
-            // Move to the next line
-            pos.setY(pos.getY() + 1);
-        }
-
-        // Add the "Back to Menu" option at the bottom
-        List<String> options = Collections.singletonList("back to menu - press 'q'");
-        drawText(new Position(middleScreen - options.get(0).length() / 2, screenHeight - 4), options.get(0), WHITE);
-    }
-
-
-    public void drawInstructions(List<String> instructions) {
-        Position position = new Position(2, 2); // Starting position on the screen
-        for (String line : instructions) {
-            drawText(position, line, WHITE); // Draw each line with the desired color
-            position.setY(position.getY() + 1); // Move to the next line
-        }
-    }
-
-
-    public void drawInsertName(String name, boolean invalidInput) {
-        TerminalSize size = getScreen().getTerminalSize();
-        int height = size.getRows();
-        int width = size.getColumns();
-        int middleScreen = width / 2;
-        int middleHeight = height/2;
-        int textStart = middleScreen - Constants.MENU.length() / 2;
-        drawText(new Position(textStart-15,middleHeight), "---------- GAME OVER ----------", "#0A3981");
-        drawText(new Position(3,middleHeight + 3), "Please insert your name (it must be less than 10 chars):", "#0A97B0");
-
-        drawText(new Position(0,middleHeight +5), name , WHITE);
-
-        if(invalidInput) {
-            drawText(new Position(0, middleHeight+4),"Must contain chars and smaller than 10!", RED);
-        }
-
-        drawText(new Position(textStart,height-2), "Press enter to submit", WHITE);
-
-    }
-
-
-    @Override
     public void drawText(Position position, String text, String color) {
         TextGraphics tg = screen.newTextGraphics();
         tg.setForegroundColor(TextColor.Factory.fromString(color));
@@ -326,6 +199,46 @@ public class LanternaGUI implements GUI {
     @Override
     public void close() throws IOException {
         screen.close();
+    }
+
+    public String getDifficulty(){
+        return this.difficulty;
+    }
+
+    public int getDifficultyLevel() {
+        return switch (difficulty) {
+            case "Medium" -> 1;
+            case "Hard" -> 2;
+            case "Impossible" -> 3;
+            default -> 0;
+        };
+    }
+
+    public void setDifficulty(int dif) {
+        switch (dif){
+            case 0:
+                this.difficulty = "Easy";
+                break;
+            case 1:
+                this.difficulty = "Medium";
+                break;
+            case 2:
+                this.difficulty = "Hard";
+                break;
+            case 3:
+                this.difficulty = "Impossible";
+                break;
+        }
+    }
+
+
+    public void setTranslation(Position translation) {
+        Position result = new Position(translation.getX()*SPRITE_SIZE - VIEW_SIZE_X/2, translation.getY()*SPRITE_SIZE - VIEW_SIZE_Y/2);
+        if(result.getX() < 0) result.setX(0);
+        if(result.getY() <0) result.setY(0);
+        if(result.getX() > SPRITE_SIZE*WIDTH - VIEW_SIZE_X) result.setX(WIDTH*SPRITE_SIZE-VIEW_SIZE_X);
+        if(result.getY() > SPRITE_SIZE* HEIGHT -VIEW_SIZE_Y) result.setY(SPRITE_SIZE* HEIGHT -VIEW_SIZE_Y);
+        this.translation_actual = result;
     }
     @Override
     public Screen getScreen() {

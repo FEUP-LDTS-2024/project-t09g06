@@ -1,7 +1,7 @@
 package ldts.t09g06.control.game;
 
 import ldts.t09g06.Game;
-import ldts.t09g06.control.game.audio.AudioController;
+import ldts.t09g06.control.audio.AudioController;
 import ldts.t09g06.gui.GUI;
 import ldts.t09g06.model.Position;
 import ldts.t09g06.model.audio.AudioOption;
@@ -102,7 +102,6 @@ public class AmmoController extends GameController {
     }
 
     public Position getNextPosition(GenericAmmo ammo) {
-        Position next = new Position(ammo.getPosition().getX()+ammo.getDx(),ammo.getPosition().getY()+ ammo.getDy());
-        return next;
+        return new Position(ammo.getPosition().getX()+ammo.getDx(),ammo.getPosition().getY()+ ammo.getDy());
     }
 }

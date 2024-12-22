@@ -13,7 +13,6 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 public class Leaderboard {
     private List<Player> players;
     private List<String> leaderboardText;
-
     private int currentEntry;
     private LeaderboardHandler leaderboard;
     private String filepath;

@@ -19,7 +19,7 @@ public class Arena {
     private Hero hero;
     private List<GenericMonster> monsters;
     private GenericMonster boss;
-    private List<Reloader> reloaders;
+    private List<BulletReloader> bulletReloaders;
     private List<LifeReloader> lifeReloaders;
     private List<Wall> walls;
     private List<GenericAmmo> bullets = new ArrayList<>();
@@ -27,20 +27,34 @@ public class Arena {
     private Chest chest;
     //temporary boss removal
     private int min_score;
-
     private boolean bossDefeated = false;
-
-    public int getMin_score() {
-        return min_score;
-    }
-
-    public void setMin_score(int min_score) {
-        this.min_score = min_score;
-    }
 
     public Arena(int width, int height) {
         this.width = width;
         this.height = height;
+    }
+
+    public void killMonster(List<GenericMonster> monsters, Position position){
+        //is there a way to make it more efficient and just look at that position and not all monsters??
+        List<GenericMonster> m = new ArrayList<>();
+        for (GenericMonster monster : monsters)
+            if (!monster.getPosition().equals(position))
+                m.add(monster);
+        setMonsters(m);
+    }
+
+    public boolean wallCollision(Position position) {
+        for (Wall wall : walls)
+            if (wall.getPosition().equals(position))
+                return true;
+        return false;
+    }
+
+    public boolean monsterCollision(Position position) {
+        for (GenericMonster monster : monsters)
+            if (monster.getPosition().equals(position))
+                return true;
+        return false;
     }
     public void setHero(Hero hero) {
         this.hero = hero;
@@ -54,25 +68,14 @@ public class Arena {
     public void setChest(Chest chest) {
         this.chest = chest;
     }
-    public void setReloaders(List<Reloader> reloaders){this.reloaders = reloaders;}
+    public void setReloaders(List<BulletReloader> reloaders){this.bulletReloaders = reloaders;}
     public void setLifeReloaders(List<LifeReloader> lifeReloaders){this.lifeReloaders = lifeReloaders;}
-    public void killMonster(List<GenericMonster> monsters, Position position){
-        //is there a way to make it more efficient and just look at that position and not all monsters??
-        List<GenericMonster> m = new ArrayList<>();
-        for (GenericMonster monster : monsters)
-            if (!monster.getPosition().equals(position))
-                m.add(monster);
-        setMonsters(m);
-    }
-
     public void setWalls(List<Wall> walls) {
         this.walls = walls;
     }
-
     public void setTiles(List<Tile> tiles) {
         this.tiles = tiles;
     }
-
     public int getWidth() {
         return width;
     }
@@ -91,71 +94,53 @@ public class Arena {
     public Chest getChest(){
         return chest;
     }
-    public List<Reloader> getReloaders() {
-        return reloaders;
+    public List<BulletReloader> getReloaders() {
+        return bulletReloaders;
     }
     public List<LifeReloader> getLifeReloaders(){ return lifeReloaders;}
     public List<Wall> getWalls() {
         return walls;
     }
     public List<Tile> getTiles() {return tiles;}
-
-    public boolean wallCollision(Position position) {
-        for (Wall wall : walls)
-            if (wall.getPosition().equals(position))
-                return true;
-        return false;
-    }
-
-    public boolean monsterCollision(Position position) {
-        for (GenericMonster monster : monsters)
-            if (monster.getPosition().equals(position))
-                return true;
-        return false;
-    }
-
     public boolean isBossDefeated() {
         return bossDefeated;
     }
-
     public boolean bossCollision(Position position) {
         return boss.getPosition().equals(position);
     }
-
     public boolean elementsCollision(Position position1, Position position2){
         return position1.equals(position2);
     }
-
     public List<GenericAmmo> getBullets() {
         return bullets;
     }
-
-
     public void setBullets(List<GenericAmmo> bullets) {
         this.bullets = bullets;
     }
-
     public void addBullet(GenericAmmo bullet) {
         bullets.add(bullet);
     }
-
     public void removeBullets(List<GenericAmmo> bulletsToRemove) {
         bullets.removeAll(bulletsToRemove);
     }
-    public void removeReloaders(List<Reloader> reloadersToRemove){
-        reloaders.removeAll(reloadersToRemove);
+    public void removeReloaders(List<BulletReloader> reloadersToRemove){
+        bulletReloaders.removeAll(reloadersToRemove);
     }
     public void removeLifeReloaders(List<LifeReloader> reloadersToRemove){
         lifeReloaders.removeAll(reloadersToRemove);
     }
-
     public void removeMonsters(List<GenericMonster> monstersToRemove) {monsters.removeAll(monstersToRemove);}
-
     public void removeBoss(GenericMonster boss) {
         boss.setPosition(new Position(-1, -1));
         this.bossDefeated=true;
     }
     public void removeChest(Chest chest) {
         chest.setPosition(new Position(-2, -2));
+    }
+    public int getMin_score() {
+        return min_score;
+    }
+    public void setMin_score(int min_score) {
+        this.min_score = min_score;
     }
 }

@@ -7,9 +7,43 @@
     <list default="true" id="ca4ac4b9-05bb-4312-9f02-a770a184b9b7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/game/AmmoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/game/AmmoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/game/ArenaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/game/ArenaController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/game/BossController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/game/BossController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/game/HeroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/game/HeroController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/Position.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/game/MonsterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/game/MonsterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/game/audio/AudioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/audio/AudioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/instructions/InstructionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/instructions/InstructionsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/leaderboard/InsertNameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/leaderboard/InsertNameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/leaderboard/LeaderboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/leaderboard/LeaderboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/menu/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/menu/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/menu/MenuLevelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/control/menu/MenuLevelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/gui/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/gui/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/gui/LanternaGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/gui/LanternaGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/game/arena/Arena.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/game/arena/Arena.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/game/arena/ArenaBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/game/arena/ArenaBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/game/arena/LoadArenaBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/game/arena/LoadArenaBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/game/elements/Element.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/game/elements/Element.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/game/elements/ammo/BulletReloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/game/elements/ammo/BulletReloader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/game/elements/ammo/Chest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/game/elements/ammo/Chest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/game/elements/ammo/GenericAmmo.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/game/elements/ammo/GenericAmmo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/game/elements/ammo/LifeReloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/game/elements/ammo/LifeReloader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/game/elements/ammo/Reloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/game/elements/ammo/Reloader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/game/elements/heroes/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/game/elements/heroes/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/game/elements/monsters/BossMonster.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/game/elements/monsters/BossMonster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/game/elements/monsters/GenericMonster.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/game/elements/monsters/GenericMonster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/leaderboard/InsertName.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/leaderboard/InsertName.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/leaderboard/Leaderboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/leaderboard/Leaderboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/leaderboard/LeaderboardHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/leaderboard/LeaderboardHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/leaderboard/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/model/leaderboard/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/states/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/states/GameState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/view/InstructionsViewer.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/view/InstructionsViewer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/view/game/GameViewer.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/view/game/GameViewer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/view/leaderboard/InsertNameViewer.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/view/leaderboard/InsertNameViewer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/view/leaderboard/LeaderboardViewer.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/view/leaderboard/LeaderboardViewer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/view/menu/MenuViewer.java" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/java/ldts/t09g06/view/menu/MenuViewer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/resources/sprites/bullet/tile_0062.png" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/resources/sprites/Reloaders/tile_0062.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauntlet/src/main/resources/sprites/hero/tile_0116.png" beforeDir="false" afterPath="$PROJECT_DIR$/gauntlet/src/main/resources/sprites/Reloaders/tile_0116.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,21 +114,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.gauntlet [build].executor": "Run",
-    "Gradle.gauntlet [run].executor": "Run",
-    "JUnit.groovy in gauntlet.test.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "fixing__collisions",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/agomes/Desktop/LDTS/PROJECT/project-t09g06/gauntlet/src/main/resources/sprites/hero",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.gauntlet [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.gauntlet [run].executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.groovy in gauntlet.test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;code__reassemble&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/agomes/Desktop/LDTS/PROJECT/project-t09g06/gauntlet/src/main/resources/sprites/hero&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/gauntlet/src/main/resources/sprites/hero" />
