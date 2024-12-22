@@ -28,7 +28,7 @@ public class LoadArenaBuilder extends ArenaBuilder {
     protected  Hero hero;
     protected GenericMonster boss;
     protected Chest chest;
-    List<Reloader> reloaders = new ArrayList<>();
+    List<BulletReloader> reloaders = new ArrayList<>();
     List<LifeReloader> lifeReloaders = new ArrayList<>();
     private static Element [][] gameElements;
     private int width;
@@ -54,24 +54,24 @@ public class LoadArenaBuilder extends ArenaBuilder {
             case 0:
                 getNewHero().setAmmo_and_life(50, 10);
                 getBoss().setLife(5);
-                for(Reloader r: getReloaders()) r.setQuantity(5);
+                for(BulletReloader r: getReloaders()) r.setQuantity(5);
                 for(LifeReloader r: getLifeReloaders()) r.setQuantity(4);
                 break;
             case 1:
                 getNewHero().setAmmo_and_life(40, 5);
                 getBoss().setLife(10);
-                for(Reloader r: getReloaders()) r.setQuantity(3);
+                for(BulletReloader r: getReloaders()) r.setQuantity(3);
                 for(LifeReloader r: getLifeReloaders()) r.setQuantity(3);
                 break;
             case 2:
                 getNewHero().setAmmo_and_life(30, 3);
-                for(Reloader r: getReloaders()) r.setQuantity(2);
+                for(BulletReloader r: getReloaders()) r.setQuantity(2);
                 for(LifeReloader r: getLifeReloaders()) r.setQuantity(2);
                 getBoss().setLife(15);
                 break;
             case 3:
                 getNewHero().setAmmo_and_life(10, 1);
-                for(Reloader r: getReloaders()) r.setQuantity(1);
+                for(BulletReloader r: getReloaders()) r.setQuantity(1);
                 for(LifeReloader r: getLifeReloaders()) r.setQuantity(1);
                 getBoss().setLife(20);
         }
@@ -114,7 +114,7 @@ public class LoadArenaBuilder extends ArenaBuilder {
                         };
                         break;
                     case 'R':
-                        reloaders.add(new Reloader(x,y,currChar));
+                        reloaders.add(new BulletReloader(x,y,currChar));
                         break;
                     case 'L':
                         lifeReloaders.add(new LifeReloader(x, y, currChar));
@@ -138,7 +138,7 @@ public class LoadArenaBuilder extends ArenaBuilder {
     }
 
     public GenericMonster getBoss() {return boss;}
-    public List<Reloader> getReloaders(){return reloaders;}
+    public List<BulletReloader> getReloaders(){return reloaders;}
     public List<LifeReloader> getLifeReloaders(){return lifeReloaders;}
     public Chest getChest(){return chest;}
     public List<Tile> getTiles() {return tiles;}

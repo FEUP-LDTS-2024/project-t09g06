@@ -19,7 +19,7 @@ public class Arena {
     private Hero hero;
     private List<GenericMonster> monsters;
     private GenericMonster boss;
-    private List<Reloader> reloaders;
+    private List<BulletReloader> bulletReloaders;
     private List<LifeReloader> lifeReloaders;
     private List<Wall> walls;
     private List<GenericAmmo> bullets = new ArrayList<>();
@@ -54,7 +54,7 @@ public class Arena {
     public void setChest(Chest chest) {
         this.chest = chest;
     }
-    public void setReloaders(List<Reloader> reloaders){this.reloaders = reloaders;}
+    public void setReloaders(List<BulletReloader> reloaders){this.bulletReloaders = reloaders;}
     public void setLifeReloaders(List<LifeReloader> lifeReloaders){this.lifeReloaders = lifeReloaders;}
     public void killMonster(List<GenericMonster> monsters, Position position){
         //is there a way to make it more efficient and just look at that position and not all monsters??
@@ -91,8 +91,8 @@ public class Arena {
     public Chest getChest(){
         return chest;
     }
-    public List<Reloader> getReloaders() {
-        return reloaders;
+    public List<BulletReloader> getReloaders() {
+        return bulletReloaders;
     }
     public List<LifeReloader> getLifeReloaders(){ return lifeReloaders;}
     public List<Wall> getWalls() {
@@ -142,8 +142,8 @@ public class Arena {
     public void removeBullets(List<GenericAmmo> bulletsToRemove) {
         bullets.removeAll(bulletsToRemove);
     }
-    public void removeReloaders(List<Reloader> reloadersToRemove){
-        reloaders.removeAll(reloadersToRemove);
+    public void removeReloaders(List<BulletReloader> reloadersToRemove){
+        bulletReloaders.removeAll(reloadersToRemove);
     }
     public void removeLifeReloaders(List<LifeReloader> reloadersToRemove){
         lifeReloaders.removeAll(reloadersToRemove);

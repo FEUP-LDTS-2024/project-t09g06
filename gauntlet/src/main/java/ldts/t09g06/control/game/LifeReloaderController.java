@@ -29,7 +29,7 @@ public class LifeReloaderController extends GameController{
         }
         if(!ReloadersToRemove.isEmpty()) {
             for (LifeReloader reloader : ReloadersToRemove) {
-                getModel().getHero().setAmmo_and_life(getModel().getHero().getAmmo(), getModel().getHero().getLife() + reloader.getAmount_life());
+                getModel().getHero().setAmmo_and_life(getModel().getHero().getAmmo(), getModel().getHero().getLife() + reloader.getAmount());
             }
             getModel().removeLifeReloaders(ReloadersToRemove);}
     }

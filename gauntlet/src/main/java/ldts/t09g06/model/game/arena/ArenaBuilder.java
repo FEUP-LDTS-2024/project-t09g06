@@ -2,10 +2,7 @@ package ldts.t09g06.model.game.arena;
 
 import ldts.t09g06.model.game.elements.Tile;
 import ldts.t09g06.model.game.elements.Wall;
-import ldts.t09g06.model.game.elements.ammo.Chest;
-import ldts.t09g06.model.game.elements.ammo.GenericAmmo;
-import ldts.t09g06.model.game.elements.ammo.LifeReloader;
-import ldts.t09g06.model.game.elements.ammo.Reloader;
+import ldts.t09g06.model.game.elements.ammo.*;
 import ldts.t09g06.model.game.elements.heroes.Hero;
 import ldts.t09g06.model.game.elements.monsters.GenericMonster;
 
@@ -40,7 +37,7 @@ public abstract class ArenaBuilder {
     public abstract List<Tile> getTiles();
     public abstract List<GenericMonster> getMonsters();
     public abstract GenericMonster getBoss();
-    public abstract List<Reloader> getReloaders();
+    public abstract List<BulletReloader> getReloaders();
     public abstract List<LifeReloader> getLifeReloaders();
     public abstract Chest getChest();
     //public abstract List<GenericAmmo> createAmmo();
