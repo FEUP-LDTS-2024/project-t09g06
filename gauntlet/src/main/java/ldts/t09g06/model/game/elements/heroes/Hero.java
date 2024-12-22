@@ -10,19 +10,17 @@ public class Hero extends Element {
     private int score = 0;
     private Direction direction;
 
-    public int getScore() {
-        return score;
-    }
-
-    public void increase_score(int num){
-        score+=num;
-    }
-
     public Hero(int x, int y, char c){
         super(x,y,c);
         this.direction = Direction.RIGHT;
     }
 
+    public int getScore() {
+        return score;
+    }
+    public void increase_score(int num){
+        score+=num;
+    }
     public int getLife() {
         return life;
     }
@@ -32,7 +30,6 @@ public class Hero extends Element {
     public void increaseLife(int bonus){
         this.life += bonus;
     }
-
     public int getAmmo() {
         return ammo;
     }
@@ -42,7 +39,6 @@ public class Hero extends Element {
     public void increaseAmmo(int x){
         ammo += 1;
     }
-
     public void setAmmo_and_life(int quant, int life){
         this.ammo = quant;
         this.life = life;
@@ -50,7 +46,6 @@ public class Hero extends Element {
     public Direction getDirection() {
         return direction;
     }
-
     public void setDirection(Direction direction) {
         this.direction = direction;
     }

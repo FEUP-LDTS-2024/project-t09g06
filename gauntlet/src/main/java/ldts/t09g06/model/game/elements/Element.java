@@ -24,6 +24,9 @@ public abstract class Element {
 
     public char getElement() { return  this.element;}
 
+    public boolean collidesWith(Element element) {
+        return getPosition().equals(element.getPosition());
+    }
 
     @Override
     public boolean equals(Object o){

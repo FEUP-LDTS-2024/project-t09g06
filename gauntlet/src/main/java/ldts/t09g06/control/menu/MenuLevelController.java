@@ -1,14 +1,12 @@
 package ldts.t09g06.control.menu;
 
 import ldts.t09g06.Game;
-import ldts.t09g06.control.game.audio.AudioController;
+import ldts.t09g06.control.audio.AudioController;
 import ldts.t09g06.gui.GUI;
-import ldts.t09g06.model.Constants;
 import ldts.t09g06.model.audio.AudioOption;
 import ldts.t09g06.model.game.arena.Arena;
 import ldts.t09g06.model.game.arena.LoadArenaBuilder;
 import ldts.t09g06.model.game.elements.monsters.GenericMonster;
-import ldts.t09g06.model.menu.GenericMenu;
 import ldts.t09g06.model.menu.Menu;
 import ldts.t09g06.control.Controller;
 import ldts.t09g06.model.menu.MenuLevel;
@@ -17,8 +15,6 @@ import ldts.t09g06.states.GameState;
 import java.io.IOException;
 
 
-import ldts.t09g06.gui.GUI;
-import ldts.t09g06.model.Constants;
 import ldts.t09g06.states.MenuState;
 
 import static ldts.t09g06.model.Constants.*;

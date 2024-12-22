@@ -9,6 +9,7 @@ import ldts.t09g06.model.menu.Menu;
 import ldts.t09g06.states.MenuState;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class InstructionsController extends Controller<Instructions>{
         public InstructionsController(Instructions model) {
@@ -16,9 +17,8 @@ public class InstructionsController extends Controller<Instructions>{
         }
         @Override
         public void step(Game game, GUI.ACTION action, long time) throws IOException {
-            switch (action) {
-                case QUIT:
-                    game.setState(new MenuState(new Menu(), game.getSpriteLoader()));
+            if (Objects.requireNonNull(action) == GUI.ACTION.QUIT) {
+                game.setState(new MenuState(new Menu(), game.getSpriteLoader()));
             }
 
         }

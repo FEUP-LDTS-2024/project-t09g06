@@ -8,9 +8,6 @@ public abstract class Reloader extends Element{
         super(x, y, c);
         this.amount = 5;
     }
-    public boolean collidesWith(Element element) {
-        return getPosition().equals(element.getPosition());
-    }
 
     public void setQuantity(int q){this.amount = q;}
     public int getAmount() {

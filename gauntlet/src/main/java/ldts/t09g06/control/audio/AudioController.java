@@ -1,12 +1,10 @@
-package ldts.t09g06.control.game.audio;
+package ldts.t09g06.control.audio;
 
 import ldts.t09g06.model.audio.Audio;
 import ldts.t09g06.model.audio.AudioLoader;
 import ldts.t09g06.model.audio.AudioOption;
-import ldts.t09g06.model.audio.AudioPlayer;
 
 import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
@@ -15,12 +13,9 @@ import java.util.Objects;
 public class AudioController {
     private final Audio shootingAudio;
     private final Audio gameAudio;
-
     private final Audio dyingAudio;
-
     private final Audio monsterAtack;
     private final Audio monsterHit;
-
     private static AudioController audioController;
 
     private AudioController() throws UnsupportedAudioFileException, IOException, LineUnavailableException {

@@ -14,11 +14,14 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class LeaderboardHandler {
     private String filepath;
+
     public LeaderboardHandler(String filepath) {
         this.filepath = filepath;
     }
+
     public List<Player> loadLeaderboard(String filepath)  {
         List<Player> leaderboard = new ArrayList<>();
+
         try (BufferedReader reader = Files.newBufferedReader(Paths.get(filepath), UTF_8)){
             String currLine;
             while ((currLine = reader.readLine()) != null) {
@@ -32,11 +35,13 @@ public class LeaderboardHandler {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
         leaderboard.sort(Comparator.comparingInt(Player::getScore).reversed());
         return leaderboard;
     }
 
     public void saveLeaderboard(Leaderboard leaderboard) {
+
         try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(filepath), UTF_8)) {
             List<Player> players = leaderboard.getPlayers();
             for (Player player : players){
@@ -49,6 +54,7 @@ public class LeaderboardHandler {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        }
+
+    }
 
 }

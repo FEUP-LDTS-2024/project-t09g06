@@ -1,7 +1,7 @@
 package ldts.t09g06.control.game;
 
 import ldts.t09g06.Game;
-import ldts.t09g06.control.game.audio.AudioController;
+import ldts.t09g06.control.audio.AudioController;
 import ldts.t09g06.gui.GUI;
 import ldts.t09g06.model.Position;
 import ldts.t09g06.model.audio.AudioOption;

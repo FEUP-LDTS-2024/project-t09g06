@@ -24,6 +24,7 @@ public class GameViewer extends Viewer<Arena> {
     private final ReloaderViewer reloaderViewer;
     private final LifeReloaderViewer lifeReloaderViewer;
     private final ChestViewer chestViewer;
+
     public GameViewer(Arena arena, ViewerManager viewerManager) {
         super(arena);
         this.wallViewer = viewerManager.getWallViewer();
@@ -39,8 +40,6 @@ public class GameViewer extends Viewer<Arena> {
 
     @Override
     public void drawModel(GUI gui){
-
-
         drawElements(gui, getModel().getWalls(),wallViewer);
         drawElements(gui, getModel().getTiles(),tileViewer);
         drawElements(gui, getModel().getMonsters(),monsterViewer);
@@ -50,8 +49,6 @@ public class GameViewer extends Viewer<Arena> {
         drawElement(gui,getModel().getChest(), chestViewer);
         if(!getModel().isBossDefeated())
             drawElement(gui, getModel().getBoss(), bossViewer);
-
-
         if(!getModel().getBullets().isEmpty())
             drawElements(gui, getModel().getBullets(),ammoViewer);
 

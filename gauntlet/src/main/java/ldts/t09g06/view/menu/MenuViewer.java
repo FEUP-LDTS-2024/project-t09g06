@@ -16,30 +16,21 @@ public class MenuViewer extends Viewer<Menu> {
 
     @Override
     public void drawModel(GUI gui) {
-        // Get dynamic terminal size
         TerminalSize size = gui.getScreen().getTerminalSize();
-        int terminalWidth = size.getColumns();  // Total columns
-        int terminalHeight = size.getRows();   // Total rows
-
-        // Calculate middle of the screen
+        int terminalWidth = size.getColumns();
+        int terminalHeight = size.getRows();
         int middleScreen = terminalWidth / 2;
         int middleHeight = terminalHeight / 2;
-
-        // Center title dynamically
         int titleStartX = middleScreen - (Constants.MENU.length() / 2);
-        int titleStartY = middleHeight - (terminalHeight / 10); // Dynamic title position above middle
+        int titleStartY = middleHeight - (terminalHeight / 10);
 
-        // Draw the title
         gui.drawText(new Position(titleStartX, titleStartY), Constants.MENU, Constants.WHITE);
 
-        // Dynamic spacing between menu options
-        int spacing = Math.max(2, terminalHeight / 40); // Minimum 2 rows of spacing
+        int spacing = Math.max(2, terminalHeight / 40);
 
-        // Draw each menu entry dynamically centered
         for (int i = 0; i < getModel().getNumberEntries(); i++) {
             String modelText = getModel().getEntry(i);
 
-            // Center each menu entry
             int entryStartX = middleScreen - (modelText.length() / 2);
             int entryStartY = titleStartY + 2 + (i * spacing); // Start below title with spacing
 

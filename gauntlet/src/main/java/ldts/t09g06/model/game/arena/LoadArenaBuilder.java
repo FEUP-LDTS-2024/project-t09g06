@@ -42,12 +42,14 @@ public class LoadArenaBuilder extends ArenaBuilder {
 
         lines = readLines(br);
     }
+
     private List<String> readLines(BufferedReader br) throws IOException {
         List<String> lines = new ArrayList<>();
         for (String line; (line = br.readLine()) != null; )
             lines.add(line);
         return lines;
     }
+
     @Override
     protected void setAmmoAndLife(int level){
         switch(level){
@@ -128,21 +130,17 @@ public class LoadArenaBuilder extends ArenaBuilder {
     public Hero getNewHero() {
         return hero;
     }
-
     public List<Wall> getWalls() {
         return walls;
     }
-
     public  List<GenericMonster> getMonsters(){
         return monsters;
     }
-
     public GenericMonster getBoss() {return boss;}
     public List<BulletReloader> getReloaders(){return reloaders;}
     public List<LifeReloader> getLifeReloaders(){return lifeReloaders;}
     public Chest getChest(){return chest;}
     public List<Tile> getTiles() {return tiles;}
-
 //    public  List<GenericAmmo> createAmmo() {
 //        List<GenericAmmo> ammo = new ArrayList<>();
 //        for (int i = 0; i < 5; i++) {
@@ -150,7 +148,4 @@ public class LoadArenaBuilder extends ArenaBuilder {
 //        }
 //        return ammo;
 //    }
-
-
-
 }

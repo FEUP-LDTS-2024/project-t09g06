@@ -26,11 +26,10 @@ public abstract class ArenaBuilder {
 
         return arena;
     }
+
     protected abstract void setAmmoAndLife(int level);
     protected abstract int getWidth();
-
     protected abstract int getHeight();
-
     protected abstract void parseGameElements();
     public abstract Hero getNewHero();
     public abstract List<Wall> getWalls();

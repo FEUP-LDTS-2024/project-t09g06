@@ -1,7 +1,6 @@
 package ldts.t09g06.model.leaderboard;
 
 public class Player {
-
     private String name;
     private int score;
 

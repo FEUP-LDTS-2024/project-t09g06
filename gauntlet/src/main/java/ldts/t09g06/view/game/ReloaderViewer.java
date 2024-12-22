@@ -13,7 +13,7 @@ public class ReloaderViewer implements ElementViewer<BulletReloader> {
     private final Sprite sprite;
 
     public ReloaderViewer(SpriteLoader spriteLoader) throws IOException {
-        this.sprite = spriteLoader.get("sprites/bullet/tile_0062.png");
+        this.sprite = spriteLoader.get("sprites/Reloaders/tile_0062.png");
     }
 
     @Override
