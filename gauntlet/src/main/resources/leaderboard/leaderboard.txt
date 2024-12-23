@@ -1,6 +1,7 @@
 Simp	480	
 QQQQQQQQQ	160	
 h	80	
+andreg	80	
 Tiago!	60	
 sorry	60	
 Player	50	
