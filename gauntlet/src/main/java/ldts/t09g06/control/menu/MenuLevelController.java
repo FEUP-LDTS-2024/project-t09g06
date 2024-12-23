@@ -29,6 +29,7 @@ public class MenuLevelController extends Controller<MenuLevel> {
         switch (action) {
             case QUIT:
                 game.setState(new MenuState(new Menu(), game.getSpriteLoader()));
+                break;
             case UP:
                 getModel().previousEntry();
                 break;
@@ -45,7 +46,9 @@ public class MenuLevelController extends Controller<MenuLevel> {
                 GenericMonster boss = arena.getBoss();
                 boss.setHeroPosition(arena.getHero().getPosition());
                 AudioController.getInstance().playAudio(AudioOption.GAME);
-
+                break;
+            default:
+                break;
         }
     }
 }

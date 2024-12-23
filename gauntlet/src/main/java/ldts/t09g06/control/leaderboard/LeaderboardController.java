@@ -22,10 +22,15 @@ public class LeaderboardController extends Controller<Leaderboard> {
         switch (action) {
             case UP:
                 getModel().previousEntry();
+                break;
             case DOWN:
                 getModel().nextEntry();
+                break;
             case QUIT:
                 game.setState(new MenuState(new Menu(), game.getSpriteLoader()));
+                break;
+            default:
+                break;
         }
 
 

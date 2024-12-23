@@ -38,4 +38,7 @@ public abstract class Element {
         }
         return this.getPosition().equals(((Element) o).getPosition());
     }
-}
+    @Override
+    public int hashCode() {
+        return getPosition().hashCode();
+    }}

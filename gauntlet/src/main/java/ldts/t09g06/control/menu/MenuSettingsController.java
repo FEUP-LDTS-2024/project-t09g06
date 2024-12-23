@@ -25,6 +25,7 @@ public class MenuSettingsController extends Controller<MenuSettings> {
         switch (action) {
             case QUIT:
                 game.setState(new MenuState(new Menu(), game.getSpriteLoader()));
+                break;
             case UP:
                 getModel().previousEntry();
                 break;
@@ -35,6 +36,9 @@ public class MenuSettingsController extends Controller<MenuSettings> {
                 game.getGui().setDifficulty(getModel().getCurrentEntry());
                 getModel().setCurrent_difficulty(getModel().getCurrentEntry());
                 getModel().updateEntries();
+                break;
+            default:
+                break;
         }
     }
 }

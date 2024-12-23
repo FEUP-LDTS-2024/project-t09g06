@@ -37,6 +37,7 @@ public class ArenaController extends GameController {
         this.position = new Position(-2,-2);
     }
 
+    @Override
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
         if (action == GUI.ACTION.QUIT) {
             game.getGui().changeScreen(Constants.menuWidth, Constants.menuHeight, 25);

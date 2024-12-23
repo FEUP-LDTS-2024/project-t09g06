@@ -45,7 +45,7 @@ public class Game {
 
 
     public static void main(String[] args) throws IOException, FontFormatException, URISyntaxException {
-       Game game =   Game.getInstance();
+       Game.getInstance();
     }
 
     public LanternaGUI getGui() {

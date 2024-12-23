@@ -62,15 +62,6 @@ public class GameViewer extends Viewer<Arena> {
             drawElement(gui, element, viewer);
     }
 
-    private boolean isVisible(GUI gui, Position position) {
-        int x = position.getX();
-        int y = position.getY();
-        return x >= gui.getTranslation_actual().getX() &&
-                y >= gui.getTranslation_actual().getY() &&
-                x < gui.getTranslation_actual().getX() + VIEW_SIZE_X &&
-                y < gui.getTranslation_actual().getY() + VIEW_SIZE_Y;
-    }
-
     private <T extends Element> void drawElement(GUI gui, T element, ElementViewer<T> viewer) {
         viewer.draw(element, gui);
     }

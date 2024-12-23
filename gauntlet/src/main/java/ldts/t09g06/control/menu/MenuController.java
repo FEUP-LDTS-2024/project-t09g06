@@ -38,6 +38,9 @@ public class MenuController extends Controller<Menu> {
                 if(getModel().isSelectedLeaderboard()) {
                     game.setState(new LeaderboardState(game.getLeaderboard(), game.getSpriteLoader()));
                 }
+                break;
+            default:
+                break;
         }
     }
 }

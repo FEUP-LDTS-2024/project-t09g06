@@ -58,6 +58,8 @@ public class InsertNameController extends Controller<InsertName> {
             case QUIT:
                 game.setState(new MenuState(new Menu(), game.getSpriteLoader()));
                 break;
+            default:
+                break;
         }
     }
     private void invalidInput() {

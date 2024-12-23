@@ -63,7 +63,7 @@ public class Position {
                 else if(dify<0 && !arena.wallCollision(getDown())) return getDown();
             }
             if (difx>0 && !arena.wallCollision(getLeft()))return getLeft();
-            else if(difx<0 && !arena.wallCollision((getRight()))) return getRight();
+            else if(difx<0 && !arena.wallCollision(getRight())) return getRight();
             if(dify>0 && !arena.wallCollision(getUp())) return getUp();
             else if(dify<0 && !arena.wallCollision(getDown())) return getDown();
         }
@@ -86,7 +86,7 @@ public class Position {
 
     @Override
     public boolean equals(Object o) {
-        if(o == null || o.getClass() != this.getClass()) return false;
+        if(!(o instanceof Position)) return false;
 
         return (this == o) ||
                 (this.x == ((Position) o).x && this.y == ((Position) o).y);
