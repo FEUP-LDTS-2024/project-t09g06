@@ -50,7 +50,7 @@ The following screenshots ilustrate the general look of our game, as well as the
   <img src="docs/images/settings.png"/>
 </p>
 <p align="center">
-  <b><i>Fig 2. Instructions Menu </i></b>  
+  <b><i>Fig 3. Settings Menu </i></b>  
 </p>  
 
 <br>
