@@ -48,13 +48,6 @@ A UML Diagram representing the classes in the game and their methods.
 <figcaption>Fig.1 - Game UML.</figcaption>
 
 
-# Mockups 
-
-Figure 2 represents a mock up of a game map.
-![menu_image](/docs/images/pre-game.png)
-<figcaption>Fig.2 - Game mock up. </figcaption>
-
-
 
 # Design
 ## Architectural Pattern
