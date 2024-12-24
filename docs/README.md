@@ -44,7 +44,7 @@ Project developed by André Gomes (up202304252@up.pt), Tiago Carvalho (up2021033
 # UML Class Diagram
 A UML Diagram representing the classes in the game and their methods.
 
-![uml_image](/docs/images/Gauntlet.png)
+![uml_image](/docs/images/UML_gauntlet.png)
 <figcaption>Fig.1 - Game UML.</figcaption>
 
 
